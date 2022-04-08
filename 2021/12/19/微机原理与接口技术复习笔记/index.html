@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<!-- 
+    <meta name="author" content="祥瑞">
+ -->
+
+
+
+
+<title>微机原理与接口技术复习笔记 | 祥瑞&#39;s blog</title>
+
+
+
+    <link rel="icon" href="/bitbug_favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+    <script>
+        // this function is used to check current theme before page loaded.
+        (() => {
+            const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
+            const isDark = currentTheme === 'dark';
+            const pagebody = document.getElementsByTagName('body')[0]
+            if (isDark) {
+                pagebody.classList.add('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Dark"
+            } else {
+                pagebody.classList.remove('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Light"
+            }
+        })();
+    </script>
+
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">李祥瑞&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">李祥瑞&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+            <div class="main">
+                <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">微机原理与接口技术复习笔记</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">祥瑞</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">December 19, 2021&nbsp;&nbsp;16:15:17</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0/">课程学习</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <p>OK，这是在大三上学期的期末时，写的复习笔记，现在距离考试还有10天左右的时间，我得在这十天内把这学期学习的课程知识全部过一遍，并练一些编程题目。</p>
+<p>先把沈老师分享的脑图，记录一下</p>
+<h1 id="脑图大纲"><a href="#脑图大纲" class="headerlink" title="脑图大纲"></a>脑图大纲</h1><img src="https://s4.ax1x.com/2021/12/19/TeFbvV.md.png" alt="TeFbvV.md.png" style="zoom:200%;" />
+
+<p>这图上面除了右边的具体知识，还有左上角的tips，<strong>怎么学？</strong> </p>
+<p>这是一个很重要的问题，有些时候，虽然我也想认真听课，但是，就是不知道怎么回事就开始出神了，当老师突然把我惊得反应回来，蓦然回首,<strong>我是谁？，我在哪儿？我在干什么？</strong>，这是一方面，上课没有很认真地听课；然后我觉得可能还有一点，就是没有进行大量地读写程序，汇编语言还是有一些语句地，需要去<strong>练习</strong>记忆。这也就对应了沈老师在图地左上方写到的怎么学：<strong>“大量地读写程序”</strong>，当然这最好建立在<strong>“理解””记忆“</strong>一些地基础上，不然会有些吃力。</p>
+<ol>
+<li><p>如何进行改述和总结，用你自己的话，尽可能简短地来表述作者的意思。</p>
+</li>
+<li><p>如何进行改述和总结，用你自己的话，尽可能简短地来表述作者的意思。</p>
+</li>
+<li><p>使用图表来说明， 尽可能多地将信息转化成符号或者图表。</p>
+</li>
+<li><p>为知识点创造记忆方法，试着为自己出试题 。</p>
+<p>好像可能会不会跟着做但是还是记录一下吧，终归还是要一个目标的。🙂</p>
+</li>
+</ol>
+<p>我大致计划，每看玩一个知识章节，自己去总结到这篇博客上，并且做相关练习都贴到这里。</p>
+<h1 id="程序标配："><a href="#程序标配：" class="headerlink" title="程序标配："></a>程序标配：</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">code segement</span><br><span class="line">assume cs:code</span><br><span class="line">start: </span><br><span class="line">;;你写的代码</span><br><span class="line">code ends</span><br><span class="line">	end	start</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="一、计算机基础知识"><a href="#一、计算机基础知识" class="headerlink" title="一、计算机基础知识"></a>一、计算机基础知识</h1><h2 id="1、数据表达式"><a href="#1、数据表达式" class="headerlink" title="1、数据表达式"></a>1、数据表达式</h2><h3 id="补码："><a href="#补码：" class="headerlink" title="补码："></a>补码：</h3><p>[相关脑图](<a target="_blank" rel="noopener" href="https://naotu.baidu.com/file/67d3f34a8505be2f42a55566c766bea5">数值 - 百度脑图 (baidu.com)</a>)</p>
+<p>重点：负数的补码求法：（因为正数的补码反码都和原码一样，所以不用特别记忆）</p>
+<p>​            先将它化为二进制数，也就是求到它的原码，然后符号位不变，数值位全部取反，最后加上“1”，就得到的它的补码。</p>
+<p>例如：求-50的补码</p>
+<p><strong>方法一：</strong></p>
+<ol>
+<li>-50的原码是50的原码的基础上，符号位为“1”，也就是0011 0010，这里使用8位数的原因是“计算机中的内存单元，一个直接有8为二进制”，所以-50的原码为：1011 0010</li>
+<li>符号位不变，数值位取反得到：1100 1101</li>
+<li>在上面的基础上加一，得到最后的结果为：<strong>1100 1110</strong></li>
+</ol>
+<p><strong>方法二：</strong></p>
+<p>​        得到原码后，找到为1的最低位，然后将这一位到符号位的所有位全部取反，就可以得到，负数的补码了。</p>
+<p>例如：-50的原码    1011 0010，去符号位到最低的为“1”的位中间的位全部取反后得到：<strong>1100 1110</strong>。</p>
+<p>着两种方法都是可行的，当然第二种方法好是要简单一点哈。</p>
+<h3 id="常用编码："><a href="#常用编码：" class="headerlink" title="常用编码："></a>常用编码：</h3><table>
+<thead>
+<tr>
+<th>编码名称</th>
+<th>例子</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ASCII码</td>
+<td>40代表0</td>
+<td>使数字和字符能够在计算机中存储</td>
+</tr>
+<tr>
+<td>8421BCD码</td>
+<td>0000代表0</td>
+<td>计算机把十进制数转换成二进制数就要用到一种转换码，BCD码就是其中的一种。</td>
+</tr>
+</tbody></table>
+<h3 id="进制转换："><a href="#进制转换：" class="headerlink" title="进制转换："></a>进制转换：</h3><p>十进制小数转化为二进制</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>作用</th>
+<th>用法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>乘2法</td>
+<td>十进制小数化二进制</td>
+<td>乘2取整，顺序排列</td>
+</tr>
+<tr>
+<td>除2发</td>
+<td>十进制整数化二进制</td>
+<td>整数部分 除以2取余，逆序排列。</td>
+</tr>
+</tbody></table>
+<p>例如：13.2化为二进制小数</p>
+<p>先求小数部分：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">0.2</span>*<span class="number">2</span> = <span class="number">0.4</span>---------<span class="number">-0</span></span><br><span class="line"><span class="number">0.4</span>*<span class="number">2</span> = <span class="number">0.8</span>---------<span class="number">-0</span></span><br><span class="line"><span class="number">0.8</span>*<span class="number">2</span> = <span class="number">1.6</span>---------<span class="number">-1</span></span><br><span class="line"><span class="number">0.6</span>*<span class="number">2</span> = <span class="number">1.2</span>---------<span class="number">-1</span></span><br><span class="line"><span class="number">0.2</span>*<span class="number">2</span> = <span class="number">0.4</span>---------<span class="number">-0</span></span><br><span class="line"><span class="number">0.3</span>*<span class="number">2</span> = <span class="number">0.8</span>---------<span class="number">-0</span></span><br><span class="line"><span class="number">0.8</span>*<span class="number">2</span> = <span class="number">1.6</span>---------<span class="number">-1</span></span><br><span class="line"><span class="number">0.6</span>*<span class="number">2</span> = <span class="number">1.2</span>---------<span class="number">-1</span></span><br><span class="line">    直到小数部分为<span class="number">0</span>，或者发现是循环数</span><br><span class="line">    所以小数部分为：<span class="number">0.0011</span>.....</span><br></pre></td></tr></table></figure>
+
+<p>整数部分：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">13</span>/<span class="number">2</span> = <span class="number">6</span>余<span class="number">1</span></span><br><span class="line"><span class="number">6</span>/<span class="number">2</span>  = <span class="number">3</span>余<span class="number">0</span></span><br><span class="line"><span class="number">3</span>/<span class="number">2</span>  = <span class="number">1</span>余<span class="number">1</span></span><br><span class="line"><span class="number">1</span>/<span class="number">2</span>  = <span class="number">0</span>余<span class="number">1</span></span><br><span class="line"> 	直达整数部分为<span class="number">0</span></span><br><span class="line">    所以整数部分为：<span class="number">1011</span>，其实我更倾向于自己去比较<span class="number">2</span>的几次方，得出来。。</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="2、存储与寻址"><a href="#2、存储与寻址" class="headerlink" title="2、存储与寻址"></a>2、存储与寻址</h2><h3 id="地址表示："><a href="#地址表示：" class="headerlink" title="地址表示："></a>地址表示：</h3><table>
+<thead>
+<tr>
+<th>物理地址</th>
+<th>对于一个存储单元来说，它的物理地址是唯一的</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>逻辑地址</td>
+<td>对于一个存储单元开始，它的逻辑地址是无数组，不同段基址和对于的偏移地址可以形成同一个物理地址</td>
+</tr>
+</tbody></table>
+<p>$$<br>物理地址 = 段地址 *10H + 偏移地址<br>$$</p>
+<p>段地址（段基址）的英文简称：<strong>DS</strong></p>
+<p>偏移地址（有效地址,段内地址）的英文简称：<strong>EA</strong></p>
+<h3 id="寻址方式："><a href="#寻址方式：" class="headerlink" title="寻址方式："></a>寻址方式：</h3><ol>
+<li><p>段寄存器</p>
+<table>
+<thead>
+<tr>
+<th>有无BP</th>
+<th>段寄存器</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>有</td>
+<td>SS</td>
+</tr>
+<tr>
+<td>无</td>
+<td>DS</td>
+</tr>
+</tbody></table>
+</li>
+<li><p>寻址类型</p>
+<table>
+<thead>
+<tr>
+<th>寻址方式（源）</th>
+<th>格式</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>立即寻址</td>
+<td>MOV AX,100H</td>
+<td>直接是一个常数数值</td>
+</tr>
+<tr>
+<td>寄存器寻址</td>
+<td>MOV BX,AX</td>
+<td>指令所需要的操作数在寄存器中</td>
+</tr>
+<tr>
+<td>直接寻址</td>
+<td>MOV AX,[100H]</td>
+<td>有一个中括号，里面是常数的偏移地址</td>
+</tr>
+<tr>
+<td>寄存器间接寻址</td>
+<td>MOV BX,[AX]</td>
+<td>有一个中括号，里面是寄存器</td>
+</tr>
+<tr>
+<td>寄存器相对寻址</td>
+<td>MOV AX，100H[SI]</td>
+<td>在寄存器间接寻址的基础上，加了一个常数</td>
+</tr>
+<tr>
+<td>基址加变址寻址</td>
+<td>MOV AL，[BX][SI]</td>
+<td>有两个寄存器</td>
+</tr>
+<tr>
+<td>相对基址加变址寻址</td>
+<td>MOVAL,[BX][SI]100H</td>
+<td>基址加变址寻址,加上一个常数</td>
+</tr>
+</tbody></table>
+<p>3、变址寄存器和基址寄存器</p>
+<table>
+<thead>
+<tr>
+<th>变址寄存器</th>
+<th>SI          DI</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>基址寄存器</td>
+<td>BX         BP</td>
+</tr>
+</tbody></table>
+<p>PS(容易错的题):</p>
+<p>MOV AL,DS:[1000]的源操作数是直接寻址</p>
+<p>MOV AL,DS,的源操作数是寄存器寻址</p>
+<p>MOV DS:[BP],AL    的目的操作数是寄存器间接寻址</p>
+<p>每个段最多有<strong>64kb</strong>，CS是<strong>代码段寄存器</strong>，IP是<strong>指令指针</strong>用于指向将要执行的指令。 </p>
+<p>已知一逻辑地址为：3000：1000，其段起始地址为：30000H</p>
+</li>
+</ol>
+<h2 id="3、寄存器"><a href="#3、寄存器" class="headerlink" title="3、寄存器"></a>3、寄存器</h2><table>
+<thead>
+<tr>
+<th>AX</th>
+<th>累加器</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>BX</td>
+<td>基址寄存器</td>
+</tr>
+<tr>
+<td>CX</td>
+<td>计数寄存器</td>
+</tr>
+<tr>
+<td>DX</td>
+<td>数据寄存器</td>
+</tr>
+<tr>
+<td>CS</td>
+<td>代码段寄存器</td>
+</tr>
+<tr>
+<td>DS</td>
+<td>数据段寄存器</td>
+</tr>
+<tr>
+<td>SS</td>
+<td>堆栈段寄存器</td>
+</tr>
+<tr>
+<td>ES</td>
+<td>附加段寄存器</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>BP</th>
+<th>基址指针</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>SP</td>
+<td>堆栈指针</td>
+</tr>
+<tr>
+<td>SI</td>
+<td>源  变址寄存器</td>
+</tr>
+<tr>
+<td>DI</td>
+<td>目的   变址寄存器</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>IP</th>
+<th>指令指针</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>FR</td>
+<td>标志寄存器</td>
+</tr>
+</tbody></table>
+<h1 id="二、汇编语言"><a href="#二、汇编语言" class="headerlink" title="二、汇编语言"></a>二、汇编语言</h1><h2 id="1、数据传送指令"><a href="#1、数据传送指令" class="headerlink" title="1、数据传送指令"></a>1、数据传送指令</h2><h4 id="MOV"><a href="#MOV" class="headerlink" title="MOV"></a>MOV</h4><p>1、立即数不能向段寄存器赋值；</p>
+<p>2、只有通用寄存器能对调用寄存器赋值，也就是存储里面的数不能向存储器里面的数赋值，段寄存器也不能向段寄存器赋值。</p>
+<p>3、cs不能作为目的操作数</p>
+<p>4、两个操作数，至少有一个确定类型，立即数和存储器的数据类型都是不确定的。比如需要把一个存储数传到另一个存储器中，这个情况下可以先把源操作数传给寄存器，然后再传给目的操作数；或者采用语句指明源操作数或者目的操作数是字类型还是字节类型。</p>
+<p>限定为字节类型：    byte PTR ds:[1006h],01H                byte（字节）读音[baɪt]，bit（二进制位）</p>
+<p>限定为字类型：    WORD PTR ds:[1006h],01H</p>
+<h4 id="LEA"><a href="#LEA" class="headerlink" title="LEA"></a>LEA</h4><p>将源操作数的偏移地址赋值给寄存器,所以目的操作数是16位寄存器。</p>
+<h4 id="POP-PUSH"><a href="#POP-PUSH" class="headerlink" title="POP  PUSH"></a>POP  PUSH</h4><p>push后SP-2,pop后SP+2。</p>
+<p>栈底是高位。</p>
+<h4 id="XCHG"><a href="#XCHG" class="headerlink" title="XCHG"></a>XCHG</h4><p>交换两个寄存器里面的值。不影响寄存器。</p>
+<h2 id="2、运算指令"><a href="#2、运算指令" class="headerlink" title="2、运算指令"></a>2、运算指令</h2><table>
+<thead>
+<tr>
+<th>指令</th>
+<th>作用</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ADD</td>
+<td>加法，不带进位</td>
+<td>ADD AX,BX</td>
+</tr>
+<tr>
+<td>ADC</td>
+<td>加法，带进位</td>
+<td>ADC AX,CX</td>
+</tr>
+<tr>
+<td>INC</td>
+<td>加一，不影响CF</td>
+<td>INC AX</td>
+</tr>
+<tr>
+<td>SUB</td>
+<td>减法，不带借位</td>
+<td>SUB AX,BX</td>
+</tr>
+<tr>
+<td>SBB</td>
+<td>减法，带借位</td>
+<td>SBB AX,BX</td>
+</tr>
+<tr>
+<td>DEC</td>
+<td>减一，不影响CF</td>
+<td>DEC AX</td>
+</tr>
+<tr>
+<td>CMP</td>
+<td>比较</td>
+<td>CMP AX,BX</td>
+</tr>
+<tr>
+<td>NEG</td>
+<td>求补</td>
+<td>NEG AX</td>
+</tr>
+</tbody></table>
+<h2 id="DAA"><a href="#DAA" class="headerlink" title="DAA:"></a>DAA:</h2><p>压缩BCD码，个位数放入AL的低四位，十位数放入AL的高四位</p>
+<h2 id="AAA"><a href="#AAA" class="headerlink" title="AAA:"></a>AAA:</h2><p>将两个加数从ASCII码还原为十进制，然后相加，得到的数，将其高位放入AH中，低位放入AL中。</p>
+<h2 id="3、程序流程控制指令"><a href="#3、程序流程控制指令" class="headerlink" title="3、程序流程控制指令"></a>3、程序流程控制指令</h2><h3 id="条件跳转指令"><a href="#条件跳转指令" class="headerlink" title="条件跳转指令"></a>条件跳转指令</h3><table>
+<thead>
+<tr>
+<th>名称</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>JZ</td>
+<td>ZF为’1’的时候跳转</td>
+</tr>
+<tr>
+<td>JNZ</td>
+<td>ZF为’0’的时候跳转</td>
+</tr>
+<tr>
+<td>JC</td>
+<td>CF为’1’的时候跳转</td>
+</tr>
+<tr>
+<td>JNC</td>
+<td>CF为‘0’的时候跳转</td>
+</tr>
+<tr>
+<td>JMP</td>
+<td>无条件跳转</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>无符号整数运算</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>JA/JNBE</td>
+<td>大于跳转</td>
+</tr>
+<tr>
+<td>JAE/JNB</td>
+<td>大于或等于跳转</td>
+</tr>
+<tr>
+<td>JB/JNAE</td>
+<td>小于跳转</td>
+</tr>
+<tr>
+<td>JBE/JNA</td>
+<td>小于或等于跳转</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>有符号整数运算</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>JG/JNLE</td>
+<td>大于跳转</td>
+</tr>
+<tr>
+<td>JGE/JNL</td>
+<td>大于或等于跳转</td>
+</tr>
+<tr>
+<td>JL/JNGE</td>
+<td>小于跳转</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://baike.baidu.com/item/JLE">JLE</a>/JNG</td>
+<td>小于或等于的关于跳转</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>循环控制指令</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>LOOP</td>
+<td>CX 不为‘0‘时，</td>
+</tr>
+</tbody></table>
+<h2 id="4、逻辑运算与位操作"><a href="#4、逻辑运算与位操作" class="headerlink" title="4、逻辑运算与位操作"></a>4、逻辑运算与位操作</h2><h3 id="逻辑运算指令"><a href="#逻辑运算指令" class="headerlink" title="逻辑运算指令"></a>逻辑运算指令</h3><table>
+<thead>
+<tr>
+<th>指令名称</th>
+<th>作用</th>
+<th>用法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>NOT</td>
+<td>取反</td>
+<td></td>
+</tr>
+<tr>
+<td>AND</td>
+<td>与</td>
+<td></td>
+</tr>
+<tr>
+<td>XOR</td>
+<td>异或</td>
+<td></td>
+</tr>
+<tr>
+<td>NXOR</td>
+<td>同或</td>
+<td></td>
+</tr>
+<tr>
+<td>TEST</td>
+<td>测试</td>
+<td></td>
+</tr>
+<tr>
+<td>OR</td>
+<td>或</td>
+<td></td>
+</tr>
+<tr>
+<td>运算指令后</td>
+<td>CF=OF=0,SF,ZF按一般规则影响</td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id="移位指令"><a href="#移位指令" class="headerlink" title="移位指令"></a>移位指令</h3><table>
+<thead>
+<tr>
+<th>指令名称</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>SHL_SHR逻辑</td>
+<td>把‘0’移入，移出到CF</td>
+</tr>
+<tr>
+<td>SAL_SAR算术</td>
+<td>左移时，低位补0；右移时，高位补符号位</td>
+</tr>
+<tr>
+<td>ROL_ROR不带进位循环</td>
+<td>移出的位要放入cf的同时，也要放入空位</td>
+</tr>
+<tr>
+<td>RCL_RCR带进位循环</td>
+<td>空位放入CF的值，CF放入移出的值。</td>
+</tr>
+</tbody></table>
+<h1 id="三、接口技术"><a href="#三、接口技术" class="headerlink" title="三、接口技术"></a>三、接口技术</h1><h2 id="1、总线与时序"><a href="#1、总线与时序" class="headerlink" title="1、总线与时序"></a>1、总线与时序</h2><table>
+<thead>
+<tr>
+<th>时钟周期</th>
+<th>CPU执行的最小时间单位</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>总线周期</td>
+<td>4倍时钟周期</td>
+</tr>
+<tr>
+<td>指令周期</td>
+<td>CPU执行一条指令所需要的时间，不同指令t不一样，同一条指令寻址方式不一样，时间也不一样</td>
+</tr>
+</tbody></table>
+<h2 id="2、8085-A1、A0：端口选择信号输入引脚"><a href="#2、8085-A1、A0：端口选择信号输入引脚" class="headerlink" title="2、8085-A1、A0：端口选择信号输入引脚"></a>2、8085-A1、A0：端口选择信号输入引脚</h2><table>
+<thead>
+<tr>
+<th>A1</th>
+<th>A0</th>
+<th>操作</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0</td>
+<td>0</td>
+<td>A口读或写</td>
+</tr>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>B口读或写</td>
+</tr>
+<tr>
+<td>1</td>
+<td>0</td>
+<td>C口读或写</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id="3、内部结构"><a href="#3、内部结构" class="headerlink" title="3、内部结构"></a>3、内部结构</h2><p>由EU（执行单元）和BIU（总线接口部件）组成。</p>
+<table>
+<thead>
+<tr>
+<th>EU</th>
+<th>通用寄存器、SP,BP,SI,DI这四个与地址相关的寄存器以及ALU（运算逻辑单元）、标志寄存器。。</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>BIU</td>
+<td>段寄存器、IP。。。</td>
+</tr>
+</tbody></table>
+<h2 id="8255控制字："><a href="#8255控制字：" class="headerlink" title="8255控制字："></a>8255控制字：</h2><h2 id="8254控制字："><a href="#8254控制字：" class="headerlink" title="8254控制字："></a>8254控制字：</h2><h1 id="错题集："><a href="#错题集：" class="headerlink" title="错题集："></a>错题集：</h1><ol>
+<li><p>计算机有运算器、控制器、存储器和输入、输出五部分组成。</p>
+</li>
+<li><p>IP存放指令的偏移地址</p>
+</li>
+<li><p>总线接口部件BIU</p>
+</li>
+<li><p>(单选题)以下哪个地址不可能是段起始地址  • A. 10h • B. 1000h • C. 11111h • D. 21000h 正确答案: </p>
+<p>（段起始地址的低四位必须是‘0’）</p>
+</li>
+<li><p>16位寄存器一个有14个</p>
+</li>
+<li><p>8086 不能出现在指令中的寄存器有2个，是IP和FR（标志寄存器）</p>
+</li>
+<li><p>8086 中用于存放偏移地址的寄存器有<strong>BX BP SI DI</strong>  ,  IP SP一共6个,但是能出现在[]中的只有前 4 个</p>
+</li>
+<li><p>0的8位补码是0000  0000 B</p>
+</li>
+<li><p>字长是作为一个整体计算机一次最多可传送或运算的二进制位数</p>
+</li>
+<li><p>一个指令周期包括几个机器周期,一个机器周期包括几个时钟周期。</p>
+</li>
+<li><p>8086 地址累加器的位数是20位</p>
+</li>
+<li><p>CPU 中运算器的功能主要是算术运算和逻辑运算</p>
+</li>
+<li><p>8086 CPU 寄存器中,能在 I/O 寻址时用作地址寄存器的 是DX</p>
+</li>
+<li><p>MOV AX,3000H，数据从代码段里面取出</p>
+</li>
+<li><p>假定(SS)=2000H,(SP)=0100H,(AX)=2107H,执行指令 PUSH AX 后,存放数据 21H 的物理地址是200FF。</p>
+</li>
+<li><p>从 PC3 输出一低电平置位复位控制字是<strong>6h</strong></p>
+</li>
+<li><p>从 PC6 输出一高电平置位复位控制字是ODH</p>
+</li>
+<li><p>8255 有2个8位并行输入/输出端口,分为2组</p>
+</li>
+<li><p>如果 8254 的输入信号是 1MHZ，从计数器 2 输出是 20HZ 周期性负脉冲，端口地址为 300H-303H 控制字是0B4H</p>
+</li>
+<li><p>按键控制指示灯程序工作方式字是90h未使用的端口都 设为输出</p>
+</li>
+<li><p>FLAG是标志寄存器，里面存放的CF,AF,OF,ZF啥的，它不能出现在指令中。</p>
+</li>
+<li><p>查表指令XLAT,将存储在DS:[BX+AL]的数赋值给AL，没有操作数</p>
+</li>
+<li><p><strong>一些传送指令会影响状态标志位！！！！</strong></p>
+</li>
+<li><p>CF 判断的是无符号数、OF 判断的是符号数。</p>
+</li>
+<li><p>A口可工作于方式0、方式1和方式2中的任一种<br>B口可工作于方式0和方式1，但不能工作于方式2<br>C口只能工作于方式0</p>
+</li>
+<li><p>向 8254A 芯片中写入的计数初值,是写入<strong>初值寄存器</strong></p>
+</li>
+<li><p>CS:IP是程序的起始地址</p>
+</li>
+</ol>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>祥瑞</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="https://lxiangrui.top/2021/12/19/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF%E5%A4%8D%E4%B9%A0%E7%AC%94%E8%AE%B0/">https://lxiangrui.top/2021/12/19/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF%E5%A4%8D%E4%B9%A0%E7%AC%94%E8%AE%B0/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>Do you believe in <strong>DESTINY</strong>?</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/%E6%B1%87%E7%BC%96/"># 汇编</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2021/12/20/%E9%80%9A%E4%BF%A1%E5%8E%9F%E7%90%86/">通信原理</a>
+            
+            
+            <a class="next" rel="next" href="/2021/12/17/C-answer/">C_answer</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+
+
+    <section id="comments" class="comments">
+      <style>
+        .comments{margin:30px;padding:10px;background:#fff}
+        @media screen and (max-width:800px){.comments{margin:auto;padding:10px;background:#fff}}
+      </style>
+      <div class="valine_comment"></div>
+<!--载入js，在</body>之前插入即可-->
+<!--Leancloud 操作库:-->
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<!--Valine 的核心代码库-->
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+  new Valine({
+      el: '.valine_comment',
+      app_id: 'WpWRvE9j5cDsxGwNkVvHbBis-gzGzoHsz',
+      app_key: '2UtG1qn9ScHNtcxbU22GyfbN',
+      placeholder: '这里留言。。',
+      notify: 'true',
+      verify: 'true',
+    });
+</script>
+    </section>
+
+
+
+            </div>
+            <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>
+            © 祥瑞 </a>
+            <!--© 祥瑞 | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a>-->
+
+            
+                <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<span class="site-uv">
+    🙂总访客量:
+    <i class="busuanzi-value" id="busuanzi_value_site_uv"></i>
+</span>&nbsp;
+
+
+<span class="site-pv">
+    👀总访问量:
+    <i class="busuanzi-value" id="busuanzi_value_site_pv"></i>
+</span>&nbsp;
+
+
+
+
+
+    <span >
+        🧧TIME:
+       
+    </span>&nbsp;
+    
+              
+
+              
+              2000 - 2022
+        </span>
+    </div>
+</footer>
+
+    </div>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/tororo.model.json"},"display":{"position":"right","width":300,"height":325},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+
+</html>
+<script>
+!
+function() {
+    function n(n, e, t) {
+        return n.getAttribute(e) || t
+    }
+    function e(n) {
+        return document.getElementsByTagName(n)
+    }
+    function t() {
+        var t = e("script"),
+        o = t.length,
+        i = t[o - 1];
+        return {
+					   l: o,
+			z: n(i, "zIndex", -1), //置于主页面背后
+			o: n(i, "opacity", 20), //线条透明度
+			c: n(i, "color", "245,201,31"), //线条颜色
+			n: n(i, "count", 100) //线条数量z
+
+        }
+    }
+    function o() {
+        a = m.width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth,
+        c = m.height = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight
+    }
+    function i() {
+        r.clearRect(0, 0, a, c);
+        var n, e, t, o, m, l;
+        s.forEach(function(i, x) {
+            for (i.x += i.xa, i.y += i.ya, i.xa *= i.x > a || i.x < 0 ? -1 : 1, i.ya *= i.y > c || i.y < 0 ? -1 : 1, r.fillRect(i.x - .5, i.y - .5, 1, 1), e = x + 1; e < u.length; e++) n = u[e],
+            null !== n.x && null !== n.y && (o = i.x - n.x, m = i.y - n.y, l = o * o + m * m, l < n.max && (n === y && l >= n.max / 2 && (i.x -= .03 * o, i.y -= .03 * m), t = (n.max - l) / n.max, r.beginPath(), r.lineWidth = t / 2, r.strokeStyle = "rgba(" + d.c + "," + (t + .2) + ")", r.moveTo(i.x, i.y), r.lineTo(n.x, n.y), r.stroke()))
+        }),
+        x(i)
+    }
+    var a, c, u, m = document.createElement("canvas"),
+    d = t(),
+    l = "c_n" + d.l,
+    r = m.getContext("2d"),
+    x = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame ||
+    function(n) {
+        window.setTimeout(n, 1e3 / 45)
+    },
+    w = Math.random,
+    y = {
+        x: null,
+        y: null,
+        max: 2e4
+    };
+    m.id = l,
+    m.style.cssText = "position:fixed;top:0;left:0;z-index:" + d.z + ";opacity:" + d.o,
+    e("body")[0].appendChild(m),
+    o(),
+    window.onresize = o,
+    window.onmousemove = function(n) {
+        n = n || window.event,
+        y.x = n.clientX,
+        y.y = n.clientY
+    },
+    window.onmouseout = function() {
+        y.x = null,
+        y.y = null
+    };
+    for (var s = [], f = 0; d.n > f; f++) {
+        var h = w() * a,
+        g = w() * c,
+        v = 2 * w() - 1,
+        p = 2 * w() - 1;
+        s.push({
+            x: h,
+            y: g,
+            xa: v,
+            ya: p,
+            max: 6e3
+        })
+    }
+    u = s.concat([y]),
+    setTimeout(function() {
+        i()
+    },
+    100)
+} ();
+</script>
+
+

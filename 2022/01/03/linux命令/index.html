@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<!-- 
+    <meta name="author" content="祥瑞">
+ -->
+
+
+
+
+<title>Linux命令 | 祥瑞&#39;s blog</title>
+
+
+
+    <link rel="icon" href="/bitbug_favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+    <script>
+        // this function is used to check current theme before page loaded.
+        (() => {
+            const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
+            const isDark = currentTheme === 'dark';
+            const pagebody = document.getElementsByTagName('body')[0]
+            if (isDark) {
+                pagebody.classList.add('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Dark"
+            } else {
+                pagebody.classList.remove('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Light"
+            }
+        })();
+    </script>
+
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">李祥瑞&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">李祥瑞&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+            <div class="main">
+                <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">Linux命令</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">祥瑞</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">January 3, 2022&nbsp;&nbsp;16:08:55</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/%E8%AE%B0%E5%BD%95/">记录</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h2 id="文件与目录："><a href="#文件与目录：" class="headerlink" title="文件与目录："></a>文件与目录：</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">$ ls         <span class="comment">//查看里面有什么东西(浏览目录内容)  </span></span><br><span class="line">$ tree -L <span class="number">2</span>  <span class="comment">//查看当前的前两层目录树</span></span><br><span class="line">$ tree /home <span class="comment">//查看home目录下的子目录树 </span></span><br><span class="line">$ cd /　　　 <span class="comment">//切换到系统根目录   cd (change directory)</span></span><br><span class="line">$ cd ~       <span class="comment">//切换到当前用户目录</span></span><br><span class="line">$ pwd        <span class="comment">//查看当前路径</span></span><br><span class="line">$ cd ..　　  <span class="comment">//切换到上一层目录</span></span><br><span class="line">$ mkdir  hello  <span class="comment">//创建目录</span></span><br><span class="line">$ rm hello  -rf    <span class="comment">//删除目录(文件夹)</span></span><br><span class="line">$ cd hello      <span class="comment">//切换到当前目录下的hello子目录</span></span><br><span class="line">$ ln -s /mnt/hgfs  ./  <span class="comment">//建立软链接（类似快捷方式）</span></span><br><span class="line"><span class="comment">//文件操作</span></span><br><span class="line">$ touch main.c <span class="comment">//创建文件</span></span><br><span class="line">$ mv  main.c hello.c <span class="comment">//更改文件名</span></span><br><span class="line">$ gedit main.c  <span class="comment">//用图形编辑器编辑</span></span><br><span class="line">$ vi  main.c   <span class="comment">//编辑文件</span></span><br><span class="line">$ cat main.c   <span class="comment">//查看文件内容</span></span><br><span class="line">$ cp main.c aa <span class="comment">//拷贝文件</span></span><br><span class="line">$ rm main.c    <span class="comment">//删除文件</span></span><br><span class="line"><span class="comment">//压缩解压</span></span><br><span class="line">$ tar -zcvf /tmp/etc.tar.gz /etc   <span class="comment">//压缩</span></span><br><span class="line">$ tar -zxvf /tmp/etc.tar.gz        <span class="comment">//解压</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="系统操作："><a href="#系统操作：" class="headerlink" title="系统操作："></a>系统操作：</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//权限设置</span></span><br><span class="line">$ sudo  su    <span class="comment">//切换到root用户</span></span><br><span class="line">$ su ivan     <span class="comment">//切换回普通的ivan用户</span></span><br><span class="line">$ chmod <span class="number">777</span> main.c <span class="comment">//设置权限为所有</span></span><br><span class="line">$ passwd  <span class="comment">//修改当前用户的密码(会有输入更长密码的限制)</span></span><br><span class="line">$ sudo passwd yhai  <span class="comment">//用root用户权限去修改 yhai用户的密码，就没有限制了，可以设为1</span></span><br><span class="line"><span class="comment">//安装新命令</span></span><br><span class="line">$ sudo apt-get install tree <span class="comment">//安装命令</span></span><br><span class="line">$ sudo apt-get remove tree  <span class="comment">//卸载命令</span></span><br><span class="line"><span class="comment">//搜索</span></span><br><span class="line">$ find . -name hello.c  <span class="comment">//在当前目录下搜索文件(hello.c)</span></span><br><span class="line"><span class="comment">//磁盘空间</span></span><br><span class="line">$ df -h  <span class="comment">//查看各磁盘空间使用情况</span></span><br><span class="line">$ du -h yhai/  <span class="comment">//查看文件夹占多大空间</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="VI命令："><a href="#VI命令：" class="headerlink" title="VI命令："></a>VI命令：</h2><p>嵌入式，基本编辑器，有三种模式</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ vi main.c  <span class="comment">//编辑文件，进入vi模式</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="命令模式（默认启动进入）"><a href="#命令模式（默认启动进入）" class="headerlink" title="命令模式（默认启动进入）"></a>命令模式（默认启动进入）</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//切换到输入模式</span></span><br><span class="line">i  <span class="comment">//进入插入状态（按下i ，并不会输入一个字符，而被当作一个命令insert）</span></span><br><span class="line">   <span class="comment">//再输入字符，会插入在光标前</span></span><br><span class="line">a  <span class="comment">//进入追加状态(再输入字符，会追加在光标后)</span></span><br><span class="line">o  <span class="comment">//进入新一行输入状态(再输入字符，会在新一行输入)</span></span><br><span class="line"><span class="comment">//移动光标</span></span><br><span class="line">     k 上 </span><br><span class="line">h 前       l 后 </span><br><span class="line">     j 下</span><br><span class="line">r  <span class="comment">//取代光标处的字符</span></span><br><span class="line">x  <span class="comment">//删除当前光标所在处的字符。</span></span><br><span class="line">ctrl + f <span class="comment">//下翻页</span></span><br><span class="line">ctrl + b <span class="comment">//上翻页 </span></span><br><span class="line">gg  <span class="comment">//跳到第一行</span></span><br><span class="line">shift + g <span class="comment">//跳到最后一行</span></span><br><span class="line">dd <span class="comment">//删除一整行</span></span><br><span class="line">   <span class="comment">//3dd: 删除3行</span></span><br><span class="line">yy <span class="comment">//复制一行</span></span><br><span class="line">v + h/j/k/l  <span class="comment">//选取字符串</span></span><br><span class="line">y <span class="comment">//复制</span></span><br><span class="line">p  <span class="comment">//粘贴 </span></span><br><span class="line">u  <span class="comment">//复原前一个动作</span></span><br><span class="line">   <span class="comment">//再输入 Ctrl+r : 回退到修改前状态j</span></span><br><span class="line">: <span class="comment">//切换到底行模式(即可在最底一行输入命令)    </span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="输入模式"><a href="#输入模式" class="headerlink" title="输入模式"></a>输入模式</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Esc <span class="comment">//切换到命令模式</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="低行模式"><a href="#低行模式" class="headerlink" title="低行模式"></a>低行模式</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">:w  <span class="comment">//写入 </span></span><br><span class="line">:q  <span class="comment">//退出 </span></span><br><span class="line">:q! <span class="comment">//不保存退出</span></span><br><span class="line">:<span class="built_in">set</span> nu <span class="comment">//显示行号    </span></span><br><span class="line">:<span class="built_in">set</span> nu! <span class="comment">//隐藏行号   </span></span><br><span class="line">:<span class="number">30</span>   <span class="comment">//光标跳到第30行</span></span><br><span class="line">/word  <span class="comment">//搜索字符串 word</span></span><br><span class="line">       <span class="comment">// n: 查找下一个  shift + n: 查找上一个  </span></span><br><span class="line">Backspace <span class="comment">//取消底行字符后，自动切换到命令模式</span></span><br></pre></td></tr></table></figure>
+
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>祥瑞</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="https://lxiangrui.top/2022/01/03/linux%E5%91%BD%E4%BB%A4/">https://lxiangrui.top/2022/01/03/linux%E5%91%BD%E4%BB%A4/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>Do you believe in <strong>DESTINY</strong>?</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/linux/"># linux</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2022/01/06/17%E5%B1%8A%E6%99%BA%E8%83%BD%E8%BD%A6%E6%97%A5%E5%BF%97/">17届智能车日志</a>
+            
+            
+            <a class="next" rel="next" href="/2021/12/28/%E6%B1%87%E7%BC%96%E5%88%B7%E9%A2%98/">汇编刷题</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+
+
+    <section id="comments" class="comments">
+      <style>
+        .comments{margin:30px;padding:10px;background:#fff}
+        @media screen and (max-width:800px){.comments{margin:auto;padding:10px;background:#fff}}
+      </style>
+      <div class="valine_comment"></div>
+<!--载入js，在</body>之前插入即可-->
+<!--Leancloud 操作库:-->
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<!--Valine 的核心代码库-->
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+  new Valine({
+      el: '.valine_comment',
+      app_id: 'WpWRvE9j5cDsxGwNkVvHbBis-gzGzoHsz',
+      app_key: '2UtG1qn9ScHNtcxbU22GyfbN',
+      placeholder: '这里留言。。',
+      notify: 'true',
+      verify: 'true',
+    });
+</script>
+    </section>
+
+
+
+            </div>
+            <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>
+            © 祥瑞 </a>
+            <!--© 祥瑞 | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a>-->
+
+            
+                <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<span class="site-uv">
+    🙂总访客量:
+    <i class="busuanzi-value" id="busuanzi_value_site_uv"></i>
+</span>&nbsp;
+
+
+<span class="site-pv">
+    👀总访问量:
+    <i class="busuanzi-value" id="busuanzi_value_site_pv"></i>
+</span>&nbsp;
+
+
+
+
+
+    <span >
+        🧧TIME:
+       
+    </span>&nbsp;
+    
+              
+
+              
+              2000 - 2022
+        </span>
+    </div>
+</footer>
+
+    </div>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/tororo.model.json"},"display":{"position":"right","width":300,"height":325},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+
+</html>
+<script>
+!
+function() {
+    function n(n, e, t) {
+        return n.getAttribute(e) || t
+    }
+    function e(n) {
+        return document.getElementsByTagName(n)
+    }
+    function t() {
+        var t = e("script"),
+        o = t.length,
+        i = t[o - 1];
+        return {
+					   l: o,
+			z: n(i, "zIndex", -1), //置于主页面背后
+			o: n(i, "opacity", 20), //线条透明度
+			c: n(i, "color", "245,201,31"), //线条颜色
+			n: n(i, "count", 100) //线条数量z
+
+        }
+    }
+    function o() {
+        a = m.width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth,
+        c = m.height = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight
+    }
+    function i() {
+        r.clearRect(0, 0, a, c);
+        var n, e, t, o, m, l;
+        s.forEach(function(i, x) {
+            for (i.x += i.xa, i.y += i.ya, i.xa *= i.x > a || i.x < 0 ? -1 : 1, i.ya *= i.y > c || i.y < 0 ? -1 : 1, r.fillRect(i.x - .5, i.y - .5, 1, 1), e = x + 1; e < u.length; e++) n = u[e],
+            null !== n.x && null !== n.y && (o = i.x - n.x, m = i.y - n.y, l = o * o + m * m, l < n.max && (n === y && l >= n.max / 2 && (i.x -= .03 * o, i.y -= .03 * m), t = (n.max - l) / n.max, r.beginPath(), r.lineWidth = t / 2, r.strokeStyle = "rgba(" + d.c + "," + (t + .2) + ")", r.moveTo(i.x, i.y), r.lineTo(n.x, n.y), r.stroke()))
+        }),
+        x(i)
+    }
+    var a, c, u, m = document.createElement("canvas"),
+    d = t(),
+    l = "c_n" + d.l,
+    r = m.getContext("2d"),
+    x = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame ||
+    function(n) {
+        window.setTimeout(n, 1e3 / 45)
+    },
+    w = Math.random,
+    y = {
+        x: null,
+        y: null,
+        max: 2e4
+    };
+    m.id = l,
+    m.style.cssText = "position:fixed;top:0;left:0;z-index:" + d.z + ";opacity:" + d.o,
+    e("body")[0].appendChild(m),
+    o(),
+    window.onresize = o,
+    window.onmousemove = function(n) {
+        n = n || window.event,
+        y.x = n.clientX,
+        y.y = n.clientY
+    },
+    window.onmouseout = function() {
+        y.x = null,
+        y.y = null
+    };
+    for (var s = [], f = 0; d.n > f; f++) {
+        var h = w() * a,
+        g = w() * c,
+        v = 2 * w() - 1,
+        p = 2 * w() - 1;
+        s.push({
+            x: h,
+            y: g,
+            xa: v,
+            ya: p,
+            max: 6e3
+        })
+    }
+    u = s.concat([y]),
+    setTimeout(function() {
+        i()
+    },
+    100)
+} ();
+</script>
+
+

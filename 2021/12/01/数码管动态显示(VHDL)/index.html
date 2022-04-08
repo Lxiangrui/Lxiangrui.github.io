@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<!-- 
+    <meta name="author" content="祥瑞">
+ -->
+
+
+
+
+<title>数码管动态显示（VHDL） | 祥瑞&#39;s blog</title>
+
+
+
+    <link rel="icon" href="/bitbug_favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+    <script>
+        // this function is used to check current theme before page loaded.
+        (() => {
+            const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
+            const isDark = currentTheme === 'dark';
+            const pagebody = document.getElementsByTagName('body')[0]
+            if (isDark) {
+                pagebody.classList.add('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Dark"
+            } else {
+                pagebody.classList.remove('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Light"
+            }
+        })();
+    </script>
+
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">李祥瑞&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">李祥瑞&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+            <div class="main">
+                <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">数码管动态显示（VHDL）</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">祥瑞</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">December 1, 2021&nbsp;&nbsp;21:35:17</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0/">课程学习</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h1 id="VHDL动态显示4位数码管电路"><a href="#VHDL动态显示4位数码管电路" class="headerlink" title="VHDL动态显示4位数码管电路"></a>VHDL动态显示4位数码管电路</h1><p>我这里的实验室通过拨码开关计数，然后通过数码管来显示，并没有对按键进行消抖处理。</p>
+<img src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fwww.hshxw.cn%2Fremote_pic%2Fnaps_1503469406_1.jpg&refer=http%3A%2F%2Fwww.hshxw.cn&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1640957867&t=b1c356e3443b724f263cae18c5ec7df0" style="zoom: 67%;" />
+
+<h2 id="一、动态数码管是什么？"><a href="#一、动态数码管是什么？" class="headerlink" title="一、动态数码管是什么？"></a>一、动态数码管是什么？</h2><p>实际上很多两个以上的数码管都是动态数码管，设计成这样的真正目的是为了节约硬件资源，使用<strong>少量的引脚</strong>就可以<strong>点亮多个数码管</strong>。</p>
+<p>多位数码管的数据端口实际上只有8个口，所有数码管的数据口都是连接到一个口上面的，然后每个数码管还都会有一个片选端口，控制这位数码管的开关。</p>
+<p>所以说，所有数码管都只能显示相同的数字，或者不显示。</p>
+<p>多个数码管显示数字的时候，我们实际上是轮流点亮数码管（一个时刻内只有一个数码管是亮的），利用人眼的视觉暂留现象（也叫余辉效应），就可以做到看起来是所有数码管都同时亮了，这就是动态显示，也叫做动态扫描。</p>
+<img src="https://www.freesion.com/images/873/68f3c8337e37c7f44b1fcb61c9844d69.png" style="zoom: 67%;" />
+
+
+
+<h1 id="二、VHDL实现代码"><a href="#二、VHDL实现代码" class="headerlink" title="二、VHDL实现代码"></a>二、VHDL实现代码</h1><h2 id="1、实体部分"><a href="#1、实体部分" class="headerlink" title="1、实体部分"></a>1、实体部分</h2><p><strong>clk</strong>，每个FPGA板子不同的时钟源，需要查找对应的技术手册，我这里的是25MHZ，还是比较小的哈，我看网上一般都是50MHZ。</p>
+<figure class="highlight vhdl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">LIBRARY</span> IEEE ;</span><br><span class="line"><span class="keyword">USE</span> IEEE.STD_LOGIC_1164.<span class="keyword">ALL</span> ;</span><br><span class="line"><span class="keyword">USE</span> IEEE.STD_LOGIC_unsigned.<span class="keyword">ALL</span>;<span class="comment">--因为使用到了从Integer类型转换到STD_LOGIC_VECTER</span></span><br><span class="line"><span class="keyword">ENTITY</span> shumaguan4 <span class="keyword">is</span> </span><br><span class="line">	<span class="keyword">PORT</span>  (</span><br><span class="line">	segcs  : <span class="keyword">out</span> <span class="built_in">STD_LOGIC_vector</span> (<span class="number">3</span> <span class="keyword">DOWNTO</span> <span class="number">0</span>);		<span class="comment">--四个数码管的片选信号，如果为0就打开</span></span><br><span class="line">	Q		 : <span class="keyword">BUFFER</span> <span class="built_in">INTEGER</span> <span class="keyword">RANGE</span> <span class="number">0</span> <span class="keyword">TO</span> <span class="number">9999</span>;   		<span class="comment">--显示的数字</span></span><br><span class="line">	seg 	 : <span class="keyword">out</span> <span class="built_in">STD_LOGIC_vector</span> (<span class="number">7</span> <span class="keyword">DOWNTO</span> <span class="number">0</span>);		<span class="comment">--具体某个数码管要显示的数字</span></span><br><span class="line">	key	 : <span class="keyword">in</span> <span class="built_in">STD_LOGIC</span>;</span><br><span class="line">	clk	 : <span class="keyword">in</span> <span class="built_in">STD_LOGIC</span>);							 		<span class="comment">--25Mhz,用于提供数码管刷新频率</span></span><br><span class="line">	</span><br><span class="line"><span class="keyword">END</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">ARCHITECTURE</span>	FH1	<span class="keyword">OF</span>		shumaguan4 	<span class="keyword">IS</span></span><br><span class="line">		</span><br><span class="line">	<span class="keyword">SIGNAL</span> num :  <span class="built_in">INTEGER</span> <span class="keyword">RANGE</span> <span class="number">0</span> <span class="keyword">TO</span> <span class="number">9</span>;</span><br><span class="line">	<span class="keyword">SIGNAL</span> cnt_200Hz:  <span class="built_in">INTEGER</span> <span class="keyword">RANGE</span> <span class="number">0</span> <span class="keyword">TO</span> <span class="number">249999</span>;</span><br><span class="line">	<span class="keyword">SIGNAL</span> segcs_SIFNAL  :  <span class="built_in">STD_LOGIC_vector</span> (<span class="number">3</span> <span class="keyword">DOWNTO</span> <span class="number">0</span>);	</span><br><span class="line">	<span class="keyword">BEGIN</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="2、信号线部分"><a href="#2、信号线部分" class="headerlink" title="2、信号线部分"></a>2、信号线部分</h2><p>num是用来存放当前显示数码管的数字，cnt_200HZ是用来做200HZ的计数，segcs_SIFNAL是为了代替segcs定义的信号线（比较输出信号不能拿来做判断，只能拿来赋值）</p>
+<figure class="highlight vhdl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SIGNAL</span> num :  <span class="built_in">INTEGER</span> <span class="keyword">RANGE</span> <span class="number">0</span> <span class="keyword">TO</span> <span class="number">9</span>;</span><br><span class="line"><span class="keyword">SIGNAL</span> cnt_200Hz:  <span class="built_in">INTEGER</span> <span class="keyword">RANGE</span> <span class="number">0</span> <span class="keyword">TO</span> <span class="number">249999</span>;</span><br><span class="line"><span class="keyword">SIGNAL</span> segcs_SIFNAL  :  <span class="built_in">STD_LOGIC_vector</span> (<span class="number">3</span> <span class="keyword">DOWNTO</span> <span class="number">0</span>);	</span><br></pre></td></tr></table></figure>
+
+<h2 id="3、计数部分"><a href="#3、计数部分" class="headerlink" title="3、计数部分"></a>3、计数部分</h2><figure class="highlight vhdl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">CNT:	<span class="keyword">PROCESS</span>(key)</span><br><span class="line">		<span class="keyword">BEGIN</span></span><br><span class="line">					<span class="keyword">IF</span> key<span class="symbol">&#x27;EVENT</span> <span class="keyword">AND</span> key = <span class="string">&#x27;1&#x27;</span> <span class="keyword">THEN</span></span><br><span class="line">						 <span class="keyword">IF</span> Q&lt;=<span class="number">9999</span> <span class="keyword">THEN</span>  Q&lt;=Q+<span class="number">1</span> ;</span><br><span class="line">						 <span class="keyword">ELSE</span> Q&lt;=<span class="number">0</span>;</span><br><span class="line">						 <span class="keyword">END</span> <span class="keyword">IF</span>;;</span><br><span class="line">					<span class="keyword">END</span> <span class="keyword">IF</span>;</span><br><span class="line">		<span class="keyword">END</span> <span class="keyword">PROCESS</span>	CNT;</span><br></pre></td></tr></table></figure>
+
+<h2 id="4、显示部分"><a href="#4、显示部分" class="headerlink" title="4、显示部分"></a>4、显示部分</h2><p>因为我们切换显示数码管，这个切换的频率还是需要适当设置的，不能一直直接放到主循环里面一直高频率的执行，那样会浪费资源，但是频率</p>
+<p>太低的话，切换不过来，达不到人眼的暂留效应，显示会不是很流畅。所以我们这里选择了200hz为切换频率。</p>
+<figure class="highlight vhdl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">FF:	<span class="keyword">PROCESS</span>(clk)</span><br><span class="line">		<span class="keyword">BEGIN</span></span><br><span class="line">					<span class="keyword">IF</span> clk<span class="symbol">&#x27;EVENT</span> <span class="keyword">AND</span> clk = <span class="string">&#x27;1&#x27;</span> <span class="keyword">THEN</span></span><br><span class="line">						 <span class="keyword">IF</span> cnt_200Hz&lt;<span class="number">100000</span> <span class="keyword">THEN</span>  cnt_200Hz&lt;=cnt_200Hz+<span class="number">1</span> ;</span><br><span class="line">						 <span class="keyword">ELSE</span> cnt_200Hz&lt;=<span class="number">0</span>;</span><br><span class="line">						 <span class="keyword">END</span> <span class="keyword">IF</span>;</span><br><span class="line">						 </span><br><span class="line">						 <span class="keyword">IF</span>		(cnt_200Hz&lt;=<span class="number">25000</span>)				<span class="keyword">THEN</span>	segcs_SIFNAL &lt;= <span class="string">&quot;1110&quot;</span>;</span><br><span class="line">						 <span class="keyword">ELSIF</span> 	((<span class="number">25000</span>&lt;cnt_200Hz)<span class="keyword">AND</span>(cnt_200Hz&lt;=<span class="number">50000</span>))		<span class="keyword">THEN</span>	segcs_SIFNAL &lt;= <span class="string">&quot;1101&quot;</span>;</span><br><span class="line">						 <span class="keyword">ELSIF</span>	((<span class="number">50000</span>&lt;cnt_200Hz)<span class="keyword">AND</span>(cnt_200Hz&lt;=<span class="number">75000</span>))		<span class="keyword">THEN</span>	segcs_SIFNAL &lt;= <span class="string">&quot;1011&quot;</span>;</span><br><span class="line">						 <span class="keyword">ELSE</span> 																		segcs_SIFNAL &lt;= <span class="string">&quot;0111&quot;</span>;</span><br><span class="line">						 <span class="keyword">END</span> <span class="keyword">IF</span>;</span><br><span class="line">						 </span><br><span class="line">					<span class="keyword">END</span> <span class="keyword">IF</span>;</span><br><span class="line">					</span><br><span class="line">		<span class="keyword">END</span> <span class="keyword">PROCESS</span>	FF;</span><br></pre></td></tr></table></figure>
+
+<h2 id=""><a href="#" class="headerlink" title=""></a></h2><p>我是废物，这个只是为了给自己一个总结哈，我还只是一个小菜鸡儿。</p>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>祥瑞</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="https://lxiangrui.top/2021/12/01/%E6%95%B0%E7%A0%81%E7%AE%A1%E5%8A%A8%E6%80%81%E6%98%BE%E7%A4%BA(VHDL)/">https://lxiangrui.top/2021/12/01/%E6%95%B0%E7%A0%81%E7%AE%A1%E5%8A%A8%E6%80%81%E6%98%BE%E7%A4%BA(VHDL)/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>Do you believe in <strong>DESTINY</strong>?</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/FPGA/"># FPGA</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2021/12/04/%E5%8D%81%E4%B8%80%E5%B1%8A%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%9C%81%E8%B5%9B/">十一届蓝桥杯嵌入式省赛</a>
+            
+            
+            <a class="next" rel="next" href="/2021/11/29/EDA%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0/">EDA课程学习</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+
+
+    <section id="comments" class="comments">
+      <style>
+        .comments{margin:30px;padding:10px;background:#fff}
+        @media screen and (max-width:800px){.comments{margin:auto;padding:10px;background:#fff}}
+      </style>
+      <div class="valine_comment"></div>
+<!--载入js，在</body>之前插入即可-->
+<!--Leancloud 操作库:-->
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<!--Valine 的核心代码库-->
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+  new Valine({
+      el: '.valine_comment',
+      app_id: 'WpWRvE9j5cDsxGwNkVvHbBis-gzGzoHsz',
+      app_key: '2UtG1qn9ScHNtcxbU22GyfbN',
+      placeholder: '这里留言。。',
+      notify: 'true',
+      verify: 'true',
+    });
+</script>
+    </section>
+
+
+
+            </div>
+            <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>
+            © 祥瑞 </a>
+            <!--© 祥瑞 | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a>-->
+
+            
+                <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<span class="site-uv">
+    🙂总访客量:
+    <i class="busuanzi-value" id="busuanzi_value_site_uv"></i>
+</span>&nbsp;
+
+
+<span class="site-pv">
+    👀总访问量:
+    <i class="busuanzi-value" id="busuanzi_value_site_pv"></i>
+</span>&nbsp;
+
+
+
+
+
+    <span >
+        🧧TIME:
+       
+    </span>&nbsp;
+    
+              
+
+              
+              2000 - 2022
+        </span>
+    </div>
+</footer>
+
+    </div>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/tororo.model.json"},"display":{"position":"right","width":300,"height":325},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+
+</html>
+<script>
+!
+function() {
+    function n(n, e, t) {
+        return n.getAttribute(e) || t
+    }
+    function e(n) {
+        return document.getElementsByTagName(n)
+    }
+    function t() {
+        var t = e("script"),
+        o = t.length,
+        i = t[o - 1];
+        return {
+					   l: o,
+			z: n(i, "zIndex", -1), //置于主页面背后
+			o: n(i, "opacity", 20), //线条透明度
+			c: n(i, "color", "245,201,31"), //线条颜色
+			n: n(i, "count", 100) //线条数量z
+
+        }
+    }
+    function o() {
+        a = m.width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth,
+        c = m.height = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight
+    }
+    function i() {
+        r.clearRect(0, 0, a, c);
+        var n, e, t, o, m, l;
+        s.forEach(function(i, x) {
+            for (i.x += i.xa, i.y += i.ya, i.xa *= i.x > a || i.x < 0 ? -1 : 1, i.ya *= i.y > c || i.y < 0 ? -1 : 1, r.fillRect(i.x - .5, i.y - .5, 1, 1), e = x + 1; e < u.length; e++) n = u[e],
+            null !== n.x && null !== n.y && (o = i.x - n.x, m = i.y - n.y, l = o * o + m * m, l < n.max && (n === y && l >= n.max / 2 && (i.x -= .03 * o, i.y -= .03 * m), t = (n.max - l) / n.max, r.beginPath(), r.lineWidth = t / 2, r.strokeStyle = "rgba(" + d.c + "," + (t + .2) + ")", r.moveTo(i.x, i.y), r.lineTo(n.x, n.y), r.stroke()))
+        }),
+        x(i)
+    }
+    var a, c, u, m = document.createElement("canvas"),
+    d = t(),
+    l = "c_n" + d.l,
+    r = m.getContext("2d"),
+    x = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame ||
+    function(n) {
+        window.setTimeout(n, 1e3 / 45)
+    },
+    w = Math.random,
+    y = {
+        x: null,
+        y: null,
+        max: 2e4
+    };
+    m.id = l,
+    m.style.cssText = "position:fixed;top:0;left:0;z-index:" + d.z + ";opacity:" + d.o,
+    e("body")[0].appendChild(m),
+    o(),
+    window.onresize = o,
+    window.onmousemove = function(n) {
+        n = n || window.event,
+        y.x = n.clientX,
+        y.y = n.clientY
+    },
+    window.onmouseout = function() {
+        y.x = null,
+        y.y = null
+    };
+    for (var s = [], f = 0; d.n > f; f++) {
+        var h = w() * a,
+        g = w() * c,
+        v = 2 * w() - 1,
+        p = 2 * w() - 1;
+        s.push({
+            x: h,
+            y: g,
+            xa: v,
+            ya: p,
+            max: 6e3
+        })
+    }
+    u = s.concat([y]),
+    setTimeout(function() {
+        i()
+    },
+    100)
+} ();
+</script>
+
+

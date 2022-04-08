@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<!-- 
+    <meta name="author" content="祥瑞">
+ -->
+
+
+
+
+<title>十一届蓝桥杯嵌入式省赛 | 祥瑞&#39;s blog</title>
+
+
+
+    <link rel="icon" href="/bitbug_favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+    <script>
+        // this function is used to check current theme before page loaded.
+        (() => {
+            const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
+            const isDark = currentTheme === 'dark';
+            const pagebody = document.getElementsByTagName('body')[0]
+            if (isDark) {
+                pagebody.classList.add('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Dark"
+            } else {
+                pagebody.classList.remove('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Light"
+            }
+        })();
+    </script>
+
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">李祥瑞&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">李祥瑞&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+            <div class="main">
+                <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">十一届蓝桥杯嵌入式省赛</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">祥瑞</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">December 4, 2021&nbsp;&nbsp;15:49:03</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/%E6%AF%94%E8%B5%9B%E9%A1%B9%E7%9B%AE/">比赛项目</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>由于本人乃菜鸡，而且这个项目只是我拿来给自己练习的，所以并没有想过做教学使用，大家可以参考一下，如果各位大佬垂阅，可以给出一下建议，我将不甚感激。</p>
+<p>之前些32代码都是全部放到main.c里面，这次是第一次把主要的程序都放到其他.c中，然后调用，这样逻辑是会比较清晰的，而且以后和别人一起做项目，这样才能更好的分工和耦合，以及对接，但是我可能是因为第一次这样做吧，所以做的时候还是有点理不清，还需要进一步熟悉这种分模块的写法。</p>
+<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p><img src="https://img-blog.csdnimg.cn/20210304150745351.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2ZzdmZm,size_16,color_FFFFFF,t_70#pic_center"></p>
+<h1 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h1><p>这一年的主观题还是比较简单的，主要难点在于如何发出两个PWM波，由于规定了PWM的输出引脚，所以如果使用定时器来产生PWM波，不太好搞，生成不一样频率的PWM，然而如果使用软件模拟PWM的话，就比较简单了。</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/ow4LPx"><img src="https://s4.ax1x.com/2021/12/04/ow4LPx.jpg" alt="ow4LPx.jpg"></a></p>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><h2 id="1-主函数模块"><a href="#1-主函数模块" class="headerlink" title="1.主函数模块"></a>1.主函数模块</h2><p>main.c</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;stm32f10x.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;lcd.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;UI.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;key.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;stdio.h&quot;</span></span></span><br><span class="line">u32 TimingDelay = <span class="number">0</span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Delay_Ms</span><span class="params">(u32 nTime)</span></span>;</span><br><span class="line"><span class="keyword">extern</span> <span class="keyword">int</span> duty1,duty2;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	SysTick_Config(SystemCoreClock/<span class="number">100000</span>);	<span class="comment">//一次中断10us，1khz是1ms100个中断，2khz是200个中断</span></span><br><span class="line">	Key_init();</span><br><span class="line">	Led_init();</span><br><span class="line">	Led_all_close();</span><br><span class="line">	ADC_Config();</span><br><span class="line">	STM3210B_LCD_Init();</span><br><span class="line">	LCD_Clear(White);</span><br><span class="line">	LCD_SetBackColor(White);</span><br><span class="line">	LCD_SetTextColor(Black);</span><br><span class="line">	<span class="keyword">while</span>(<span class="number">1</span>)&#123;</span><br><span class="line">	Key_Set();										<span class="comment">//按键控制PWM</span></span><br><span class="line">	UUII();											  <span class="comment">//LCD显示</span></span><br><span class="line">    &#125;&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Delay_Ms</span><span class="params">(u32 nTime)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	TimingDelay = nTime;</span><br><span class="line">	<span class="keyword">while</span>(TimingDelay != <span class="number">0</span>);	</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="2-显示和adc配置模块"><a href="#2-显示和adc配置模块" class="headerlink" title="2.显示和adc配置模块"></a>2.显示和adc配置模块</h2><p>adc.c</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;lcd.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;UI.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;stdio.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;stm32f10x.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;key.h&quot;</span></span></span><br><span class="line"><span class="keyword">char</span> read[<span class="number">9</span>];</span><br><span class="line"><span class="keyword">int</span> ADC_Flag;</span><br><span class="line"><span class="keyword">extern</span> <span class="keyword">int</span> flag_key_1;</span><br><span class="line"><span class="keyword">extern</span> <span class="keyword">int</span> flag_key_4;</span><br><span class="line"><span class="keyword">int</span> Mode;</span><br><span class="line"><span class="keyword">int</span> UI_q;					<span class="comment">//切换数据显示或者参数显示</span></span><br><span class="line"><span class="keyword">int</span> duty1,duty2;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">UUII</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(flag_key_1%<span class="number">2</span> == <span class="number">0</span>)&#123;</span><br><span class="line">		<span class="keyword">if</span>((flag_key_4%<span class="number">2</span> ==<span class="number">0</span>))&#123;</span><br><span class="line">		LCD_DisplayStringLine(Line0,(<span class="keyword">unsigned</span> <span class="keyword">char</span> *)<span class="string">&quot;        Data&quot;</span>);</span><br><span class="line">				<span class="built_in">sprintf</span>((<span class="keyword">char</span>*)read,<span class="string">&quot;      V: %.2fv&quot;</span>,Read_ADC()*<span class="number">3.3</span>/<span class="number">100</span>);</span><br><span class="line">		LCD_DisplayStringLine(Line3,(<span class="keyword">unsigned</span> <span class="keyword">char</span> *)read);</span><br><span class="line">		LCD_DisplayStringLine(Line6,(<span class="keyword">unsigned</span> <span class="keyword">char</span> *)<span class="string">&quot;      Mode: AUTO&quot;</span>);</span><br><span class="line">		</span><br><span class="line">		duty1=(<span class="keyword">int</span>)Read_ADC();</span><br><span class="line">		duty2=(<span class="keyword">int</span>)Read_ADC();		<span class="comment">//现在的adc输出的是真实电压的10/3.3倍，所以可以可以直接赋值</span></span><br><span class="line">			</span><br><span class="line">			</span><br><span class="line">				Led_all_close();</span><br><span class="line">				GPIO_ResetBits(GPIOC,GPIO_Pin_8);</span><br><span class="line">				GPIO_SetBits(GPIOD,GPIO_Pin_2);</span><br><span class="line">        GPIO_ResetBits(GPIOD,GPIO_Pin_2); </span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span>&#123;</span><br><span class="line">		LCD_DisplayStringLine(Line0,(<span class="keyword">unsigned</span> <span class="keyword">char</span> *)<span class="string">&quot;        Data&quot;</span>);</span><br><span class="line">		<span class="built_in">sprintf</span>((<span class="keyword">char</span>*)read,<span class="string">&quot;      V: %.2fv&quot;</span>,Read_ADC()*<span class="number">3.3</span>/<span class="number">100</span>);</span><br><span class="line">		LCD_DisplayStringLine(Line3,(<span class="keyword">unsigned</span> <span class="keyword">char</span> *)read);</span><br><span class="line">		LCD_DisplayStringLine(Line6,(<span class="keyword">unsigned</span> <span class="keyword">char</span> *)<span class="string">&quot;      Mode: MANU&quot;</span>);</span><br><span class="line">			</span><br><span class="line">				Led_all_close();</span><br><span class="line">				GPIO_ResetBits(GPIOC,GPIO_Pin_9);</span><br><span class="line">				GPIO_SetBits(GPIOD,GPIO_Pin_2);</span><br><span class="line">        GPIO_ResetBits(GPIOD,GPIO_Pin_2); </span><br><span class="line">	</span><br><span class="line">			</span><br><span class="line">		&#125;</span><br><span class="line">		UI_q=<span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span>&#123;</span><br><span class="line">		<span class="keyword">if</span>((flag_key_4%<span class="number">2</span> ==<span class="number">0</span>))&#123;							<span class="comment">//自动模式</span></span><br><span class="line">			</span><br><span class="line">		duty1=(<span class="keyword">int</span>)Read_ADC();</span><br><span class="line">		duty2=(<span class="keyword">int</span>)Read_ADC();</span><br><span class="line">				</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span>&#123;																<span class="comment">//手动模式</span></span><br><span class="line">		<span class="keyword">if</span>(RB2 == KEY_ON)&#123;</span><br><span class="line">		LCD_Clear(White);</span><br><span class="line">		duty1=duty1+<span class="number">10</span>;</span><br><span class="line">		<span class="keyword">if</span>(duty1&gt;<span class="number">90</span>)&#123;duty1=<span class="number">0</span>;&#125;</span><br><span class="line">			</span><br><span class="line">	</span><br><span class="line">	&#125;	</span><br><span class="line">		<span class="keyword">if</span>(RB3 == KEY_ON)&#123;</span><br><span class="line">		LCD_Clear(White);</span><br><span class="line">		duty2=duty2+<span class="number">10</span>;</span><br><span class="line">			<span class="keyword">if</span>(duty2&gt;<span class="number">90</span>)&#123;duty2=<span class="number">0</span>;&#125;</span><br><span class="line">	&#125;	</span><br><span class="line">		</span><br><span class="line">			</span><br><span class="line">		&#125;</span><br><span class="line">		LCD_DisplayStringLine(Line0,(<span class="keyword">unsigned</span> <span class="keyword">char</span> *)<span class="string">&quot;        Para&quot;</span>);</span><br><span class="line">		<span class="built_in">sprintf</span>((<span class="keyword">char</span>*)read,<span class="string">&quot;        PA6:%d   &quot;</span>,duty1);</span><br><span class="line">		LCD_DisplayStringLine(Line3,(<span class="keyword">unsigned</span> <span class="keyword">char</span> *)read);</span><br><span class="line">		<span class="built_in">sprintf</span>((<span class="keyword">char</span>*)read,<span class="string">&quot;        PA7:%d   &quot;</span>,duty2);</span><br><span class="line">		LCD_DisplayStringLine(Line6,(<span class="keyword">unsigned</span> <span class="keyword">char</span> *)read);</span><br><span class="line">		UI_q=<span class="number">1</span>;&#125;</span><br><span class="line">	<span class="keyword">if</span>(UI_q == <span class="number">0</span>)&#123;	</span><br><span class="line">	</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">float</span> <span class="title">Read_ADC</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">float</span> ADC_VALUE;</span><br><span class="line">	</span><br><span class="line">	ADC_SoftwareStartConvCmd(ADC1,ENABLE);</span><br><span class="line">	ADC_VALUE = ADC_GetConversionValue(ADC1)*<span class="number">100</span>/<span class="number">0xfff</span>;</span><br><span class="line">	<span class="keyword">return</span> ADC_VALUE;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">ADC_Config</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	GPIO_InitTypeDef GPIO_InitStructure;</span><br><span class="line">	ADC_InitTypeDef ADC_InitStructure;</span><br><span class="line">	</span><br><span class="line">	RCC_APB2PeriphClockCmd(RCC_APB2Periph_ADC1,ENABLE);</span><br><span class="line">	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB,ENABLE);</span><br><span class="line">	<span class="comment">//PB0-ADC channel 8</span></span><br><span class="line">	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_0;</span><br><span class="line">	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AIN;</span><br><span class="line">	GPIO_Init(GPIOB, &amp;GPIO_InitStructure);</span><br><span class="line">	</span><br><span class="line">	<span class="comment">// ADC1 工作模式配置</span></span><br><span class="line">	ADC_InitStructure.ADC_Mode = ADC_Mode_Independent;  </span><br><span class="line">	ADC_InitStructure.ADC_ScanConvMode = DISABLE;</span><br><span class="line">	ADC_InitStructure.ADC_ContinuousConvMode = DISABLE;  <span class="comment">//单次转换</span></span><br><span class="line">	ADC_InitStructure.ADC_ExternalTrigConv = ADC_ExternalTrigConv_None;</span><br><span class="line">	ADC_InitStructure.ADC_DataAlign = ADC_DataAlign_Right;</span><br><span class="line">	ADC_InitStructure.ADC_NbrOfChannel = <span class="number">1</span>;</span><br><span class="line">	ADC_Init(ADC1, &amp;ADC_InitStructure);</span><br><span class="line"></span><br><span class="line">	ADC_RegularChannelConfig(ADC1, ADC_Channel_8, <span class="number">1</span>, ADC_SampleTime_13Cycles5);    </span><br><span class="line"></span><br><span class="line">	ADC_Cmd(ADC1, ENABLE);   </span><br><span class="line">	ADC_ResetCalibration(ADC1);</span><br><span class="line">	<span class="comment">/* Check the end of ADC1 reset calibration register */</span></span><br><span class="line">	<span class="keyword">while</span>(ADC_GetResetCalibrationStatus(ADC1));</span><br><span class="line">	ADC_StartCalibration(ADC1);</span><br><span class="line">	<span class="comment">/* Check the end of ADC1 calibration */</span></span><br><span class="line">	<span class="keyword">while</span>(ADC_GetCalibrationStatus(ADC1));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="3、按键-amp-LED配置"><a href="#3、按键-amp-LED配置" class="headerlink" title="3、按键&amp;LED配置"></a>3、按键&amp;LED配置</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;key.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;stm32f10x.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;lcd.h&quot;</span></span></span><br><span class="line"><span class="keyword">int</span> flag_key_1;</span><br><span class="line"><span class="keyword">int</span> flag_key_4;</span><br><span class="line"></span><br><span class="line"><span class="keyword">uint16_t</span> Channel2Pulse = <span class="number">0</span>, Channel3Pulse = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Key_init</span><span class="params">()</span></span>&#123;</span><br><span class="line">	GPIO_InitTypeDef GPIO_InitStructure;</span><br><span class="line">	</span><br><span class="line">	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA, ENABLE);</span><br><span class="line">  RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB, ENABLE);</span><br><span class="line">	</span><br><span class="line">		<span class="comment">//B1、B2按键引脚配置</span></span><br><span class="line">    GPIO_InitStructure.GPIO_Pin = GPIO_Pin_0 | GPIO_Pin_8; <span class="comment">// </span></span><br><span class="line">    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPU;</span><br><span class="line">    GPIO_InitStructure.GPIO_Speed = GPIO_Speed_10MHz;</span><br><span class="line">    GPIO_Init(GPIOA, &amp;GPIO_InitStructure);</span><br><span class="line">    <span class="comment">//B3、B4按键引脚配置</span></span><br><span class="line">    GPIO_InitStructure.GPIO_Pin = GPIO_Pin_1 | GPIO_Pin_2;</span><br><span class="line">    GPIO_Init(GPIOB, &amp;GPIO_InitStructure);</span><br><span class="line">	</span><br><span class="line">		GPIO_InitStructure.GPIO_Pin = GPIO_Pin_6 | GPIO_Pin_7; <span class="comment">// </span></span><br><span class="line">    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;</span><br><span class="line">    GPIO_InitStructure.GPIO_Speed = GPIO_Speed_10MHz;</span><br><span class="line">    GPIO_Init(GPIOA, &amp;GPIO_InitStructure);	</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">uint16_t</span> <span class="title">Key_Scan</span><span class="params">(GPIO_TypeDef* GPIOx,<span class="keyword">uint16_t</span> GPIO_Pin)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(GPIO_ReadInputDataBit(GPIOx,GPIO_Pin) == KEY_ON)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">while</span>(GPIO_ReadInputDataBit(GPIOx,GPIO_Pin) == KEY_ON);</span><br><span class="line">		<span class="keyword">return</span> KEY_ON;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">		<span class="keyword">return</span> KEY_OFF;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Key_Set</span><span class="params">(<span class="keyword">void</span>)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(RB1 == KEY_ON)&#123;</span><br><span class="line">	LCD_Clear(White);</span><br><span class="line">	flag_key_1++;</span><br><span class="line">	</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">if</span>(RB4 == KEY_ON)&#123;</span><br><span class="line">	LCD_Clear(White);</span><br><span class="line">	flag_key_4++;</span><br><span class="line">	</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Led_init</span><span class="params">(<span class="keyword">void</span>)</span></span>&#123;</span><br><span class="line">		GPIO_InitTypeDef GPIO_InitStructure;</span><br><span class="line">	</span><br><span class="line">	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOD, ENABLE);</span><br><span class="line">  RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB, ENABLE);</span><br><span class="line">	</span><br><span class="line">		<span class="comment">//LED引脚配置</span></span><br><span class="line">    GPIO_InitStructure.GPIO_Pin = GPIO_Pin_8| GPIO_Pin_9| GPIO_Pin_10| GPIO_Pin_11| GPIO_Pin_12| GPIO_Pin_13| GPIO_Pin_14| GPIO_Pin_15; <span class="comment">// </span></span><br><span class="line">    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;</span><br><span class="line">    GPIO_InitStructure.GPIO_Speed = GPIO_Speed_10MHz;</span><br><span class="line">    GPIO_Init(GPIOC, &amp;GPIO_InitStructure);</span><br><span class="line">    <span class="comment">//锁存器引脚</span></span><br><span class="line">    GPIO_InitStructure.GPIO_Pin = GPIO_Pin_2;</span><br><span class="line">    GPIO_Init(GPIOD, &amp;GPIO_InitStructure);</span><br><span class="line"></span><br><span class="line">&#125;				</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Led_all_close</span><span class="params">()</span></span>&#123;</span><br><span class="line">	   GPIO_SetBits(GPIOC,GPIO_Pin_8| GPIO_Pin_9| GPIO_Pin_10| GPIO_Pin_11| GPIO_Pin_12| GPIO_Pin_13| GPIO_Pin_14| GPIO_Pin_15);</span><br><span class="line">	   GPIO_SetBits(GPIOD,GPIO_Pin_2);</span><br><span class="line">        GPIO_ResetBits(GPIOD,GPIO_Pin_2); </span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="4、systick中断模拟PWM"><a href="#4、systick中断模拟PWM" class="headerlink" title="4、systick中断模拟PWM"></a>4、systick中断模拟PWM</h2><h3 id="分频比"><a href="#分频比" class="headerlink" title="分频比"></a>分频比</h3><p>首先设置systick中断函数多久发送的周期，这个函数的形参数，是分频比</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SysTick_Config(SystemCoreClock/<span class="number">100000</span>);</span><br></pre></td></tr></table></figure>
+
+<p>$$<br>中断频率=主频率/分频比<br>$$</p>
+<p>$$<br>=SystemCoreClock      /     (SystemCoreClock/100000)</p>
+<p>=100000HZ</p>
+<p>T=10us<br>$$</p>
+<p>这样题目需要的1KHZ，即周期为1ms的PWM，和走起为500us的PWM就都能得到了。</p>
+<h3 id="中断函数"><a href="#中断函数" class="headerlink" title="中断函数"></a>中断函数</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;stm32f10x_it.h&quot;</span></span></span><br><span class="line"><span class="keyword">int</span> cnt1,cnt2;</span><br><span class="line"><span class="keyword">extern</span> u32 TimingDelay;</span><br><span class="line">	<span class="keyword">extern</span> <span class="keyword">int</span> duty1,duty2;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">SysTick_Handler</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;	cnt1++;</span><br><span class="line">	cnt2++;</span><br><span class="line">	TimingDelay--;</span><br><span class="line">	<span class="keyword">if</span>(cnt1&lt;duty1)&#123;</span><br><span class="line">		GPIO_SetBits(GPIOA,GPIO_Pin_6);</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">	<span class="keyword">if</span>(cnt1&gt;duty1)&#123;</span><br><span class="line">		GPIO_ResetBits(GPIOA,GPIO_Pin_6);</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">	<span class="keyword">if</span>(cnt1==<span class="number">100</span>)&#123;</span><br><span class="line">		cnt1=<span class="number">0</span>;&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">if</span>(cnt2&lt;(duty2/<span class="number">2</span>))&#123;</span><br><span class="line"></span><br><span class="line">		GPIO_SetBits(GPIOA,GPIO_Pin_7);</span><br><span class="line">&#125;</span><br><span class="line">	<span class="keyword">if</span>(cnt2&gt;(duty2/<span class="number">2</span>))&#123;</span><br><span class="line"></span><br><span class="line">		GPIO_ResetBits(GPIOA,GPIO_Pin_7);</span><br><span class="line">&#125;</span><br><span class="line">	<span class="keyword">if</span>(cnt2==<span class="number">50</span>)&#123;</span><br><span class="line">		cnt2=<span class="number">0</span>;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h1><h3 id="初始状态"><a href="#初始状态" class="headerlink" title="初始状态"></a>初始状态</h3><p><a target="_blank" rel="noopener" href="https://imgtu.com/i/owHDMV"><img src="https://s4.ax1x.com/2021/12/04/owHDMV.md.jpg" alt="owHDMV.md.jpg"></a></p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/owH5M6"><img src="https://s4.ax1x.com/2021/12/04/owH5M6.md.jpg" alt="owH5M6.md.jpg"></a></p>
+<h3 id="波形"><a href="#波形" class="headerlink" title="波形"></a>波形</h3><p><a target="_blank" rel="noopener" href="https://imgtu.com/i/owbZQ0"><img src="https://s4.ax1x.com/2021/12/04/owbZQ0.md.jpg" alt="owbZQ0.md.jpg"></a></p>
+<h1 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h1><p>这次的题目还是比较简单的，难点就在与如何产生两个不同频率的PWM，如果只想到定时器产生PWM的话，由于题目规定的两个PWM的引脚是同一个定时器的两个端口，所以要设置成不同频率还是有点难度的，但如果软件模拟PWM，还是比较简单的。除此之外，这道题几乎没有难度，个人需要提升的点在于：需要行一步熟悉各个模块的配置过程。因为在正式比赛的时候是没有例程给你使用的。</p>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>祥瑞</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="https://lxiangrui.top/2021/12/04/%E5%8D%81%E4%B8%80%E5%B1%8A%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%9C%81%E8%B5%9B/">https://lxiangrui.top/2021/12/04/%E5%8D%81%E4%B8%80%E5%B1%8A%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%9C%81%E8%B5%9B/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>Do you believe in <strong>DESTINY</strong>?</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/stm32/"># stm32</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2021/12/08/C++%E6%A0%B8%E5%BF%83%E7%BC%96%E7%A8%8B/">C++核心编程</a>
+            
+            
+            <a class="next" rel="next" href="/2021/12/01/%E6%95%B0%E7%A0%81%E7%AE%A1%E5%8A%A8%E6%80%81%E6%98%BE%E7%A4%BA(VHDL)/">数码管动态显示（VHDL）</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+
+
+    <section id="comments" class="comments">
+      <style>
+        .comments{margin:30px;padding:10px;background:#fff}
+        @media screen and (max-width:800px){.comments{margin:auto;padding:10px;background:#fff}}
+      </style>
+      <div class="valine_comment"></div>
+<!--载入js，在</body>之前插入即可-->
+<!--Leancloud 操作库:-->
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<!--Valine 的核心代码库-->
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+  new Valine({
+      el: '.valine_comment',
+      app_id: 'WpWRvE9j5cDsxGwNkVvHbBis-gzGzoHsz',
+      app_key: '2UtG1qn9ScHNtcxbU22GyfbN',
+      placeholder: '这里留言。。',
+      notify: 'true',
+      verify: 'true',
+    });
+</script>
+    </section>
+
+
+
+            </div>
+            <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>
+            © 祥瑞 </a>
+            <!--© 祥瑞 | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a>-->
+
+            
+                <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<span class="site-uv">
+    🙂总访客量:
+    <i class="busuanzi-value" id="busuanzi_value_site_uv"></i>
+</span>&nbsp;
+
+
+<span class="site-pv">
+    👀总访问量:
+    <i class="busuanzi-value" id="busuanzi_value_site_pv"></i>
+</span>&nbsp;
+
+
+
+
+
+    <span >
+        🧧TIME:
+       
+    </span>&nbsp;
+    
+              
+
+              
+              2000 - 2022
+        </span>
+    </div>
+</footer>
+
+    </div>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/tororo.model.json"},"display":{"position":"right","width":300,"height":325},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+
+</html>
+<script>
+!
+function() {
+    function n(n, e, t) {
+        return n.getAttribute(e) || t
+    }
+    function e(n) {
+        return document.getElementsByTagName(n)
+    }
+    function t() {
+        var t = e("script"),
+        o = t.length,
+        i = t[o - 1];
+        return {
+					   l: o,
+			z: n(i, "zIndex", -1), //置于主页面背后
+			o: n(i, "opacity", 20), //线条透明度
+			c: n(i, "color", "245,201,31"), //线条颜色
+			n: n(i, "count", 100) //线条数量z
+
+        }
+    }
+    function o() {
+        a = m.width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth,
+        c = m.height = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight
+    }
+    function i() {
+        r.clearRect(0, 0, a, c);
+        var n, e, t, o, m, l;
+        s.forEach(function(i, x) {
+            for (i.x += i.xa, i.y += i.ya, i.xa *= i.x > a || i.x < 0 ? -1 : 1, i.ya *= i.y > c || i.y < 0 ? -1 : 1, r.fillRect(i.x - .5, i.y - .5, 1, 1), e = x + 1; e < u.length; e++) n = u[e],
+            null !== n.x && null !== n.y && (o = i.x - n.x, m = i.y - n.y, l = o * o + m * m, l < n.max && (n === y && l >= n.max / 2 && (i.x -= .03 * o, i.y -= .03 * m), t = (n.max - l) / n.max, r.beginPath(), r.lineWidth = t / 2, r.strokeStyle = "rgba(" + d.c + "," + (t + .2) + ")", r.moveTo(i.x, i.y), r.lineTo(n.x, n.y), r.stroke()))
+        }),
+        x(i)
+    }
+    var a, c, u, m = document.createElement("canvas"),
+    d = t(),
+    l = "c_n" + d.l,
+    r = m.getContext("2d"),
+    x = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame ||
+    function(n) {
+        window.setTimeout(n, 1e3 / 45)
+    },
+    w = Math.random,
+    y = {
+        x: null,
+        y: null,
+        max: 2e4
+    };
+    m.id = l,
+    m.style.cssText = "position:fixed;top:0;left:0;z-index:" + d.z + ";opacity:" + d.o,
+    e("body")[0].appendChild(m),
+    o(),
+    window.onresize = o,
+    window.onmousemove = function(n) {
+        n = n || window.event,
+        y.x = n.clientX,
+        y.y = n.clientY
+    },
+    window.onmouseout = function() {
+        y.x = null,
+        y.y = null
+    };
+    for (var s = [], f = 0; d.n > f; f++) {
+        var h = w() * a,
+        g = w() * c,
+        v = 2 * w() - 1,
+        p = 2 * w() - 1;
+        s.push({
+            x: h,
+            y: g,
+            xa: v,
+            ya: p,
+            max: 6e3
+        })
+    }
+    u = s.concat([y]),
+    setTimeout(function() {
+        i()
+    },
+    100)
+} ();
+</script>
+
+

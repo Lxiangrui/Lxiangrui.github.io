@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<!-- 
+    <meta name="author" content="祥瑞">
+ -->
+
+
+
+
+<title>16届智能车比赛 | 祥瑞&#39;s blog</title>
+
+
+
+    <link rel="icon" href="/bitbug_favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+    <script>
+        // this function is used to check current theme before page loaded.
+        (() => {
+            const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
+            const isDark = currentTheme === 'dark';
+            const pagebody = document.getElementsByTagName('body')[0]
+            if (isDark) {
+                pagebody.classList.add('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Dark"
+            } else {
+                pagebody.classList.remove('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Light"
+            }
+        })();
+    </script>
+
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">李祥瑞&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">李祥瑞&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+            <div class="main">
+                <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">16届智能车比赛</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">祥瑞</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">October 29, 2021&nbsp;&nbsp;13:25:21</a>
+                        </span>
+                    
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><p>现在是2021年10月29日，距离16届智能车比赛已经过去了2个多月了，马上17届智能车也要开始了，一直没有做总结是有原因的，因为当时真的真的真的很惨，甚至没有取得成绩（当时的规则是跑完一圈就可以拿优秀奖），对不起一直陪在我们身边的徐老师，更对自己没有努力而难过。其实很刚结束比赛的时候，就像给自己一个总结的，但当给总结失败原因的时候，那种感觉，我真的很讨厌，就像是在为自己找借口一样，像是又一次重复了一次失败的过程，而且当时觉得自己应该没什么总结的东西，彻底摆烂！！！但是我知道。或许可能没有得到很多的经验，但我也想认真总结一次，分析失败原因，同时记录下这次失败，我想这会是一个很棒的“伤疤！”<br>记得当时是2021年的6月份，我报名参加了电赛，所以终于把电脑搬到了实验室，逃离了寝室，那段时间在实验室就是日常学习和看一些东西，没有什么事做，电赛还有很久才开始。所以当教我们c++的徐文老师就叫找几个人来参加今年的智能车比赛，我们立马就答应了。</p>
+<h1 id="伤疤展示"><a href="#伤疤展示" class="headerlink" title="伤疤展示"></a>伤疤展示</h1></iframe>
+<div style="position: relative; width: 100%; height: 0; padding-bottom: 75%;"><iframe 
+src="https://video.weibo.com/show?fid=1034:4697757416620163" scrolling="no" border="0" 
+frameborder="no" framespacing="0" allowfullscreen="true" style="position: absolute; width: 80%; 
+height: 80%; left: 0; top: 0;"> </iframe></div>
+
+<h1 id="问题："><a href="#问题：" class="headerlink" title="问题："></a>问题：</h1><h2 id="时间观念、态度："><a href="#时间观念、态度：" class="headerlink" title="时间观念、态度："></a>时间观念、态度：</h2><p>由于只有3人参赛，且只有两个月的时间，要做很多事，比如购买配件大多数的电阻电容是可以在一个店里面买的，但是还有很多是要综合考虑后去购买的，还有一些元件需要分别在几个店铺购买。当时大大小小的订单加起来应该有50多件，因为第一次购买采购，数量个种类有些出入，而这一届赛道又发生了变化，铺赛道，铺电磁线，因为赛道在过道始终回被人踩脏，灯光昏暗导致误判，而且还有日常课程，电赛等等等等，这些事情逐渐扰乱了我们这个三人小队对时间的概念，消耗了我们的耐心。后来发现其实两个月很短，所以这次我们要充分准备，把战线拉长，在赛题一出就开始准备，稳扎稳打！！</p>
+<h2 id="技术贫瘠："><a href="#技术贫瘠：" class="headerlink" title="技术贫瘠："></a>技术贫瘠：</h2><p>本来是要叫一个学长带队的，结果没有一个学长愿意（毕竟他们马上大四了很忙😂），就造成了我们去参加西部赛区的同学全是大二的，并没有什么参加大型比赛的经历，本身的知识和工程经验也没有完全入门，而且只有两个月的时间就比赛了。因为西部赛需要自己做PCB，我们第一时间就是想参照厂商的板子做，但因为上面的元件都是贴片的，并且我们没有为单片机设计母版的经历，所以我们去问了教我们PCB课程的老师。但老师说并且我们现在的知识量来说要做出来很难😂😂就说不好搞不好搞，然后我们就没有去问他了😂😂。最后我们是去咸鱼买了别人的PCB资源直接去打板😂😂。虽然是别人做好的PCB哈，但是要自己做出成品来，运行还是要一定心思的。时间还剩2个月，我开始是觉得两个月时间应该能搞吧，但我们高估我们自己了，因为参加的西部赛，赛车的PCB和硬件结构都要我们自己搭，就算当时有买别人的例程改，也要一些时间去看懂，而且因为没接触过这种编译环境，也需要时间去熟悉。<br>焊接问题，前面说了没有焊接过贴片的PCB，所以第一个母版出来的时候，有一根线是虚焊的地方，好在后面的板子都撑到了结束。<br><a target="_blank" rel="noopener" href="https://imgtu.com/i/5viPM9"><img src="https://z3.ax1x.com/2021/10/29/5viPM9.md.jpg" alt="5viPM9.md.jpg"></a><br><a target="_blank" rel="noopener" href="https://imgtu.com/i/5vidMj"><img src="https://z3.ax1x.com/2021/10/29/5vidMj.md.jpg" alt="5vidMj.md.jpg"></a><br>这个问题的解决方法只有自己学习提高了，我相信现在的我能比之前做的更好了。</p>
+<h2 id="缺乏请教对象："><a href="#缺乏请教对象：" class="headerlink" title="缺乏请教对象："></a>缺乏请教对象：</h2><p>由于疫情（可恶的疫情👿😈😈），15届我们学校没有参赛，而且16届的我们只有1只队伍参赛，都是大二的同学，相当于重0开始,就算请教老师和学长也不是法子，有些问题是要做才能了解的，现在想来我们应该多加网上的交流群，与一同参赛的同学们请教。</p>
+<h2 id="团队交流问题："><a href="#团队交流问题：" class="headerlink" title="团队交流问题："></a>团队交流问题：</h2><p>个人意见！！<br>这是最大的问题，我和队友没有随时的相互交流，我们进行了分工后，我负责硬件方面的，另外一个是软件调试的。在硬件方面，因为有参考，不会有很多的变数，我需要将车模搭好，pcb焊接上，组装好，后面有软件调试实在不行的地方，或者说车模发生了损坏我在去调整车模。而在将车模组装好后，事情就开始不对劲起来了，我们软件的同学就开始一个人默默的调试，不太说话，每次都是我要去问他，他才说他做了那些东西，经常是隔1天我去问他，他才浅浅地说几句，不能好好交流，而且因为调试缓慢，硬件部分运行正常，这导致我不得不自己去进行软件调试去跟进，然而我们两的调试又没有完全一样，最终还是会舍弃一个人的方案，会被舍弃的那个人的积极性被消耗。没有将团队的优势发挥出来，并且没有什么指导的学长和老师与之交流。<br>所以在选择组队的时候一定要和乐于与人交流的同学组队，虽然又分工但是做的同时要和队友说明自己这样做的原因的什么，只有队友都了解全貌后，大家才能亲密无间的合作啊❤❤，发挥出团队的优势。切记不要有“我干完了这件事我就没事做了”的思想，分工是分担工作，不是单打独斗！</p>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>祥瑞</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="https://lxiangrui.top/2021/10/29/%E6%99%BA%E8%83%BD%E8%BD%A6%E6%AF%94%E8%B5%9B/">https://lxiangrui.top/2021/10/29/%E6%99%BA%E8%83%BD%E8%BD%A6%E6%AF%94%E8%B5%9B/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>Do you believe in <strong>DESTINY</strong>?</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/%E6%99%BA%E8%83%BD%E8%BD%A6/"># 智能车</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2021/11/21/%E5%8D%81%E4%BA%8C%E5%B1%8A%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%9C%81%E8%B5%9B/">十二届蓝桥杯嵌入式省赛</a>
+            
+            
+            <a class="next" rel="next" href="/2021/10/23/X-bot/">X-bot</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+
+
+    <section id="comments" class="comments">
+      <style>
+        .comments{margin:30px;padding:10px;background:#fff}
+        @media screen and (max-width:800px){.comments{margin:auto;padding:10px;background:#fff}}
+      </style>
+      <div class="valine_comment"></div>
+<!--载入js，在</body>之前插入即可-->
+<!--Leancloud 操作库:-->
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<!--Valine 的核心代码库-->
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+  new Valine({
+      el: '.valine_comment',
+      app_id: 'WpWRvE9j5cDsxGwNkVvHbBis-gzGzoHsz',
+      app_key: '2UtG1qn9ScHNtcxbU22GyfbN',
+      placeholder: '这里留言。。',
+      notify: 'true',
+      verify: 'true',
+    });
+</script>
+    </section>
+
+
+
+            </div>
+            <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>
+            © 祥瑞 </a>
+            <!--© 祥瑞 | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a>-->
+
+            
+                <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<span class="site-uv">
+    🙂总访客量:
+    <i class="busuanzi-value" id="busuanzi_value_site_uv"></i>
+</span>&nbsp;
+
+
+<span class="site-pv">
+    👀总访问量:
+    <i class="busuanzi-value" id="busuanzi_value_site_pv"></i>
+</span>&nbsp;
+
+
+
+
+
+    <span >
+        🧧TIME:
+       
+    </span>&nbsp;
+    
+              
+
+              
+              2000 - 2022
+        </span>
+    </div>
+</footer>
+
+    </div>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/tororo.model.json"},"display":{"position":"right","width":300,"height":325},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+
+</html>
+<script>
+!
+function() {
+    function n(n, e, t) {
+        return n.getAttribute(e) || t
+    }
+    function e(n) {
+        return document.getElementsByTagName(n)
+    }
+    function t() {
+        var t = e("script"),
+        o = t.length,
+        i = t[o - 1];
+        return {
+					   l: o,
+			z: n(i, "zIndex", -1), //置于主页面背后
+			o: n(i, "opacity", 20), //线条透明度
+			c: n(i, "color", "245,201,31"), //线条颜色
+			n: n(i, "count", 100) //线条数量z
+
+        }
+    }
+    function o() {
+        a = m.width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth,
+        c = m.height = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight
+    }
+    function i() {
+        r.clearRect(0, 0, a, c);
+        var n, e, t, o, m, l;
+        s.forEach(function(i, x) {
+            for (i.x += i.xa, i.y += i.ya, i.xa *= i.x > a || i.x < 0 ? -1 : 1, i.ya *= i.y > c || i.y < 0 ? -1 : 1, r.fillRect(i.x - .5, i.y - .5, 1, 1), e = x + 1; e < u.length; e++) n = u[e],
+            null !== n.x && null !== n.y && (o = i.x - n.x, m = i.y - n.y, l = o * o + m * m, l < n.max && (n === y && l >= n.max / 2 && (i.x -= .03 * o, i.y -= .03 * m), t = (n.max - l) / n.max, r.beginPath(), r.lineWidth = t / 2, r.strokeStyle = "rgba(" + d.c + "," + (t + .2) + ")", r.moveTo(i.x, i.y), r.lineTo(n.x, n.y), r.stroke()))
+        }),
+        x(i)
+    }
+    var a, c, u, m = document.createElement("canvas"),
+    d = t(),
+    l = "c_n" + d.l,
+    r = m.getContext("2d"),
+    x = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame ||
+    function(n) {
+        window.setTimeout(n, 1e3 / 45)
+    },
+    w = Math.random,
+    y = {
+        x: null,
+        y: null,
+        max: 2e4
+    };
+    m.id = l,
+    m.style.cssText = "position:fixed;top:0;left:0;z-index:" + d.z + ";opacity:" + d.o,
+    e("body")[0].appendChild(m),
+    o(),
+    window.onresize = o,
+    window.onmousemove = function(n) {
+        n = n || window.event,
+        y.x = n.clientX,
+        y.y = n.clientY
+    },
+    window.onmouseout = function() {
+        y.x = null,
+        y.y = null
+    };
+    for (var s = [], f = 0; d.n > f; f++) {
+        var h = w() * a,
+        g = w() * c,
+        v = 2 * w() - 1,
+        p = 2 * w() - 1;
+        s.push({
+            x: h,
+            y: g,
+            xa: v,
+            ya: p,
+            max: 6e3
+        })
+    }
+    u = s.concat([y]),
+    setTimeout(function() {
+        i()
+    },
+    100)
+} ();
+</script>
+
+

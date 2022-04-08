@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<!-- 
+    <meta name="author" content="祥瑞">
+ -->
+
+
+
+
+<title>C——更上一层楼 | 祥瑞&#39;s blog</title>
+
+
+
+    <link rel="icon" href="/bitbug_favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+    <script>
+        // this function is used to check current theme before page loaded.
+        (() => {
+            const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
+            const isDark = currentTheme === 'dark';
+            const pagebody = document.getElementsByTagName('body')[0]
+            if (isDark) {
+                pagebody.classList.add('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Dark"
+            } else {
+                pagebody.classList.remove('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Light"
+            }
+        })();
+    </script>
+
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">李祥瑞&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">李祥瑞&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+            <div class="main">
+                <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">C——更上一层楼</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">祥瑞</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">January 20, 2022&nbsp;&nbsp;0:22:54</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/%E8%AE%B0%E5%BD%95/">记录</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <p> 前言：写这么一篇blog的原因有：</p>
+<p>​                重走一边c路，巩固基础知识，基础不牢，地动山摇</p>
+<p>​                学会底层思维    //编译运行 资源分配回收 效率</p>
+<p>​                重点 难点 突破 //指针 内存</p>
+<pre><code>             面向面试
+</code></pre>
+<p>环境搭建</p>
+<h2 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h2><p>安装好vsc后，创建main.c后输入#include &lt;stdio.h&gt;后报错显示“检测到 #include 错误。请更新 includePath”</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_40207976/article/details/113337366?ops_request_misc=%7B%22request_id%22:%22164276855916780366568942%22,%22scm%22:%2220140713.130102334.pc_all.%22%7D&request_id=164276855916780366568942&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~first_rank_ecpm_v1~hot_rank-1-113337366.first_rank_v2_pc_rank_v29&utm_term=%E6%A3%80%E6%B5%8B%E5%88%B0+%23include+%E9%94%99%E8%AF%AF%E3%80%82%E8%AF%B7%E6%9B%B4%E6%96%B0+includePath%E3%80%82&spm=1018.2226.3001.4187">vscode检测到#include错误请更新includePath的解决方法</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43374723/article/details/84064644">Ubuntu16.04下配置VScode的C/C++开发环境_WavenZ的博客-CSDN博客_ubuntu vscode配置c++环境</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/CCCStudy4923/article/details/111145799"> Ubantu下使用VSCode编译运行C语言程序</a></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">创建代码文件  <span class="comment">//文件 -&gt; 打开文件夹（如C) </span></span><br><span class="line">	     <span class="comment">// 点 +号图标（新建文件）-&gt; 输入文件名（如main.c)   </span></span><br><span class="line">	     <span class="comment">//注：vscode能自动识别.c文件，提示你安装C插件，安装即可</span></span><br><span class="line"></span><br><span class="line">运行和调试 <span class="comment">//点 运行和调试 -&gt; 创建lanuch.json (运行和调试的配置文件) -&gt; 选gcc</span></span><br><span class="line"></span><br><span class="line">断点调试   <span class="comment">// 在某行代码 行数字的前面 点击 设置断点(红点变亮) </span></span><br><span class="line">	  <span class="comment">// 点绿三角运行（或F5） -&gt; 可单步调试(F11）   </span></span><br><span class="line"></span><br><span class="line">备份      <span class="comment">//备份.vscode 文件，当有新的代码时，拷贝过去，无需花时间再配置    </span></span><br></pre></td></tr></table></figure>
+
+<h2 id="底层思维"><a href="#底层思维" class="headerlink" title="底层思维"></a>底层思维</h2><h3 id="二进制-amp-十六进制"><a href="#二进制-amp-十六进制" class="headerlink" title="二进制&amp;十六进制"></a>二进制&amp;十六进制</h3><p>1kb代表2的10次方的2进制</p>
+<p>1mb代表2的20次方的二进制</p>
+<p>1Gb代表2的30次方个二进制</p>
+<h3 id="gcc编译"><a href="#gcc编译" class="headerlink" title="gcc编译"></a>gcc编译</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ gcc main.c  //编译C程序，默认生成a.out执行文件</span><br><span class="line">//也可以改名字，gcc main.c -o xxx.exe</span><br><span class="line"> //gcc -v main.c 显示详细的编译过程信息</span><br><span class="line">$ ./a.out     //运行程序</span><br></pre></td></tr></table></figure>
+
+<h3 id="gdb-调试"><a href="#gdb-调试" class="headerlink" title="gdb 调试"></a>gdb 调试</h3><p>原始的编译方式</p>
+<p>int b =5；int w = 6；他们的地址是相邻的</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">$ gcc -g  main.c  //编译生成带有调试信息的执行文件a.tou</span><br><span class="line">$ gdb a.out //调试程序</span><br><span class="line">$ l     //list: 查看源码(默认10行)</span><br><span class="line">        //list 8  查看8行附近的代码</span><br><span class="line">        //list main 查看函数名附近的码</span><br><span class="line">$ b 5   //break: 在第5行设置断点</span><br><span class="line">$ r     //run: 运行到断点处（如无则运行直到结束）</span><br><span class="line">$ s     //step: 单步执行（如果是函数则进入）</span><br><span class="line">$ n     //next: 单步跳过（如果是函数则跳过）</span><br><span class="line">$ p a   //print: 查看变量内容</span><br><span class="line">        // p &amp;a  查看变量a的地址</span><br><span class="line">        // p &amp;b+1   b变量的地址根据数据类型递增(int型 会加4，char型则加1)</span><br><span class="line">        // p *(&amp;b+1)</span><br><span class="line">        // p a[1] </span><br><span class="line">        // p *p1 查看p1指针里的内容 </span><br><span class="line">        // p  add(4,7)  调用函数add 并打印返回值</span><br><span class="line">$ p/t b // t  二进制显示 变量的值  </span><br><span class="line">	// x  按十六进制格式显示变量。</span><br><span class="line">	// d  按十进制格式显示变量。</span><br><span class="line">	// u  按十六进制格式显示无符号整型。</span><br><span class="line">	// o  按八进制格式显示变量。</span><br><span class="line">	// a  按十六进制格式显示变量。</span><br><span class="line">	// c  按字符格式显示变量。</span><br><span class="line">	// f  按浮点数格式显示变量。      </span><br><span class="line">$ x &amp;a  //显示某地址的内存值 </span><br><span class="line">        //例如 float a = 0.45; 的内存值为</span><br><span class="line">        // 0x7fffffffdf8c:	00111110111001100110011001100110        </span><br><span class="line">上下键  //可查看历史命令</span><br><span class="line">$ bt     //查看堆栈信息 （如嵌套调用多个函数时）</span><br><span class="line">$ c      //continue： 继续执行程序（直到下一个断点或者结束）</span><br><span class="line">$ q      //quit: 退出gdb调试</span><br><span class="line">$ dmesg  //查看内核信息     </span><br></pre></td></tr></table></figure>
+
+<h3 id="如何编译生成执行文件"><a href="#如何编译生成执行文件" class="headerlink" title="如何编译生成执行文件"></a>如何编译生成执行文件</h3><p>1、预处理（cpp）：<strong>gcc -e</strong>，生成main.i，内容包括“宏替换，条件编译，include”</p>
+<p>2、编译（cc）：<strong>gcc -s</strong>，生成main.s汇编文件</p>
+<p>3、汇编（as）：<strong>gcc -c</strong>，生成main.o</p>
+<p>4、将main.o和libmy.a和fun.o链接（ld）：<strong>gcc</strong>,生成a.out执行文件（.bin  .exe）</p>
+<h4 id="预处理"><a href="#预处理" class="headerlink" title="预处理"></a>预处理</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ gcc -E main.c -o main.i //停在预处理阶段(生成 main.i文件) </span><br><span class="line">                          //发现宏被替换了,条件编译生效</span><br></pre></td></tr></table></figure>
+
+<h4 id="编译"><a href="#编译" class="headerlink" title="编译"></a>编译</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ gcc -S main.c  //停在编译阶段(生成汇编文件 main.s) </span><br></pre></td></tr></table></figure>
+
+<h4 id="汇编"><a href="#汇编" class="headerlink" title="汇编"></a>汇编</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ gcc -c main.c  //停在汇编阶段(生成目标文件 main.o )</span><br><span class="line">$ vim main.o  //16进制显示 二进制文件</span><br><span class="line">              //在命令行模式下输入  :%!xxd</span><br></pre></td></tr></table></figure>
+
+<h4 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ gcc -c fun.c </span><br><span class="line"></span><br><span class="line">$ gcc main.o fun.o  //链接目标文件或库文件(.a .so)，生成执行文件 a.out(.bin .exe)</span><br><span class="line">                    //独立的目标文件都是从0地址开始，需要链接来重新合并安排地址 </span><br><span class="line">                    //链接异常 会报 collect2: error: ld returned 1 exit status               </span><br><span class="line">$ objdump -d a.out   //查看反汇编代码	</span><br><span class="line">                     //可查看 objdump -d fun.o 等看链接过程是如何把代码嵌入式到main.o中</span><br></pre></td></tr></table></figure>
+
+<h2 id="变量和数据类型"><a href="#变量和数据类型" class="headerlink" title="变量和数据类型"></a>变量和数据类型</h2><p><img src="http://www.yhrgzn.com/entry/%E5%8F%98%E9%87%8F%E5%92%8C%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B.png"></p>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>祥瑞</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="https://lxiangrui.top/2022/01/20/C%E2%80%94%E2%80%94%E6%9B%B4%E4%B8%8A%E4%B8%80%E5%B1%82%E6%A5%BC/">https://lxiangrui.top/2022/01/20/C%E2%80%94%E2%80%94%E6%9B%B4%E4%B8%8A%E4%B8%80%E5%B1%82%E6%A5%BC/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>Do you believe in <strong>DESTINY</strong>?</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/c/"># c</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2022/01/20/python-%E5%85%A5%E9%97%A8/">python 入门</a>
+            
+            
+            <a class="next" rel="next" href="/2022/01/07/%E5%B5%8C%E5%85%A5%E5%BC%8Fai%E6%AF%8F%E5%91%A8%E6%80%BB%E7%BB%93/">嵌入式ai每周总结</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+
+
+    <section id="comments" class="comments">
+      <style>
+        .comments{margin:30px;padding:10px;background:#fff}
+        @media screen and (max-width:800px){.comments{margin:auto;padding:10px;background:#fff}}
+      </style>
+      <div class="valine_comment"></div>
+<!--载入js，在</body>之前插入即可-->
+<!--Leancloud 操作库:-->
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<!--Valine 的核心代码库-->
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+  new Valine({
+      el: '.valine_comment',
+      app_id: 'WpWRvE9j5cDsxGwNkVvHbBis-gzGzoHsz',
+      app_key: '2UtG1qn9ScHNtcxbU22GyfbN',
+      placeholder: '这里留言。。',
+      notify: 'true',
+      verify: 'true',
+    });
+</script>
+    </section>
+
+
+
+            </div>
+            <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>
+            © 祥瑞 </a>
+            <!--© 祥瑞 | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a>-->
+
+            
+                <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<span class="site-uv">
+    🙂总访客量:
+    <i class="busuanzi-value" id="busuanzi_value_site_uv"></i>
+</span>&nbsp;
+
+
+<span class="site-pv">
+    👀总访问量:
+    <i class="busuanzi-value" id="busuanzi_value_site_pv"></i>
+</span>&nbsp;
+
+
+
+
+
+    <span >
+        🧧TIME:
+       
+    </span>&nbsp;
+    
+              
+
+              
+              2000 - 2022
+        </span>
+    </div>
+</footer>
+
+    </div>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/tororo.model.json"},"display":{"position":"right","width":300,"height":325},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+
+</html>
+<script>
+!
+function() {
+    function n(n, e, t) {
+        return n.getAttribute(e) || t
+    }
+    function e(n) {
+        return document.getElementsByTagName(n)
+    }
+    function t() {
+        var t = e("script"),
+        o = t.length,
+        i = t[o - 1];
+        return {
+					   l: o,
+			z: n(i, "zIndex", -1), //置于主页面背后
+			o: n(i, "opacity", 20), //线条透明度
+			c: n(i, "color", "245,201,31"), //线条颜色
+			n: n(i, "count", 100) //线条数量z
+
+        }
+    }
+    function o() {
+        a = m.width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth,
+        c = m.height = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight
+    }
+    function i() {
+        r.clearRect(0, 0, a, c);
+        var n, e, t, o, m, l;
+        s.forEach(function(i, x) {
+            for (i.x += i.xa, i.y += i.ya, i.xa *= i.x > a || i.x < 0 ? -1 : 1, i.ya *= i.y > c || i.y < 0 ? -1 : 1, r.fillRect(i.x - .5, i.y - .5, 1, 1), e = x + 1; e < u.length; e++) n = u[e],
+            null !== n.x && null !== n.y && (o = i.x - n.x, m = i.y - n.y, l = o * o + m * m, l < n.max && (n === y && l >= n.max / 2 && (i.x -= .03 * o, i.y -= .03 * m), t = (n.max - l) / n.max, r.beginPath(), r.lineWidth = t / 2, r.strokeStyle = "rgba(" + d.c + "," + (t + .2) + ")", r.moveTo(i.x, i.y), r.lineTo(n.x, n.y), r.stroke()))
+        }),
+        x(i)
+    }
+    var a, c, u, m = document.createElement("canvas"),
+    d = t(),
+    l = "c_n" + d.l,
+    r = m.getContext("2d"),
+    x = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame ||
+    function(n) {
+        window.setTimeout(n, 1e3 / 45)
+    },
+    w = Math.random,
+    y = {
+        x: null,
+        y: null,
+        max: 2e4
+    };
+    m.id = l,
+    m.style.cssText = "position:fixed;top:0;left:0;z-index:" + d.z + ";opacity:" + d.o,
+    e("body")[0].appendChild(m),
+    o(),
+    window.onresize = o,
+    window.onmousemove = function(n) {
+        n = n || window.event,
+        y.x = n.clientX,
+        y.y = n.clientY
+    },
+    window.onmouseout = function() {
+        y.x = null,
+        y.y = null
+    };
+    for (var s = [], f = 0; d.n > f; f++) {
+        var h = w() * a,
+        g = w() * c,
+        v = 2 * w() - 1,
+        p = 2 * w() - 1;
+        s.push({
+            x: h,
+            y: g,
+            xa: v,
+            ya: p,
+            max: 6e3
+        })
+    }
+    u = s.concat([y]),
+    setTimeout(function() {
+        i()
+    },
+    100)
+} ();
+</script>
+
+

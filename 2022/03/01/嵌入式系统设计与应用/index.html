@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<!-- 
+    <meta name="author" content="祥瑞">
+ -->
+
+
+
+
+<title>嵌入式系统设计与应用 | 祥瑞&#39;s blog</title>
+
+
+
+    <link rel="icon" href="/bitbug_favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+    <script>
+        // this function is used to check current theme before page loaded.
+        (() => {
+            const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
+            const isDark = currentTheme === 'dark';
+            const pagebody = document.getElementsByTagName('body')[0]
+            if (isDark) {
+                pagebody.classList.add('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Dark"
+            } else {
+                pagebody.classList.remove('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Light"
+            }
+        })();
+    </script>
+
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">李祥瑞&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">李祥瑞&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+            <div class="main">
+                <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">嵌入式系统设计与应用</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">祥瑞</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">March 1, 2022&nbsp;&nbsp;10:43:21</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0/">课程学习</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><h3 id="材料及参考书获取资源"><a href="#材料及参考书获取资源" class="headerlink" title="材料及参考书获取资源"></a>材料及参考书获取资源</h3><table>
+<thead>
+<tr>
+<th><img src="https://s4.ax1x.com/2022/03/01/bQur80.png" alt="bQur80.png" style="zoom: 80%;" /></th>
+<th><img src="https://s4.ax1x.com/2022/03/01/bQufa9.png" alt="bQufa9.png" style="zoom: 50%;" /></th>
+</tr>
+</thead>
+</table>
+<p>书号是实体书背面的二维码</p>
+<h3 id="相关网站"><a href="#相关网站" class="headerlink" title="相关网站"></a>相关网站</h3><p><a target="_blank" rel="noopener" href="http://www.arm.com/">www.arm.com</a></p>
+<p><a target="_blank" rel="noopener" href="http://www.21ic.com/embed/">www.21ic.com/embed/</a></p>
+<p><a target="_blank" rel="noopener" href="http://www.home.eeworld.com.cn(电子工程世界)/">www.home.eeworld.com.cn（电子工程世界）</a></p>
+<p>bbs.elecfans.com(电子发烧友)    感觉不是很活跃</p>
+<h1 id="第一章"><a href="#第一章" class="headerlink" title="第一章"></a>第一章</h1><h2 id="第一节课"><a href="#第一节课" class="headerlink" title="第一节课"></a>第一节课</h2><h3 id="嵌入式概念："><a href="#嵌入式概念：" class="headerlink" title="嵌入式概念："></a>嵌入式概念：</h3><p>嵌入式系统即嵌入式计算机系统，为控制或监控目的而构筑，将其有机地植入目标系统。</p>
+<p>嵌入式系统有别于通用计算机系统，采用”量体裁衣“的方式把所需要的功能嵌入到各种应用系统中。———–系统移植裁剪</p>
+<p>几个重要特征：专业性强、系统内核小、系统精简、高效实时系统、嵌入式系统开发需要开发工具环境</p>
+<h3 id="嵌入式系统的定义-P1-28-："><a href="#嵌入式系统的定义-P1-28-：" class="headerlink" title="嵌入式系统的定义[P1-28]："></a>嵌入式系统的定义[P1-28]：</h3><p>“以应用为中心，以计算机技术为基础，软件硬件可裁剪，适应应用系统对功能、可靠性、成本、体积、功耗严格要求的专用计算机系统。”</p>
+<h3 id="嵌入式系统的定义-IEEE定义"><a href="#嵌入式系统的定义-IEEE定义" class="headerlink" title="嵌入式系统的定义(IEEE定义)"></a>嵌入式系统的定义(IEEE定义)</h3><p>嵌入式系统是“用于控制、监视或者辅助设备、机器和车间操作的装置。“<br>原文为(Devices used to control, monitor, orassist the operation of equipment, machineryor plants.)</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/bQYfOI"><img src="https://s4.ax1x.com/2022/03/01/bQYfOI.png" alt="bQYfOI.png"></a></p>
+<p>引导系统：boot loader ，类似于bois</p>
+<p>BootLoader是嵌入式设备中用来启动<a target="_blank" rel="noopener" href="https://www.baidu.com/s?wd=%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%86%85%E6%A0%B8&tn=24004469_oem_dg&rsv_dl=gh_pl_sl_csd">操作系统内核</a>的一段程序。<br>uboot（universal bootloader）是一种可以用于多种嵌入式CPU的BootLoader程序，换言之，uboot是bootloader的一个子集。<br><strong>uboot的核心作用就是启动操作系统内核，uboot的本质就是一段裸机程序。</strong></p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/bQNTzQ"><img src="https://s4.ax1x.com/2022/03/01/bQNTzQ.png" alt="bQNTzQ.png"></a></p>
+<h2 id="第二节课"><a href="#第二节课" class="headerlink" title="第二节课"></a>第二节课</h2><h3 id="操作系统的基本概念"><a href="#操作系统的基本概念" class="headerlink" title="操作系统的基本概念"></a>操作系统的基本概念</h3><p>前后台系统：在该系统中应用程序是一个无限的循环，循环中调用相应的函数完成相应的操作。与中断很像。</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/bclRT1"><img src="https://s1.ax1x.com/2022/03/08/bcQBKH.png" alt="bcQBKH.png"></a></p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/bc3UP0"><img src="https://s1.ax1x.com/2022/03/08/bc3UP0.png" alt="bc3UP0.png"></a></p>
+<h3 id="嵌入式系统的分类"><a href="#嵌入式系统的分类" class="headerlink" title="嵌入式系统的分类"></a>嵌入式系统的分类</h3><p><a target="_blank" rel="noopener" href="https://imgtu.com/i/bclRT1"><img src="https://s1.ax1x.com/2022/03/08/bcQLGT.png" alt="bcQLGT.png"></a></p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/bclRT1"><img src="https://s1.ax1x.com/2022/03/08/bclRT1.png" alt="bclRT1.png"></a></p>
+<p>软/硬实时系统概念</p>
+<p>软件实时系统相当于人要不要女朋友，虽然会伤心，但是问题不大，而硬实时系统相当于人要吃饭，不吃会洗。</p>
+<p>硬实时系统的应用，是在实现与非常重要、需要实时处理的任务时采用。</p>
+<p><strong>硬/软实时系统都是软件实现的</strong></p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/bc1Y9K"><img src="https://s1.ax1x.com/2022/03/08/bc1Y9K.png" alt="bc1Y9K.png"></a></p>
+<h3 id="几种常见的RTOS"><a href="#几种常见的RTOS" class="headerlink" title="几种常见的RTOS"></a>几种常见的RTOS</h3><p>软实时    linux    wince        硬实时    wxworks</p>
+<table>
+<thead>
+<tr>
+<th>著名的open RTOS（开源）</th>
+<th>ucOS/II    Linux</th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>有产权的RTOS</td>
+<td>HOPEN      Delta OS</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id="本章小节"><a href="#本章小节" class="headerlink" title="本章小节"></a>本章小节</h2><p><a target="_blank" rel="noopener" href="https://imgtu.com/i/bjfqqx"><img src="https://s1.ax1x.com/2022/03/15/bjfqqx.png" alt="bjfqqx.png"></a></p>
+<p>1、嵌入式系统即嵌入式计算机系统，为控制或监控目的而构筑，将其有机地植入目标系统。</p>
+<p>2、</p>
+<p>3、</p>
+<p>4、</p>
+<p>5、</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/bjhYYF"><img src="https://s1.ax1x.com/2022/03/15/bjhYYF.png" alt="bjhYYF.png"></a></p>
+<h1 id="第二章"><a href="#第二章" class="headerlink" title="第二章"></a>第二章</h1><h2 id="第一节课-1"><a href="#第一节课-1" class="headerlink" title="第一节课"></a>第一节课</h2><p><a target="_blank" rel="noopener" href="https://imgtu.com/i/bj4UN8"><img src="https://s1.ax1x.com/2022/03/15/bj4UN8.png" alt="bj4UN8.png"></a></p>
+<h3 id="冯诺依曼结构："><a href="#冯诺依曼结构：" class="headerlink" title="冯诺依曼结构："></a>冯诺依曼结构：</h3><p>计算机在工作时能够自动地从存储器中取出指令并加以执行。</p>
+<p><strong>程序和数据不做区分，编译成了同一种二进制代码</strong></p>
+<h3 id="哈佛结构（常见）："><a href="#哈佛结构（常见）：" class="headerlink" title="哈佛结构（常见）："></a>哈佛结构（常见）：</h3><p>程序和数据，都有专门的通道，允许同时访问数据和程序，速度大大提高</p>
+<h3 id="处理器体系结构："><a href="#处理器体系结构：" class="headerlink" title="处理器体系结构："></a>处理器体系结构：</h3><p>两大分支：</p>
+<h4 id="CISC（复杂指令集）"><a href="#CISC（复杂指令集）" class="headerlink" title="CISC（复杂指令集）"></a>CISC（复杂指令集）</h4><h4 id="RISC（精简指令集，常见）"><a href="#RISC（精简指令集，常见）" class="headerlink" title="RISC（精简指令集，常见）"></a>RISC（精简指令集，常见）</h4><ol>
+<li>着眼在如何使计算机的结构更加简单，合理地提高运算速度。</li>
+<li>优先选取使用频率高的简单指令;指令长度固定，指令格式和寻址方式种类减少;以控制逻辑为主，不用或少用微码控制（数字电路）。</li>
+</ol>
+<p>特点：</p>
+<ol>
+<li>采用固定长度指令格式，指令及寻址方式简单;</li>
+<li>使用<strong>单周期</strong>指令，便于流水线操作;(使用一个机器周期)</li>
+<li>大的、统一的寄存器文件;</li>
+<li>Load / Store结构的指令。(既数据处理指令只对寄存器进行操作，而不直接对存储器操作，以提高指令的执行效率)</li>
+</ol>
+<p>问题1：为什么便于流水线操作？</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/bj7wOH"><img src="https://s1.ax1x.com/2022/03/15/bj7wOH.png" alt="bj7wOH.png"></a></p>
+<p>每个运行模块（取值功能的、译码功能的、执行功能的）都采用一个机器周期，能有交替使用模块，形成流水线。</p>
+<h4 id="RISC和CISC的差异："><a href="#RISC和CISC的差异：" class="headerlink" title="RISC和CISC的差异："></a>RISC和CISC的差异：</h4><ol>
+<li>指令系统:RISC设计者把主要精力放在那些经常使用的指令上，尽量使它们具有简单高效的特色。对不常用的功能，常通过组合指令来实现。而CISC计算机的指令系统比较丰富，有专用指令来完成特定的功能。</li>
+<li>存储器操作:RISC对存储器操作有限制，使控制简单化;而CISC机器的存储器操作指令多，操作直接。</li>
+<li>程序: RISC汇编语言程序一般需要较大的内存空间，实现特殊功能时程序复杂，不易设计;而CISC汇编语言程序编程相对简单，科学计算及复杂操作的程序设计相对容易，效率较高。</li>
+<li>中断:RISC机器在一条指令执行的适当地方可以响应中断;CISC机器是在一条指令执行结束后响应中断的。</li>
+<li>CPU:由于RISC CPU包含较少的单元电路，因而面积小、功耗低;而CISC CPU包含丰富的电路单元，因而功能强、面积大、功耗大。</li>
+<li>设计周期:RISC微处理器结构简单，布局紧凑，设计周期短，且易于采用最新技术;CISC微处理器结构复杂，设计周期长。</li>
+<li>易用性:RISC微处理器结构简单，指令规整，性能容易把握，易学易用;CISC微处理器结构复杂，功能强大，实现特殊功能容易。</li>
+<li>应用范围:RISC机器更适合于嵌入式应用;而.cISC机器则更适合于通用计算机。</li>
+</ol>
+<h3 id="ARM微处理器的特点"><a href="#ARM微处理器的特点" class="headerlink" title="ARM微处理器的特点"></a>ARM微处理器的特点</h3><ol>
+<li>采用RISC架构的ARM微处理器具有如下特点体积小、低功耗、低成本、高性能;</li>
+<li>支持Thumb (16位)IARM (32位)双指兼容8位/16位器件;</li>
+<li>大量使用寄存器，指令执行速度更快;口大多数数据操作都在寄存器中完成;</li>
+<li>寻址方式灵活简单，执行效率高;</li>
+<li>指令长度固定</li>
+</ol>
+<h3 id="存储器"><a href="#存储器" class="headerlink" title="存储器"></a>存储器</h3><ol>
+<li><p>RAM (Random Access Memory,随机访问存储器)RAM可分两类:静态RAM (Static RAM,即SRAM)和动态RAM (Dynamic RAM,即DRAM)</p>
+</li>
+<li><p>ROM (Read-Only Memory,只读存储器)</p>
+<p>ROM是非易失性(在断电情况下仍能保持所存储的数据信息）存储器，通常使用的有EPROM及EEPROM。可用flash代替。</p>
+</li>
+<li><p>FLASH (Flash EEPROM Memory , 闪存)<br>是一种长寿命的非易失性的存储器，数据删除不是以<strong>单个的字节</strong>为单位而是<strong>以固定的区块为单位</strong>。是n个字节。</p>
+</li>
+</ol>
+<h5 id="Flash分为NOR-Flash、NAND-Flash两种。"><a href="#Flash分为NOR-Flash、NAND-Flash两种。" class="headerlink" title="Flash分为NOR Flash、NAND Flash两种。"></a>Flash分为NOR Flash、NAND Flash两种。</h5><ol>
+<li>NOR Flash的特点是在芯片内执行(XIP,eXecute In Place),可以直接读取芯片内储存的数据，应用程序直接在Flash内运行，不必把代码读到系统RAM中运行。</li>
+<li>NAND Flash不能直接在Flash内运行应用程序，需要将数据复制到RAM中运行，NANDFlash的特点是容量大，擦写速度快。</li>
+</ol>
+<h3 id="寄存器"><a href="#寄存器" class="headerlink" title="寄存器"></a>寄存器</h3><ol>
+<li>寄存器是处理器的内部存储部件。</li>
+<li>根据寄存器的作用，可将寄存器分为控制寄存器、状态寄存器和数据寄存器3大类</li>
+<li>所有的处理器都有一个程序计数器（也叫做指令指针)，它跟踪将要被读取并执行的下一条指令在内存中的单元地址。</li>
+</ol>
+<h3 id="堆栈"><a href="#堆栈" class="headerlink" title="堆栈"></a>堆栈</h3><p>​    一种按后进先出的原则进行存取的连续的存储单元区。</p>
+<h3 id="总线-BUS"><a href="#总线-BUS" class="headerlink" title="总线(BUS)"></a>总线(BUS)</h3><ol>
+<li>所谓总线是具有相关功能的信号线的集合。</li>
+<li>多数处理器采用了三总线系统体系结构，分别是地址总线、数据总线和控制总线。</li>
+<li>总线的基本功能是实现信息交换和信息共享，主要由传输信息的物理介质和管理信息传输的协议组成。</li>
+</ol>
+<h3 id="JTAG接口"><a href="#JTAG接口" class="headerlink" title="JTAG接口"></a>JTAG接口</h3><h4 id="注意实验室操作规范"><a href="#注意实验室操作规范" class="headerlink" title="注意实验室操作规范"></a>注意实验室操作规范</h4><p>并口报错 pararel，计算机出错，反之串口报错，则JTAG出错。</p>
+<p>JTAG可以看电脑是否运行。</p>
+<h3 id="习题"><a href="#习题" class="headerlink" title="习题"></a>习题</h3><ol>
+<li><p>简述两种计算机结构</p>
+<p>冯诺依曼结构，程序和数据是一条通道在存储器和cpu之前传送，哈佛结构是程序和数据分别有一条单独的通道。</p>
+</li>
+<li><p>简述RISC</p>
+</li>
+</ol>
+<p>​    Load / Store结构的指令。</p>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>祥瑞</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="https://lxiangrui.top/2022/03/01/%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%BA%94%E7%94%A8/">https://lxiangrui.top/2022/03/01/%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%BA%94%E7%94%A8/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>Do you believe in <strong>DESTINY</strong>?</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/linux/"># linux</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2022/03/03/%E6%B1%87%E7%BC%96%E6%8C%87%E4%BB%A4%E5%88%9D%E7%BA%A7-arm/">汇编初级-arm</a>
+            
+            
+            <a class="next" rel="next" href="/2022/02/24/%E6%97%A5%E5%B8%B8%E8%B8%A9%E5%9D%91-pip3/">日常踩坑-pip3</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+
+
+    <section id="comments" class="comments">
+      <style>
+        .comments{margin:30px;padding:10px;background:#fff}
+        @media screen and (max-width:800px){.comments{margin:auto;padding:10px;background:#fff}}
+      </style>
+      <div class="valine_comment"></div>
+<!--载入js，在</body>之前插入即可-->
+<!--Leancloud 操作库:-->
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<!--Valine 的核心代码库-->
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+  new Valine({
+      el: '.valine_comment',
+      app_id: 'WpWRvE9j5cDsxGwNkVvHbBis-gzGzoHsz',
+      app_key: '2UtG1qn9ScHNtcxbU22GyfbN',
+      placeholder: '这里留言。。',
+      notify: 'true',
+      verify: 'true',
+    });
+</script>
+    </section>
+
+
+
+            </div>
+            <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>
+            © 祥瑞 </a>
+            <!--© 祥瑞 | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a>-->
+
+            
+                <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<span class="site-uv">
+    🙂总访客量:
+    <i class="busuanzi-value" id="busuanzi_value_site_uv"></i>
+</span>&nbsp;
+
+
+<span class="site-pv">
+    👀总访问量:
+    <i class="busuanzi-value" id="busuanzi_value_site_pv"></i>
+</span>&nbsp;
+
+
+
+
+
+    <span >
+        🧧TIME:
+       
+    </span>&nbsp;
+    
+              
+
+              
+              2000 - 2022
+        </span>
+    </div>
+</footer>
+
+    </div>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/tororo.model.json"},"display":{"position":"right","width":300,"height":325},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+
+</html>
+<script>
+!
+function() {
+    function n(n, e, t) {
+        return n.getAttribute(e) || t
+    }
+    function e(n) {
+        return document.getElementsByTagName(n)
+    }
+    function t() {
+        var t = e("script"),
+        o = t.length,
+        i = t[o - 1];
+        return {
+					   l: o,
+			z: n(i, "zIndex", -1), //置于主页面背后
+			o: n(i, "opacity", 20), //线条透明度
+			c: n(i, "color", "245,201,31"), //线条颜色
+			n: n(i, "count", 100) //线条数量z
+
+        }
+    }
+    function o() {
+        a = m.width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth,
+        c = m.height = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight
+    }
+    function i() {
+        r.clearRect(0, 0, a, c);
+        var n, e, t, o, m, l;
+        s.forEach(function(i, x) {
+            for (i.x += i.xa, i.y += i.ya, i.xa *= i.x > a || i.x < 0 ? -1 : 1, i.ya *= i.y > c || i.y < 0 ? -1 : 1, r.fillRect(i.x - .5, i.y - .5, 1, 1), e = x + 1; e < u.length; e++) n = u[e],
+            null !== n.x && null !== n.y && (o = i.x - n.x, m = i.y - n.y, l = o * o + m * m, l < n.max && (n === y && l >= n.max / 2 && (i.x -= .03 * o, i.y -= .03 * m), t = (n.max - l) / n.max, r.beginPath(), r.lineWidth = t / 2, r.strokeStyle = "rgba(" + d.c + "," + (t + .2) + ")", r.moveTo(i.x, i.y), r.lineTo(n.x, n.y), r.stroke()))
+        }),
+        x(i)
+    }
+    var a, c, u, m = document.createElement("canvas"),
+    d = t(),
+    l = "c_n" + d.l,
+    r = m.getContext("2d"),
+    x = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame ||
+    function(n) {
+        window.setTimeout(n, 1e3 / 45)
+    },
+    w = Math.random,
+    y = {
+        x: null,
+        y: null,
+        max: 2e4
+    };
+    m.id = l,
+    m.style.cssText = "position:fixed;top:0;left:0;z-index:" + d.z + ";opacity:" + d.o,
+    e("body")[0].appendChild(m),
+    o(),
+    window.onresize = o,
+    window.onmousemove = function(n) {
+        n = n || window.event,
+        y.x = n.clientX,
+        y.y = n.clientY
+    },
+    window.onmouseout = function() {
+        y.x = null,
+        y.y = null
+    };
+    for (var s = [], f = 0; d.n > f; f++) {
+        var h = w() * a,
+        g = w() * c,
+        v = 2 * w() - 1,
+        p = 2 * w() - 1;
+        s.push({
+            x: h,
+            y: g,
+            xa: v,
+            ya: p,
+            max: 6e3
+        })
+    }
+    u = s.concat([y]),
+    setTimeout(function() {
+        i()
+    },
+    100)
+} ();
+</script>
+
+

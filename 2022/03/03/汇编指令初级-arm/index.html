@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<!-- 
+    <meta name="author" content="祥瑞">
+ -->
+
+
+
+
+<title>汇编初级-arm | 祥瑞&#39;s blog</title>
+
+
+
+    <link rel="icon" href="/bitbug_favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+    <script>
+        // this function is used to check current theme before page loaded.
+        (() => {
+            const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
+            const isDark = currentTheme === 'dark';
+            const pagebody = document.getElementsByTagName('body')[0]
+            if (isDark) {
+                pagebody.classList.add('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Dark"
+            } else {
+                pagebody.classList.remove('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Light"
+            }
+        })();
+    </script>
+
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">李祥瑞&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">李祥瑞&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+            <div class="main">
+                <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">汇编初级-arm</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">祥瑞</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">March 3, 2022&nbsp;&nbsp;6:49:40</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/ARM%E5%BC%80%E5%8F%91/">ARM开发</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h1 id="ARMv7-A-32bit"><a href="#ARMv7-A-32bit" class="headerlink" title="ARMv7-A (32bit)"></a>ARMv7-A (32bit)</h1><h1 id="源头"><a href="#源头" class="headerlink" title="源头"></a>源头</h1><p>ARM Cortex-A 系列 ARMv7-A 程序员指南  // <a target="_blank" rel="noopener" href="https://developer.arm.com/documentation/den0013/d">https://developer.arm.com/documentation/den0013/d</a>    </p>
+<p> Armv7 和更早的 Arm 架构参考指南的指令集汇编指南 //<a target="_blank" rel="noopener" href="https://developer.arm.com/documentation/100076/0200/a32-t32-instruction-set-reference/a32-and-t32-instructions">https://developer.arm.com/documentation/100076/0200/a32-t32-instruction-set-reference/a32-and-t32-instructions</a>     </p>
+<p>基本汇编语言程序设计  //<a target="_blank" rel="noopener" href="https://developer.arm.com/documentation/dui0040/d/Basic-Assembly-Language-Programming">https://developer.arm.com/documentation/dui0040/d/Basic-Assembly-Language-Programming</a>     </p>
+<h1 id="ARM工作模式以及寄存器框图"><a href="#ARM工作模式以及寄存器框图" class="headerlink" title="ARM工作模式以及寄存器框图"></a>ARM工作模式以及寄存器框图</h1><p><img src="https://s4.ax1x.com/2022/03/01/bMXPDe.png" alt="bMXPDe.png"></p>
+<p>三角形代表这个模式下独有的寄存器。</p>
+<p>其他模式相对与User模式，r13和r14都发生了变化，原因是：    User模式下的r13和r14是SP寄存器和LR寄存器，而SP堆栈与函数调用等挂钩，最好不要用，但还是可以用，而r14连接寄存器，它和语句执行有关，一般不去主动使用它，所以其他模式相对与User模式，r13和r14都发生了变化。</p>
+<p>FIQ特有的寄存器比较多，r8_fiq到r14_fiq，原因是：    可以空间换时间</p>
+<p>例如User模式下，寄存器有值，然后中断触发，CPU切换到FIQ模式，保持User模式下的寄存器的值到FIQ模式下的特有的寄存器（r8_fiq到r14_fiq），这样当其他模式下，就可以使用r0到r12等寄存器，而当中断执行完后，r8_fiq到r14_fiq等寄存器可以返回到r0到r12等寄存器中。</p>
+<p>话说使空间换时间，是那cpu里面的寄存器空间换了什么时间哦？换了时间就是说速度变快了，也就是说还有一种方法，只是时间比较慢，哪种方法是什么哦？</p>
+<p>问：FIQ模式特有的寄存器(r8_fiq到r14_fiq)是切换到其他模式时用来保存当前寄存器（r0到r12）下的值，而设计的哈？这种模式可以空间换时间，空间是寄存器多了，换了时间就是说速度变快了，也就是说还有一种方法，只是时间比较慢，这另外一种方法就是只把通用寄存器的值写入内存单元（应该是内存哈）里面，然后中断完成后，再从内存里面取出来，这种就速度比较慢哦。</p>
+<p>简化一下就是说：<strong>FIQ模式特有的寄存器设计出来是为了加快速度，如果没有设计这玩意，我猜在切换cpu模式时，当前寄存器的值就要写入内存单元里面，然后模式切换回来后，再把值从内存移动到寄存器里面，这种方式就要比寄存器到寄存器要慢哦，所以是空间换时间哦？</strong></p>
+<p>答：是的</p>
+<p><img src="https://s4.ax1x.com/2022/03/01/bMXe8P.png" alt="bMXe8P.png"></p>
+<p><img src="https://s1.ax1x.com/2022/03/07/brLVtH.png" alt="brLVtH.png"></p>
+<h3 id="CPSR寄存器"><a href="#CPSR寄存器" class="headerlink" title="CPSR寄存器"></a>CPSR寄存器</h3><p><img src="https://s4.ax1x.com/2022/03/04/bNVGD0.png" alt="bNVGD0.png"></p>
+<h3 id="一个简单的汇编程序"><a href="#一个简单的汇编程序" class="headerlink" title="一个简单的汇编程序"></a>一个简单的汇编程序</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">	.text		@代码段的开始</span><br><span class="line">	b   main 	@调用 main函数</span><br><span class="line">	nop			@占位置用的，没有特殊含义</span><br><span class="line">	b	back</span><br><span class="line">	nop</span><br><span class="line">	nop</span><br><span class="line">	nop</span><br><span class="line">	nop</span><br><span class="line">main: 			@main函数的内容</span><br><span class="line">    mov r0,#2	 @对寄存器r0赋值为2，其中的#，可使将源操作数看作立即数，而不是地址</span><br><span class="line">back:</span><br><span class="line">	mov r1,#2</span><br><span class="line">	</span><br><span class="line">	end:</span><br><span class="line">	b	end		@自己调自己，构成了一个循环，可使程序不会执行到其他位置</span><br><span class="line">		</span><br><span class="line">	.end</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>通过CPSR寄存器切换arm工作模式    中断模式-&gt;user模式-&gt;中断模式</p>
+<p>CPSR寄存器的传送指令和普通寄存器不一样，普通寄存器的是mov，CPSR传入通用寄存器是msr，传出通用寄存器是mrs。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">	.text</span><br><span class="line">	b   main </span><br><span class="line">	nop	</span><br><span class="line">	b	c_mode</span><br><span class="line">	nop</span><br><span class="line">	nop</span><br><span class="line">	nop</span><br><span class="line">	nop</span><br><span class="line">	nop</span><br><span class="line">	nop</span><br><span class="line">	nop</span><br><span class="line">main: </span><br><span class="line">    mov r0,#2</span><br><span class="line">	mrs r2,cpsr	</span><br><span class="line">c_mode:</span><br><span class="line">	msr cpsr,#0x10	@#代表数字，与其他字符区分，0x10对应处理器模式为是USER中断模式</span><br><span class="line">@	msr cpsr,#0x12   @想使用cpsr寄存器将处理器模式切换为SVC模式，但是编译报错，原因是没有这个权限（supervisor）</span><br><span class="line">	swi 3 	@以中断的方式，进入的SVC模式</span><br><span class="line">	end:</span><br><span class="line">	b	end</span><br><span class="line">		</span><br><span class="line">	.end</span><br></pre></td></tr></table></figure>
+
+
+
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/bH7PiQ"><img src="https://s1.ax1x.com/2022/03/12/bH7PiQ.png" alt="bH7PiQ.png"></a></p>
+<p>答：</p>
+<ol>
+<li>USER模式，非特权模式，大部分任务执行在这个模式；</li>
+<li>ARM一共有37个寄存器；</li>
+<li>PC（r15）      LR(r14)；</li>
+<li>r13 (SP)          他们是三个特殊的寄存器，中文名称是 程序计数器、连接寄存器、堆栈寄存器</li>
+<li>Thumb是16位的，ARM是32位的，前者是后者的压缩，可以省空间。</li>
+<li>低5位</li>
+</ol>
+<h3 id="关于Thumb和ARM指令："><a href="#关于Thumb和ARM指令：" class="headerlink" title="关于Thumb和ARM指令："></a>关于Thumb和ARM指令：</h3><p>Thumb指令可以看做是ARM指令压缩形式的子集，是针对代码密度【1】的问题而提出的，它具有16为的代码密度。Thumb不是一个完整的体系结构，不能指望处理程序只执行Thumb指令而不支持ARM指令集。因此，Thumb指令只需要支持通用功能，必要时，可借助完善的ARM指令集，例如：所有异常自动进入ARM状态。</p>
+<h3 id="为什么Supervisor模式又被称为SVC模"><a href="#为什么Supervisor模式又被称为SVC模" class="headerlink" title="为什么Supervisor模式又被称为SVC模"></a>为什么Supervisor模式又被称为SVC模</h3><p>ARM SVC（Supervisor Calls）</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/bHqpdK"><img src="https://s1.ax1x.com/2022/03/12/bHqpdK.png" alt="bHqpdK.png"></a></p>
+<p>PC的值，是程序准备执行（下一条）的指令的地址</p>
+<h1 id="汇编初级指令"><a href="#汇编初级指令" class="headerlink" title="汇编初级指令"></a>汇编初级指令</h1><h2 id="搬移指令（传送指令）"><a href="#搬移指令（传送指令）" class="headerlink" title="搬移指令（传送指令）"></a>搬移指令（传送指令）</h2><table>
+<thead>
+<tr>
+<th>不报错</th>
+<th>报错</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>orr r0,#99</td>
+<td>orr r0,#999</td>
+</tr>
+<tr>
+<td>orr r0,#0xba</td>
+<td>orr r0,#0x1ba</td>
+</tr>
+</tbody></table>
+<p>感觉只要超过2位（不管什么进制），好像都会报错。</p>
+<p>报错信息为：“start.s(20): error: invalid constant (1ba) after fixup“ 无效产量</p>
+<p>规定立即数不能超过两位，咱也不知道为啥。</p>
+<p>LSL逻辑左移    LSR逻辑右移</p>
+<h4 id="指令是如何存储、解析的？"><a href="#指令是如何存储、解析的？" class="headerlink" title="指令是如何存储、解析的？"></a>指令是如何存储、解析的？</h4><p>机器码会存储在FLASH中，通过总线和cpu（寄存器，运算单元，控制器），再到内存。</p>
+<h4 id="指令的机器码"><a href="#指令的机器码" class="headerlink" title="指令的机器码"></a>指令的机器码</h4><p>32位机一条指令是32位（二进制）</p>
+<p>（所以就是这可能就是立即数不能太大的原因哦？）（这也说明了为什么两条相邻的语句内存地址相差了4，因为4*8=32，8bit代表一个字节）</p>
+<table>
+<thead>
+<tr>
+<th>机器码</th>
+<th>指令</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0x01A03001</td>
+<td>moveq r3,r1</td>
+</tr>
+<tr>
+<td>0xE1A03001</td>
+<td>mov r3,r1</td>
+</tr>
+<tr>
+<td>0xE0832001</td>
+<td>add r2,r3,r1</td>
+</tr>
+</tbody></table>
+<p>24位到21位是    操作数    例如    moveq就是“1101”</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/bLP7B8"><img src="https://s1.ax1x.com/2022/03/13/bLP7B8.png" alt="bLP7B8.png"></a></p>
+<h2 id="伪指令-ldr"><a href="#伪指令-ldr" class="headerlink" title="伪指令    ldr"></a>伪指令    ldr</h2><p>ldr r4,0x3FFFF</p>
+<p>可以将比较大的立即数转移到寄存器中</p>
+<h2 id="跳转指令"><a href="#跳转指令" class="headerlink" title="跳转指令"></a>跳转指令</h2><p>b指令，值得注意的是跳转指令和函数位置，必须在+-32M内部。</p>
+<p>具体原因是：adhsuafahf</p>
+<p>b    3main    跳转到标号为main地代码出（只能短跳转32M）</p>
+<p>bl    func    跳转函数func，并保存下一条要执行的指令位置到l寄存器，当跳转代码结束后，用mov pc,lr</p>
+<p>beq    addr    相等时，跳转到地址addr处，相等（指CPSR寄存器中的Z条件码置位时，即为“1”时）</p>
+<p>bne    addr    不相等时</p>
+<h4 id="用汇编-实现C语言功能"><a href="#用汇编-实现C语言功能" class="headerlink" title="用汇编 实现C语言功能"></a>用汇编 实现C语言功能</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> ret=<span class="number">0</span>;</span><br><span class="line">    ret=func1(<span class="number">2</span>);   </span><br><span class="line">    <span class="keyword">while</span>(<span class="number">1</span>)&#123;&#125;	</span><br><span class="line">&#125;	</span><br><span class="line"><span class="function"><span class="keyword">int</span>  <span class="title">func1</span><span class="params">(<span class="keyword">int</span> a)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(a==<span class="number">2</span>)</span><br><span class="line">        <span class="keyword">return</span> func2(a);</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="keyword">return</span> func3(a);  </span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span>  <span class="title">func2</span><span class="params">(<span class="keyword">int</span> a)</span> </span></span><br><span class="line"><span class="function"></span>&#123;    </span><br><span class="line">    <span class="keyword">return</span> a+<span class="number">3</span>;</span><br><span class="line">&#125; </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">func3</span><span class="params">(<span class="keyword">int</span> a)</span></span></span><br><span class="line"><span class="function"></span>&#123;    </span><br><span class="line">    <span class="keyword">return</span> a<span class="number">-1</span>;</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">	.text</span><br><span class="line">	b   main </span><br><span class="line">	nop	</span><br><span class="line">	nop</span><br><span class="line">	nop</span><br><span class="line">	nop</span><br><span class="line">	nop</span><br><span class="line">	nop</span><br><span class="line">	nop</span><br><span class="line">	nop</span><br><span class="line">main: </span><br><span class="line">	mov r0,#0	@r0~ret	</span><br><span class="line">	mov r1,#2	@r1~a</span><br><span class="line">	bl func1</span><br><span class="line">	</span><br><span class="line">end_main:</span><br><span class="line">	b	end_main</span><br><span class="line">	</span><br><span class="line">func1:</span><br><span class="line">		mov r12,lr</span><br><span class="line">		cmp r1,#2	</span><br><span class="line">		bleq func2</span><br><span class="line">		blne func3</span><br><span class="line">end_func1:</span><br><span class="line">		mov pc,r12</span><br><span class="line"></span><br><span class="line">func2:</span><br><span class="line">	add r1,#3</span><br><span class="line">end_func2:</span><br><span class="line">	mov pc,lr</span><br><span class="line">	</span><br><span class="line">func3:</span><br><span class="line">	sub r1,#1</span><br><span class="line">end_func3:</span><br><span class="line">	mov	pc,lr</span><br><span class="line">	</span><br><span class="line">	.end</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="逻辑指令"><a href="#逻辑指令" class="headerlink" title="逻辑指令"></a>逻辑指令</h2><p>and    r0,r1,r2    r1和r2相与，然后把结果放入r0</p>
+<p>orr    类似</p>
+<p>bic    r0,r0,#0x0B    清除r0中的位 0、1、和 3   </p>
+<p>tst    r0,#0x20       测试第6位是否为0 ，为0则Z标志置1  </p>
+<p>cmp    r1,r0          将寄存器R1的值与寄存器R0的值相减，                      并根据结果设置CPSR的标志位</p>
+<h4 id="1-判断当前工作状态是否是ARM状态，是则切换到user-工作模式？"><a href="#1-判断当前工作状态是否是ARM状态，是则切换到user-工作模式？" class="headerlink" title="1.判断当前工作状态是否是ARM状态，是则切换到user 工作模式？"></a>1.判断当前工作状态是否是ARM状态，是则切换到user 工作模式？</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">	.text</span><br><span class="line">	b   main </span><br><span class="line">	nop	</span><br><span class="line">	nop</span><br><span class="line">	nop</span><br><span class="line">	nop</span><br><span class="line">	nop</span><br><span class="line">	nop</span><br><span class="line">	nop</span><br><span class="line">	nop</span><br><span class="line">main: </span><br><span class="line">	mrs	r0,cpsr</span><br><span class="line">	tst r0,#0x6</span><br><span class="line">	moveq r6,#0xAA</span><br><span class="line">	</span><br><span class="line">	bic	r0,#0x3</span><br><span class="line">	msr	cpsr,r0</span><br><span class="line">	</span><br><span class="line">	mrs	r0,cpsr</span><br><span class="line">	tst r0,#0x6</span><br><span class="line">	moveq r6,#0xAA</span><br><span class="line">	</span><br><span class="line">end_main:</span><br><span class="line">	b	end_main</span><br><span class="line">		</span><br><span class="line">	.end</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="2-使能中断和快速中断？"><a href="#2-使能中断和快速中断？" class="headerlink" title="2.使能中断和快速中断？"></a>2.使能中断和快速中断？</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mrs	r0,cpsr</span><br><span class="line">bic	r0,#0xc0	@1100 0000</span><br><span class="line">msr	cpsr,ro</span><br></pre></td></tr></table></figure>
+
+<h2 id="算术指令"><a href="#算术指令" class="headerlink" title="算术指令"></a>算术指令</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">add     r0,r1,r2       默认是不影响CPSR的标志位的</span><br><span class="line">add     r0,#1</span><br><span class="line"></span><br><span class="line">sub     r0,r1,#3      类似  r0= r1 - 3</span><br><span class="line">sub     r0,#1</span><br><span class="line"></span><br><span class="line">sub     r0,r1,r2,LSL#1    @先把r2里面的值，算术左移1位后，和r1相减，然后放入r0</span><br></pre></td></tr></table></figure>
+
+<p>例如</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mov	r0,#0x11	@0001 0001	-&gt;	0010 0010</span><br><span class="line">mov r1,#0x22	</span><br><span class="line">add r2,r1,r0,lsl#0x1</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h1 id="汇编指令高级"><a href="#汇编指令高级" class="headerlink" title="汇编指令高级"></a>汇编指令高级</h1><h3 id="Load-Store架构"><a href="#Load-Store架构" class="headerlink" title="Load/Store架构"></a>Load/Store架构</h3><p><a target="_blank" rel="noopener" href="https://imgtu.com/i/bXhNCQ"><img src="https://s1.ax1x.com/2022/03/14/bXhNCQ.png" alt="bXhNCQ.png"></a></p>
+<p>ldr（ld代表load，r代表寄存器）    是将存储器里面的数据载入寄存器</p>
+<p>str（st代表存储器，r代表寄存器）是将寄存器里面的值写入到存储器中</p>
+<h4 id="最简示例"><a href="#最简示例" class="headerlink" title="最简示例"></a>最简示例</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">	.text</span><br><span class="line">	b   main </span><br><span class="line">	nop	</span><br><span class="line">	nop</span><br><span class="line">	nop</span><br><span class="line">	nop</span><br><span class="line">	nop</span><br><span class="line">	nop</span><br><span class="line">	nop</span><br><span class="line">	nop</span><br><span class="line">main: </span><br><span class="line">	ldr r0,=buf			@保存源存储器的地址</span><br><span class="line">	ldr r1,=destBuf		@保存目的存储器的地址</span><br><span class="line">	ldr r3,[r0]			@将源存储器的数载入到寄存器</span><br><span class="line">	str r3,[r1]			@将寄存器里面的数写入到存储器</span><br><span class="line">end_main:</span><br><span class="line">	b	end_main</span><br><span class="line">	</span><br><span class="line">	.data</span><br><span class="line">buf:</span><br><span class="line">	.byte 0x00,0xAA,0xBB,0xcc</span><br><span class="line">						@定义了4个字节的数据，分别是这些</span><br><span class="line">destBuf:	</span><br><span class="line">	.space 4			@分配了4个字节的空间</span><br><span class="line">	</span><br><span class="line">	.end</span><br></pre></td></tr></table></figure>
+
+<p>就是先把目的和源的地址确定，然后把源存储器中的数据传入到寄存器，然后把寄存器的数据写入到存储器中。这样就实现了数据的转移。</p>
+<p>ldr r9，_irq    表示将_irq的机器码放入目的寄存器            （irq代表标号）</p>
+<p>ldr r9,=irq    表示伪指令，会将irq的地址传入目的寄存器</p>
+<p>例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">	.text</span><br><span class="line">	b   main </span><br><span class="line">	nop	</span><br><span class="line">	nop</span><br><span class="line">	nop</span><br><span class="line">	nop</span><br><span class="line">	nop</span><br><span class="line">	nop</span><br><span class="line">	nop</span><br><span class="line">	nop</span><br><span class="line">main: </span><br><span class="line">	ldr r0,end_main			</span><br><span class="line">	ldr r1,=end_main		</span><br><span class="line"></span><br><span class="line">end_main:</span><br><span class="line">	b	end_main</span><br><span class="line">	</span><br><span class="line">	.data</span><br><span class="line">buf:</span><br><span class="line">	.byte 0x00,0xAA,0xBB,0xcc</span><br><span class="line">destBuf:	</span><br><span class="line">	.space 4			@分配了4个字节的空间</span><br><span class="line">	</span><br><span class="line">	.end</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="前后索引"><a href="#前后索引" class="headerlink" title="前后索引"></a>前后索引</h4><p>前索引是        ldr    r0,[r1,#8]    先加地址，后放入值</p>
+<p>后索引是        ldr    r0,[r1],#8    先放入值，在加地址</p>
+<p>概念是会了，当时老师所说的应用情况还是不太清楚。</p>
+<h4 id="load-store实现数据拷贝"><a href="#load-store实现数据拷贝" class="headerlink" title="load_store实现数据拷贝"></a>load_store实现数据拷贝</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//用汇编实现C内容</span></span><br><span class="line">main()</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">int</span> i=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">const</span>  <span class="keyword">char</span> buf[]=&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125;;</span><br><span class="line">	<span class="keyword">char</span> destBuf[<span class="number">8</span>];</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>,i&lt;<span class="number">3</span>,i++)</span><br><span class="line">	&#123;</span><br><span class="line">		destBuf[i] = buf[i];</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">	.text</span><br><span class="line">	b   main </span><br><span class="line">	nop	</span><br><span class="line">	nop</span><br><span class="line">	nop</span><br><span class="line">	nop</span><br><span class="line">	nop</span><br><span class="line">	nop</span><br><span class="line">	nop</span><br><span class="line">	nop</span><br><span class="line">main: </span><br><span class="line">	mov	r0,#0	@r0~i</span><br><span class="line">	ldr	r1,=buf</span><br><span class="line">	ldr	r2,=destbuf</span><br><span class="line">	</span><br><span class="line">loop:</span><br><span class="line">	cmp	r0,#7</span><br><span class="line">	beq end_main</span><br><span class="line">	ldrb r3,[r1],#1</span><br><span class="line">	strb r3,[r2],#1</span><br><span class="line">	add r0,#1</span><br><span class="line">	</span><br><span class="line">	b	loop</span><br><span class="line"></span><br><span class="line">end_main:</span><br><span class="line">	b	end_main</span><br><span class="line">buf:</span><br><span class="line">	.byte 5,2,0,1,3,1,4			@使用byte的原因是char类型的元素，大小为一个字节，值得一提的是这里的strb指令只能操作1个字								   @节，strb，或者2个字节，strh，或者4个字节str。</span><br><span class="line">	</span><br><span class="line">	.data</span><br><span class="line">destbuf:</span><br><span class="line">	.space 8</span><br><span class="line">	</span><br><span class="line">	.end</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="GNU汇编伪指令"><a href="#GNU汇编伪指令" class="headerlink" title="GNU汇编伪指令"></a>GNU汇编伪指令</h3><p>设计目的，汇编语言将帮助我们去实现一些功能，帮助我们理解。</p>
+<p>相当于调用了系统的汇编函数，虽然看起来就只有一句指令，但实际上使用了多条语句。</p>
+<p>看起来是一条指令，但编译成机器码后，可能会有多条机器码。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">.section							//定义内存段</span><br><span class="line">.text								//定义符开始的代码编译到代码段		</span><br><span class="line">.data								//数据段</span><br><span class="line">.if	.else .endif					 //条件编译</span><br><span class="line">.end 								//文件结束</span><br><span class="line">.byte	0x11,&#x27;a&#x27;,0					 //定义char类型的数组（.byte 就是一个字节）</span><br><span class="line">.word	0x12,0x121					 //定义int类型的数组（.word 是4个字节）</span><br><span class="line">.quad	0x3FA0						//定义8字节的空间（.quad 代表8个字节）</span><br><span class="line">.string	&quot;DASDAS\0&quot;					 //定义字符串</span><br><span class="line">.align 4							//4=2^2	字节对齐</span><br><span class="line"></span><br><span class="line">ldr	r0,=0xE00221					 //载入最大常数到寄存器中，如果是一般的汇编代码，一条指令对应一条机器码，而一条机器码是不能存放很大的数据的。</span><br><span class="line">.equ	GPGASD,0X1212				 //定义宏</span><br><span class="line">.global	_start						//声名_start为全局符号</span><br></pre></td></tr></table></figure>
+
+<h4 id="批量操作指令"><a href="#批量操作指令" class="headerlink" title="批量操作指令"></a>批量操作指令</h4><p>之前做过，数据转移的操作，但是之前那个只是把存储器里面的数据只能放在一个寄存器里面，需要反复使用一个寄存器，不太方便，而这个指令可以同时使用多个寄存器批量操作。</p>
+<h4 id="堆栈操作指令"><a href="#堆栈操作指令" class="headerlink" title="堆栈操作指令"></a>堆栈操作指令</h4><p>stmfd    sp!,{r0-r12,lr}</p>
+<p>ldmfd    sp!,{r0-r12,pc}^</p>
+<h4 id="软中断指令"><a href="#软中断指令" class="headerlink" title="软中断指令"></a>软中断指令</h4><p><img src="E:\Blog\source_posts\image-20220319211106285.png" alt="image-20220319211106285"></p>
+<p>swi 0x22</p>
+<p>产生软中断，调用操作系统编号为02的系统例程</p>
+<p>异常向量表用的地址是从0开始的一段</p>
+<h1 id="异常处理"><a href="#异常处理" class="headerlink" title="异常处理"></a>异常处理</h1><h2 id="异常向量表"><a href="#异常向量表" class="headerlink" title="异常向量表"></a>异常向量表</h2><p><a target="_blank" rel="noopener" href="https://imgtu.com/i/qEKAKO"><img src="https://s1.ax1x.com/2022/03/19/qEKAKO.png" alt="qEKAKO.png"></a></p>
+<p>如果要切换到，USER System模式下，是通过CPSR寄存器修改而边的。</p>
+<h5 id="异常向量表和ARM处理器的工作模式是对应的"><a href="#异常向量表和ARM处理器的工作模式是对应的" class="headerlink" title="异常向量表和ARM处理器的工作模式是对应的"></a>异常向量表和ARM处理器的工作模式是对应的</h5><p>进入那一个异常，就会进入这种工作模式。</p>
+<h2 id="软中断最简"><a href="#软中断最简" class="headerlink" title="软中断最简"></a>软中断最简</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">	.text									@定义代码段</span><br><span class="line">	b   main  	@0x00 reset</span><br><span class="line">	nop       	@0x04 undef         </span><br><span class="line">	b hander_swi	@0x08 soft irq</span><br><span class="line">	nop       	@0x0c prefecth abort</span><br><span class="line">	nop	      	@0x10 data abort</span><br><span class="line">	nop		@0x14 reserved</span><br><span class="line">	nop		@0x18 irq</span><br><span class="line">	nop		@0x1C fiq</span><br><span class="line">											@异常向量表</span><br><span class="line">hander_swi:</span><br><span class="line">	stmfd sp!,&#123;r0-r12,lr&#125;					  @栈保存现场，包括了通用寄存器，和lr寄存器（存放了如果没有发生中断时，该执行的代码地址）</span><br><span class="line">	ldr r0 ,=0x520							 @模拟寄存器变化，破坏现场</span><br><span class="line">	</span><br><span class="line">hander_swi_end:								 </span><br><span class="line">	ldmfd sp!,&#123;r0-r12,pc&#125;					 @还原现场，包括通用寄存器和pc寄存器（下一页代码执行的地址）</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">main: </span><br><span class="line">	ldr sp,=stack_top						@给一个地址，作为栈顶</span><br><span class="line">	mov r0 , #1</span><br><span class="line">	mov r1 , #1</span><br><span class="line">	mov r2 , #1							    @构成现场</span><br><span class="line">	swi 0x1;							   @软中断</span><br><span class="line">	mov r3 , #1								</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">end_main:</span><br><span class="line">	b	end_main</span><br><span class="line">	</span><br><span class="line">	.data								@代码段</span><br><span class="line">	</span><br><span class="line">	.space 15*4</span><br><span class="line">stack_top:								@因为栈是有着栈顶不变，元素线下生长的规定，所以将栈顶放到了高位的地址位</span><br><span class="line">	</span><br><span class="line">	.end</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="现在的疑问："><a href="#现在的疑问：" class="headerlink" title="现在的疑问："></a>现在的疑问：</h4><p>​    那么同等级的中断，比如我有两个软中断，我该如何设计呢？因为异常向量表只能方一个跳转指令。</p>
+<h4 id="猜测："><a href="#猜测：" class="headerlink" title="猜测："></a>猜测：</h4><p>​    SWI  0x1和SWI  0x2，它们有一个标量的不同，所以我猜是，异常向量表中还是只放了一个跳转指令，当时跳转后没有直接执行目标函数，而是先执行通过标号判断是那个标号的中断触发，在去执行中断函数。</p>
+<h2 id="软中断完整"><a href="#软中断完整" class="headerlink" title="软中断完整"></a>软中断完整</h2><p>​    跟我猜想的差不多，实际运行原理是：</p>
+<p>​        中断标号其实是存在，SWI指令编译成的机器码中的，其中中断标号是低24位，所以我们只要找到这个指令的地址，然后用LDR指令将，指令地址上的机器码传入寄存器中,然后再将高8位置0,然后通过cmp，beq指令就可以判断要执行的标号具体哪一个了。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">	.text</span><br><span class="line">	b   main </span><br><span class="line">	nop			</span><br><span class="line">	nop			</span><br><span class="line">	b hander_swi		@SWI</span><br><span class="line">	nop</span><br><span class="line">	nop</span><br><span class="line">	nop</span><br><span class="line">	nop</span><br><span class="line">	nop</span><br><span class="line">	</span><br><span class="line">hander_swi:</span><br><span class="line">	stmfd sp!,&#123;r0-r12,lr&#125;	</span><br><span class="line">	ldr r0 , [lr,#-4]				@lr是在执行中断时，将原本不发生中断时，要执行的指令的地址，然后将它减</span><br><span class="line">								   @4这样就可以得到，软中断指令的地址，再将它的机器码传入寄存器，就可以得									   @到，SWI中断标号得信息了</span><br><span class="line">	bic r0 ,#0xFF000000				 @将高8位置0，因为swi指令的低24位才是标号的信息，高八位置操作码</span><br><span class="line">	cmp r0,#0x1						@判断是否为SWI 0x1</span><br><span class="line">	beq swi_1</span><br><span class="line">	cmp r0,#0x2						@判断是否为SWI 0x2</span><br><span class="line">	beq swi_2</span><br><span class="line">hander_swi_end:</span><br><span class="line">	ldmfd sp!,&#123;r0-r12,pc&#125;</span><br><span class="line">	</span><br><span class="line">swi_1:</span><br><span class="line">		ldr r0,=0x520</span><br><span class="line">swi_1_end:</span><br><span class="line">	b hander_swi_end</span><br><span class="line">		</span><br><span class="line">swi_2:</span><br><span class="line">		ldr r0,=0x1314</span><br><span class="line">swi_2_end:		</span><br><span class="line">	b hander_swi_end</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">main: </span><br><span class="line">	ldr sp,=stack_top</span><br><span class="line">	mov r0 , #1</span><br><span class="line">	mov r1 , #1</span><br><span class="line">	mov r2 , #1</span><br><span class="line">	swi 0x1;</span><br><span class="line">	mov r3 , #1</span><br><span class="line">	swi 0x2;</span><br><span class="line">	</span><br><span class="line">end_main:</span><br><span class="line">	b	end_main</span><br><span class="line">	</span><br><span class="line">	.data</span><br><span class="line">	</span><br><span class="line">	.space 16*4</span><br><span class="line">stack_top:</span><br><span class="line">	</span><br><span class="line">	.end</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="contex-a-或者-contex-8的异常中断向量表"><a href="#contex-a-或者-contex-8的异常中断向量表" class="headerlink" title="contex-a 或者 contex-8的异常中断向量表"></a>contex-a 或者 contex-8的异常中断向量表</h4><p><a target="_blank" rel="noopener" href="https://imgtu.com/i/qVMDGn"><img src="https://s1.ax1x.com/2022/03/19/qVMDGn.png" alt="qVMDGn.png"></a></p>
+<p>contex-a 或者 contex-8的异常中断向量表和ARM-7的好不太一样</p>
+<p>1、异常向量表的跳转没有用 “b”指令，而是使用的伪指令的ldr pc,“对应跳转的地址”（或者名称），这样就可以突破32M的范围（32M的原因是？）</p>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>祥瑞</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="https://lxiangrui.top/2022/03/03/%E6%B1%87%E7%BC%96%E6%8C%87%E4%BB%A4%E5%88%9D%E7%BA%A7-arm/">https://lxiangrui.top/2022/03/03/%E6%B1%87%E7%BC%96%E6%8C%87%E4%BB%A4%E5%88%9D%E7%BA%A7-arm/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>Do you believe in <strong>DESTINY</strong>?</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/%E7%AC%94%E8%AE%B0/"># 笔记</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2022/03/20/ARMV8%E2%80%94-64bit-%E6%B1%87%E7%BC%96/"></a>
+            
+            
+            <a class="next" rel="next" href="/2022/03/01/%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%BA%94%E7%94%A8/">嵌入式系统设计与应用</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+
+
+    <section id="comments" class="comments">
+      <style>
+        .comments{margin:30px;padding:10px;background:#fff}
+        @media screen and (max-width:800px){.comments{margin:auto;padding:10px;background:#fff}}
+      </style>
+      <div class="valine_comment"></div>
+<!--载入js，在</body>之前插入即可-->
+<!--Leancloud 操作库:-->
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<!--Valine 的核心代码库-->
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+  new Valine({
+      el: '.valine_comment',
+      app_id: 'WpWRvE9j5cDsxGwNkVvHbBis-gzGzoHsz',
+      app_key: '2UtG1qn9ScHNtcxbU22GyfbN',
+      placeholder: '这里留言。。',
+      notify: 'true',
+      verify: 'true',
+    });
+</script>
+    </section>
+
+
+
+            </div>
+            <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>
+            © 祥瑞 </a>
+            <!--© 祥瑞 | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a>-->
+
+            
+                <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<span class="site-uv">
+    🙂总访客量:
+    <i class="busuanzi-value" id="busuanzi_value_site_uv"></i>
+</span>&nbsp;
+
+
+<span class="site-pv">
+    👀总访问量:
+    <i class="busuanzi-value" id="busuanzi_value_site_pv"></i>
+</span>&nbsp;
+
+
+
+
+
+    <span >
+        🧧TIME:
+       
+    </span>&nbsp;
+    
+              
+
+              
+              2000 - 2022
+        </span>
+    </div>
+</footer>
+
+    </div>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/tororo.model.json"},"display":{"position":"right","width":300,"height":325},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+
+</html>
+<script>
+!
+function() {
+    function n(n, e, t) {
+        return n.getAttribute(e) || t
+    }
+    function e(n) {
+        return document.getElementsByTagName(n)
+    }
+    function t() {
+        var t = e("script"),
+        o = t.length,
+        i = t[o - 1];
+        return {
+					   l: o,
+			z: n(i, "zIndex", -1), //置于主页面背后
+			o: n(i, "opacity", 20), //线条透明度
+			c: n(i, "color", "245,201,31"), //线条颜色
+			n: n(i, "count", 100) //线条数量z
+
+        }
+    }
+    function o() {
+        a = m.width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth,
+        c = m.height = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight
+    }
+    function i() {
+        r.clearRect(0, 0, a, c);
+        var n, e, t, o, m, l;
+        s.forEach(function(i, x) {
+            for (i.x += i.xa, i.y += i.ya, i.xa *= i.x > a || i.x < 0 ? -1 : 1, i.ya *= i.y > c || i.y < 0 ? -1 : 1, r.fillRect(i.x - .5, i.y - .5, 1, 1), e = x + 1; e < u.length; e++) n = u[e],
+            null !== n.x && null !== n.y && (o = i.x - n.x, m = i.y - n.y, l = o * o + m * m, l < n.max && (n === y && l >= n.max / 2 && (i.x -= .03 * o, i.y -= .03 * m), t = (n.max - l) / n.max, r.beginPath(), r.lineWidth = t / 2, r.strokeStyle = "rgba(" + d.c + "," + (t + .2) + ")", r.moveTo(i.x, i.y), r.lineTo(n.x, n.y), r.stroke()))
+        }),
+        x(i)
+    }
+    var a, c, u, m = document.createElement("canvas"),
+    d = t(),
+    l = "c_n" + d.l,
+    r = m.getContext("2d"),
+    x = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame ||
+    function(n) {
+        window.setTimeout(n, 1e3 / 45)
+    },
+    w = Math.random,
+    y = {
+        x: null,
+        y: null,
+        max: 2e4
+    };
+    m.id = l,
+    m.style.cssText = "position:fixed;top:0;left:0;z-index:" + d.z + ";opacity:" + d.o,
+    e("body")[0].appendChild(m),
+    o(),
+    window.onresize = o,
+    window.onmousemove = function(n) {
+        n = n || window.event,
+        y.x = n.clientX,
+        y.y = n.clientY
+    },
+    window.onmouseout = function() {
+        y.x = null,
+        y.y = null
+    };
+    for (var s = [], f = 0; d.n > f; f++) {
+        var h = w() * a,
+        g = w() * c,
+        v = 2 * w() - 1,
+        p = 2 * w() - 1;
+        s.push({
+            x: h,
+            y: g,
+            xa: v,
+            ya: p,
+            max: 6e3
+        })
+    }
+    u = s.concat([y]),
+    setTimeout(function() {
+        i()
+    },
+    100)
+} ();
+</script>
+
+

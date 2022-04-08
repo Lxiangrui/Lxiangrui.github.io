@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<!-- 
+    <meta name="author" content="祥瑞">
+ -->
+
+
+
+
+<title>祥瑞&#39;s blog</title>
+
+
+
+    <link rel="icon" href="/bitbug_favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+    <script>
+        // this function is used to check current theme before page loaded.
+        (() => {
+            const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
+            const isDark = currentTheme === 'dark';
+            const pagebody = document.getElementsByTagName('body')[0]
+            if (isDark) {
+                pagebody.classList.add('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Dark"
+            } else {
+                pagebody.classList.remove('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Light"
+            }
+        })();
+    </script>
+
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">李祥瑞&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">李祥瑞&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+            <div class="main">
+                <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title"></h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">祥瑞</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">March 20, 2022&nbsp;&nbsp;14:56:54</a>
+                        </span>
+                    
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h2 id="title-ARMV8—-64bit-汇编"><a href="#title-ARMV8—-64bit-汇编" class="headerlink" title="title: ARMV8—-64bit-汇编"></a>title: ARMV8—-64bit-汇编</h2><p>date: 2022-03-20 14:56:54<br>tags: 记录<br>categories: ARM汇编</p>
+<p>指令集手册      <a target="_blank" rel="noopener" href="https://developer.arm.com/documentation/ddi0596/2021-09/Base-Instructions">https://developer.arm.com/documentation/ddi0596/2021-09/Base-Instructions</a></p>
+<h2 id="ARMV8发明的原因："><a href="#ARMV8发明的原因：" class="headerlink" title="ARMV8发明的原因："></a>ARMV8发明的原因：</h2><ol>
+<li><p>三大动因 //应对<strong>大内存</strong> <strong>虚拟化</strong>和安全的需求        //大内存(Large Memory): 突破32位机的4G空间限制  -&gt; 硬件越来越强，软件越来越复杂         //虚拟化(Virtualization): 隔离 高效  -&gt; 虚拟机               //安全(Security):  物理隔离  -&gt; 交易支付，隐私数据安全 </p>
+<p>还有pc端的涉足，比如新款的苹果笔记本都是arm架构</p>
+</li>
+<li><p>三大创新  //执行状态,异常级别，和安全模式 </p>
+</li>
+<li><p>执行状态  //AArch64 和 AArch32 两种可切换           //AArch64: 新增A64(ARM 64bit)指令集 -&gt; 大内存(突破4G限制)         //AArch32: 可用以前A32(ARM 32bit)指令集和 T32(Thumb 32bit)指令集 -&gt; 向前兼容 </p>
+</li>
+<li><p>异常级别  //EL0(应用) &lt; EL1(OS) &lt; EL2(虚拟化) &lt; EL3(安全固件) -&gt; 替代啰嗦的工作模式 </p>
+</li>
+<li><p>安全模式  //分为正常世界 和 安全世界  -&gt; 真正的安全(物理隔离,如支付场景)   </p>
+</li>
+</ol>
+<h3 id="多核处理器Z"><a href="#多核处理器Z" class="headerlink" title="多核处理器Z"></a>多核处理器Z</h3><p><img src="https://i.niupic.com/images/2022/03/21/9WQN.png"></p>
+<h3 id="内存管理单元MMU"><a href="#内存管理单元MMU" class="headerlink" title="内存管理单元MMU"></a>内存管理单元MMU</h3><p><img src="https://i.niupic.com/images/2022/03/21/9WQQ.png"></p>
+<p>内存管理单元使得上层应用用的内存空间映射到物理空间。</p>
+<h2 id="ARMv8寄存器框架"><a href="#ARMv8寄存器框架" class="headerlink" title="ARMv8寄存器框架"></a>ARMv8寄存器框架</h2><p><img src="https://i.niupic.com/images/2022/03/21/9WQR.png"></p>
+<p>现在的v8是32位的所以寄存器是64bit</p>
+<h3 id="31个通用寄存器"><a href="#31个通用寄存器" class="headerlink" title="31个通用寄存器"></a>31个通用寄存器</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">	X/W  <span class="comment">//X是64位  W是低32位 ARMv7 中使用Bank来减少异常的延迟 //然而使用的寄存器都不到一半</span></span><br><span class="line"></span><br><span class="line">​	AArch64 执行状态	具有 <span class="number">31</span> × <span class="number">64</span> 位通用寄存器 <span class="comment">//可在所有时间和所有异常级别访问	</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="特殊寄存器"><a href="#特殊寄存器" class="headerlink" title="特殊寄存器"></a>特殊寄存器</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">XZR     <span class="comment">//零寄存器: 用作源寄存器时读为零，用作目标寄存器时丢弃结果	</span></span><br><span class="line">SP      <span class="comment">//堆栈指针 (每个异常级别，独有一个副本SP_ELn)</span></span><br><span class="line">PC      <span class="comment">//程序计数器</span></span><br><span class="line">SPSR    <span class="comment">//发生异常时，存储处理器状态(类似于 ARMv7 中的 CPSR)</span></span><br><span class="line">ELR_EL  <span class="comment">//异常链接寄存器	保存导致异常的指令的地址	</span></span><br><span class="line"></span><br><span class="line">PSTATE   <span class="comment">//可独立访问的处理器状态的寄存器组 (取代 CPSR的状态字段)</span></span><br><span class="line">NZCV  <span class="comment">//条件标志</span></span><br><span class="line">      <span class="comment">//bit[31:29]: N Z C V  </span></span><br><span class="line">      <span class="comment">//源头：搜索NZCV 在https://developer.arm.com/documentation/ddi0595/2021-09/AArch64-Registers</span></span><br><span class="line">      <span class="comment">//mrs X0, NZCV      </span></span><br><span class="line">DAIF  <span class="comment">//中断屏蔽位(为1时屏蔽)</span></span><br><span class="line">      <span class="comment">//bit[9:6]: D A I F  D(断点观察点)   A:SError  I(IRQ)  F(FIQ)</span></span><br><span class="line">CurrentEL <span class="comment">//当前的异常级别  </span></span><br><span class="line">          <span class="comment">//bit[3:2]: 00(EL0)  01(EL1) 10(EL2) 11(EL3)      </span></span><br><span class="line">          <span class="comment">// mrs x1, CurrentEL   可独立访问          </span></span><br><span class="line">SPSel <span class="comment">//选择堆栈指针的异常级别 </span></span><br><span class="line">      <span class="comment">//bit[0]:   0(都用SP_EL0)   1(用对应的SP_ELx) </span></span><br></pre></td></tr></table></figure>
+
+<h3 id="系统寄存器"><a href="#系统寄存器" class="headerlink" title="系统寄存器"></a>系统寄存器</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">寄存器手册 <span class="comment">// https://developer.arm.com/documentation/ddi0595/2021-09?lang=en</span></span><br><span class="line">SCTLR  <span class="comment">//系统控制机器： 如MMU、缓存和对齐检查	</span></span><br><span class="line">TTBR0_EL1 <span class="comment">//转换表基址寄存器0  -&gt; 物理空间 映射 应用空间 </span></span><br><span class="line">TTBR1_EL1 <span class="comment">//转换表基址寄存器1  -&gt; 物理空间 映射 内核空间</span></span><br><span class="line">MPIDR        <span class="comment">//多处理器关联寄存器</span></span><br><span class="line">ICC_SRE_EL3  <span class="comment">//中断控制寄存器</span></span><br><span class="line">ESR_EL      <span class="comment">//异常综合症寄存器: 包括有关异常原因的信息</span></span><br><span class="line">HCR_EL      <span class="comment">//管理程序配置寄存器： 控制虚拟化设置和捕获 EL2 的异常     </span></span><br></pre></td></tr></table></figure>
+
+<h3 id="向前兼容"><a href="#向前兼容" class="headerlink" title="向前兼容"></a>向前兼容</h3><p>64位机可以兼容32位机</p>
+<p><img src="https://i.niupic.com/images/2022/03/21/9WR9.png"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">在 AArch32 中执行时，无法访问 AArch64 寄存器的高 32 位 //它使用 32 位 W 寄存器(相当于32 位 ARMv7 寄存器)</span><br></pre></td></tr></table></figure>
+
+<h3 id="ARMV8异常级别"><a href="#ARMV8异常级别" class="headerlink" title="ARMV8异常级别"></a>ARMV8异常级别</h3><p>减少了异常模式，现在只有4个级别的异常，分别是应用、系统、虚拟化、底层</p>
+<p>多了两个安全级别，运行一些厂商给库，一般不要去改这些东西</p>
+<p><img src="https://i.niupic.com/images/2022/03/21/9WRh.png"></p>
+<h2 id="环境搭建-用qemu-gdb-vscode-》实现特权寄存器的访问"><a href="#环境搭建-用qemu-gdb-vscode-》实现特权寄存器的访问" class="headerlink" title="环境搭建: 用qemu+ gdb + vscode -》实现特权寄存器的访问"></a>环境搭建: 用qemu+ gdb + vscode -》实现特权寄存器的访问</h2><p>目的是实现模拟ARMv8的寄存器调试，之前是使用的keil但是，keil不支持armv8所以使用了新的平台来调试。</p>
+<p><img src="https://i.niupic.com/images/2022/03/21/9WRl.png"></p>
+<h3 id="qemu："><a href="#qemu：" class="headerlink" title="qemu："></a>qemu：</h3><p>是一个虚拟机模拟器，原因是直接在应用层调试机器的寄存器，会报错，所以模拟了一个虚拟机来调试。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">直接在应用层运行u-boot和内核不行 <span class="comment">//因是不同地址空间</span></span><br><span class="line">但可以用模拟器在应用空间模拟调试 </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">用qemu原因 <span class="comment">//不能用$ gdb vmlinux调试内核，因在应用空间，不能运行内核空间的程序</span></span><br><span class="line">	   <span class="comment">//故用模拟器qemu来做，在应用空间模拟一个完整的系统。</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="ssh登录后-gdb调试-c-c-程序："><a href="#ssh登录后-gdb调试-c-c-程序：" class="headerlink" title="ssh登录后 gdb调试 c/c++程序："></a>ssh登录后 gdb调试 c/c++程序：</h4><h5 id="创建工程："><a href="#创建工程：" class="headerlink" title="创建工程："></a>创建工程：</h5><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">新开远程窗口   <span class="comment">//点远程电脑图标 -&gt;  点192.168.10.237 旁的加号 </span></span><br><span class="line">打开工作目录   <span class="comment">//点 打开文件夹 -&gt; 选工作目录(如 /home/yhbd/bsp)</span></span><br><span class="line">新建项目文件夹 <span class="comment">//点 +号图标（新建文件夹）-&gt; 输入文件夹名（如hello)  </span></span><br><span class="line">新建程序文件   <span class="comment">// 点hello -&gt; 点 +号图标（新建文件）-&gt; 输入文件名（如main.c)   </span></span><br></pre></td></tr></table></figure>
+
+<h3 id="直接安装qemu"><a href="#直接安装qemu" class="headerlink" title="直接安装qemu"></a>直接安装qemu</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get instal qemu-system-arm	</span><br><span class="line">$ qemu-system-aarch64 -h <span class="comment">// 查看全部帮助信息</span></span><br><span class="line">$ qemu-system-aarch64 --version</span><br><span class="line"> QEMU emulator version <span class="number">2.11</span><span class="number">.1</span>(Debian <span class="number">1</span>:<span class="number">2.11</span>+dfsg<span class="number">-1u</span>buntu7<span class="number">.38</span>)</span><br><span class="line"> Copyright (c) <span class="number">2003</span><span class="number">-2017</span> Fabrice Bellard <span class="keyword">and</span> the QEMU Project developers</span><br><span class="line">	 	</span><br><span class="line">$ qemu-system-aarch64 -machine help <span class="comment">//查看支持的machine</span></span><br><span class="line">$ qemu-system-aarch64 -cpu help <span class="comment">//查看machine支持的cpu类型</span></span><br><span class="line">When <span class="keyword">using</span> -nographic, press <span class="string">&#x27;ctrl-a h&#x27;</span> to get some help</span><br><span class="line"></span><br><span class="line">版本太老  <span class="comment">/*不支持A57 需源码编译</span></span><br><span class="line"><span class="comment">	 启动内核时会报错</span></span><br><span class="line"><span class="comment">	rom: requested regions overlap (rom bootloader. free=0x000000004238ea00, </span></span><br><span class="line"><span class="comment">         addr=0x0000000040000000)</span></span><br><span class="line"><span class="comment">	qemu-system-aarch64: rom check and register reset failed</span></span><br><span class="line"><span class="comment">	大概率是qemu版本问题。可考虑下载qemu源码，本地编译qemu二进制。   </span></span><br><span class="line"><span class="comment">     */</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="源码编译qemu"><a href="#源码编译qemu" class="headerlink" title="源码编译qemu"></a>源码编译qemu</h3><p>因为ubuntu这个版本系统安装的qemu版本太低了，所以我们需要在官站上下载稳定版</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">https:<span class="comment">//www.qemu.org/download/ 下载最新的稳定版本 qemu-6.2.0-rc2.tar.xz</span></span><br><span class="line">	        <span class="comment">//注：翻墙下载，用在板子上直接下载太慢了 wget https://download.qemu.org/qemu-6.2.0-rc2.tar.xz</span></span><br><span class="line">&gt; scp qemu<span class="number">-6.2</span><span class="number">.0</span>-rc2.tar.xz yhbd@<span class="number">192.168</span><span class="number">.10</span><span class="number">.237</span>:/home/yhbd/bsp</span><br><span class="line">$ cd ~/bsp</span><br><span class="line">$ tar -xvf qemu<span class="number">-6.2</span><span class="number">.0</span>-rc2.tar.xz</span><br><span class="line">$ cd qemu<span class="number">-6.2</span><span class="number">.0</span>-rc2</span><br><span class="line"></span><br><span class="line">$ ./configure  <span class="comment">/* 配置，报错解决如下</span></span><br><span class="line"><span class="comment">   报错：ERROR: Cannot find Ninja</span></span><br><span class="line"><span class="comment">   解决：sudo apt-get install ninja-build</span></span><br><span class="line"><span class="comment">   </span></span><br><span class="line"><span class="comment">   重运行./configure 还是会报很多错。</span></span><br><span class="line"><span class="comment">      ERROR: Dependency &quot;pixman-1&quot; not found, tried pkgconfig</span></span><br><span class="line"><span class="comment">   都是因为缺少软件，建议安装下面的</span></span><br><span class="line"><span class="comment">  $ sudo apt-get install build-essential zlib1g-dev pkg-config libglib2.0-dev </span></span><br><span class="line"><span class="comment">  $ sudo apt-get install binutils-dev libboost-all-dev autoconf libtool libssl-dev </span></span><br><span class="line"><span class="comment">  $ sudo apt-get install libpixman-1-dev libpython-dev python-pip python-capstone virtualenv   </span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">   看到下面的信息表示成功了</span></span><br><span class="line"><span class="comment">    Subprojects</span></span><br><span class="line"><span class="comment">    libvhost-user                : YES</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">		Found ninja-1.8.2 at /usr/bin/ninja</span></span><br><span class="line"><span class="comment">  </span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">$ make -j4  <span class="comment">//4核并发编译，利用多核CPU并发能力</span></span><br><span class="line">           <span class="comment">//最好用串口运行，因编译时间太长，而vscode ssh登录运行，容易超时退出。</span></span><br><span class="line">           <span class="comment">//而且用串口运行，vscode 可以做别的事，相互不干扰</span></span><br><span class="line">$ sudo make install</span><br><span class="line"></span><br><span class="line"><span class="comment">//查看版本，源码编译的，qemu它支持不同的硬件平台的虚拟，不仅是ARM</span></span><br><span class="line">$ qemu-arm --version</span><br><span class="line">   qemu-arm version <span class="number">6.2</span><span class="number">.92</span></span><br><span class="line">   Copyright (c) <span class="number">2003</span><span class="number">-2021</span> Fabrice Bellard <span class="keyword">and</span> the QEMU Project developers</span><br><span class="line">$ qemu-riscv64 --version</span><br><span class="line">   qemu-riscv64 version <span class="number">6.2</span><span class="number">.92</span></span><br><span class="line">   Copyright (c) <span class="number">2003</span><span class="number">-2021</span> Fabrice Bellard <span class="keyword">and</span> the QEMU Project developers	</span><br><span class="line"></span><br><span class="line">$ qemu-system-aarch64 -cpu help <span class="comment">//查看machine支持的cpu类型，发现支持A57</span></span><br><span class="line">  cortex-a53</span><br><span class="line">  cortex-a57</span><br><span class="line">  cortex-a72</span><br></pre></td></tr></table></figure>
+
+<h3 id="最简单"><a href="#最简单" class="headerlink" title="最简单"></a>最简单</h3><h4 id="start-s"><a href="#start-s" class="headerlink" title="start.s"></a>start.s</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">.globl	_start</span><br><span class="line">_start:</span><br><span class="line">    mov x0, #1</span><br><span class="line">    ldr w1, =0x778899</span><br><span class="line">    add x0, x0, x1</span><br><span class="line">    mrs x3, CurrentEL</span><br><span class="line">reset_end:</span><br><span class="line">    b reset_end</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="makefile"><a href="#makefile" class="headerlink" title="makefile"></a>makefile</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">CC = aarch64-linux-gnu-gcc</span><br><span class="line">LD = aarch64-linux-gnu-ld</span><br><span class="line"></span><br><span class="line">CFLAGS = -g -O0 -nostdlib -nodefaultlibs</span><br><span class="line"></span><br><span class="line">start: start.o</span><br><span class="line">	$(LD) -o $@ $^</span><br><span class="line"></span><br><span class="line">%.o: %.S</span><br><span class="line">	$(CC) $(CFLAGS) -c $&lt; -o $@</span><br><span class="line"></span><br><span class="line">.PHONY: clean</span><br><span class="line"></span><br><span class="line">clean:</span><br><span class="line">	-rm start.o</span><br><span class="line">	-rm start	</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="ARMv8-汇编指令"><a href="#ARMv8-汇编指令" class="headerlink" title="ARMv8 汇编指令"></a>ARMv8 汇编指令</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">b.ne    label    //不等时跳转</span><br><span class="line">cbz	w10, 1f	 //w10值等于0的适合，跳转导1f	</span><br><span class="line">ret              //子程序返回指令，返回地址默认保存在LR（X30），代替了mov pc,lr</span><br><span class="line"></span><br><span class="line">ldr 	x0,=__main　 //大范围的地址读取：把标号__main（地址）读入x0</span><br><span class="line">adr     x0,vector    //小范围的地址读取：把标号vector（地址）读入x0,标号距当前指令PC的偏移小于1M</span><br><span class="line">stp	x29, x30, [sp, #-16]!   </span><br><span class="line">    //入栈：把x29, x30 存储到sp-16指向的空间后,sp自减16 (因寄存器是8字节，栈是向下生长故是 -16）                              </span><br><span class="line">    //类似前索引： *(sp-16) = x29,x30   sp=sp-16 （!使得sp能自更新）  把 x29,x30看成整体              </span><br><span class="line">    //stp只支持2个寄存器，代替了复杂的stmfd  (64位汇编，取消了批量操作指令)     </span><br><span class="line">ldp 	x29, x30, [sp],#16   //出栈: 把sp指向的空间内容载入到x29, x30后，sp加16</span><br><span class="line">                             //类似后索引: x29,x30=*sp  sp=sp+16   </span><br><span class="line"></span><br><span class="line">mrs	x0, sctlr_el1   //读sctlr_el1内容到x0  (注：系统寄存器，都通过mrs msr来操作)</span><br><span class="line">msr  	sctlr_el1, x0   //写x0内容到 sctlr_el1</span><br><span class="line">svc     #2	    //系统调用指令(触发一个同步异常,cpu则会陷入EL1)</span><br><span class="line"></span><br><span class="line">.global  _start     //声明_start 为全局符号(让链接脚本能看到)</span><br><span class="line">.quad  0x3FA0       //在存储器中分配8个字节，初值设为0x3FA0</span><br><span class="line">.align  4           //2^4 =16 字节对齐 ， 预留空间</span><br><span class="line">.macro  myAdd, x,y  //宏函数， 类似 myAdd(x, y) </span><br><span class="line">    add \x,\x,\y</span><br><span class="line">.endm    </span><br><span class="line">myAdd  x0,x2</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">b.ne 	lable	 //不等时跳转到标号，相对于咱v7的，多了一个点，n代表ni，e代表相等</span><br><span class="line">cbz	w10, 1f	 	 //w10值等于0的适合，跳转导1f			1f函数是代表函数名为“1”，我们在调用的时候，只需要写‘1’就好了	</span><br><span class="line">ret              //子程序返回指令，返回地址默认保存在LR（X30），代替了mov pc,lr	，返回到函数调用的地方</span><br></pre></td></tr></table></figure>
+
+<h3 id="例-延时函数"><a href="#例-延时函数" class="headerlink" title="例: 延时函数"></a>例: 延时函数</h3><p>是一个软件延迟，而且延迟时间很少</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">.globl	_start				</span><br><span class="line">_start:</span><br><span class="line">    mov x0,#3</span><br><span class="line">    bl  delay</span><br><span class="line"></span><br><span class="line">reset_end:</span><br><span class="line">    b reset_end</span><br><span class="line"></span><br><span class="line">delay:	</span><br><span class="line">    ldr	 x4,=0x03</span><br><span class="line">loop_delay:</span><br><span class="line">    sub     x4,x4,#1</span><br><span class="line">    cmp     x4,#0</span><br><span class="line">    cbz     x4,delay_end        </span><br><span class="line">    b.ne    loop_delay</span><br><span class="line">delay_end:      </span><br><span class="line">    ret   </span><br></pre></td></tr></table></figure>
+
+<h3 id="宏函数"><a href="#宏函数" class="headerlink" title="宏函数"></a>宏函数</h3><p>注意在函数中使用，形式参数的时候，需要在它前面打一个” / “ </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">.macro  myAdd, x,y      //宏函数， 类似 myAdd(x, y) 	</span><br><span class="line">        add 	\x,\x,\y</span><br><span class="line">.endm    </span><br><span class="line">myAdd  x0,x2	</span><br></pre></td></tr></table></figure>
+
+<h2 id="ARMv8-异常处理"><a href="#ARMv8-异常处理" class="headerlink" title="ARMv8 异常处理"></a>ARMv8 异常处理</h2><h3 id="异常类型"><a href="#异常类型" class="headerlink" title="异常类型"></a>异常类型</h3><ol>
+<li>SError //系统错误           //最常见的是异步数据中止（例如，由于脏数据从缓存行写回外部存储器而触发中止） </li>
+<li>FIQ  //快速中断     //group 0 or secure interrupts </li>
+<li>IRQ  //正常优先级中断       //group 1 (normal) interrupts </li>
+<li>同步异常 //是由于指令流的执行或尝试执行而产生的，并且返回地址提供了导致它的指令的详细信息，         //如未定义指令，从内存读取数据异常</li>
+</ol>
+<h3 id="异常向量表"><a href="#异常向量表" class="headerlink" title="异常向量表"></a>异常向量表</h3><p><img src="ARMV8%E2%80%94-64bit-%E6%B1%87%E7%BC%96.assets/image-20220406095202475.png" alt="image-20220406095202475"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">adr	x0, vectors    //读取异常向量表的首地址	</span><br><span class="line">msr     vbar_el1,x0    //设置异常表的基地址</span><br><span class="line">svc     #2             //系统调用(触发同步异常陷入， sp_el不同  陷入  不同异常) 具体怎么对应的，不太清楚</span><br></pre></td></tr></table></figure>
+
+<h2 id="异常向量表的设置与跳转"><a href="#异常向量表的设置与跳转" class="headerlink" title="异常向量表的设置与跳转"></a>异常向量表的设置与跳转</h2><p>现在V8的异常向量表没有放在起始地址，所以我们需要多一步设置，异常向量表的起始地址，异常类型，每个异常类型里面有4种异常 ，每个异常32条指令        16* *32 *4=2048 </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line">.globl	_start</span><br><span class="line">_start:</span><br><span class="line">    mrs   x1,SPSel</span><br><span class="line">    mrs   x2,CurrentEL</span><br><span class="line">    mov   x0,#0</span><br><span class="line">    msr   SPSel,x0</span><br><span class="line">    mov   x0, #0x5</span><br><span class="line">    adr   x0,vectors</span><br><span class="line">    msr   vbar_el1,x0</span><br><span class="line">    svc   #0x02  //系统调用 ，</span><br><span class="line">reset_end:</span><br><span class="line">    b  reset_end</span><br><span class="line"></span><br><span class="line">do_bad_sync:</span><br><span class="line">   mov   x2,#1</span><br><span class="line">   b    reset_end</span><br><span class="line"></span><br><span class="line">do_bad_irq:</span><br><span class="line">   mov   x2,#2</span><br><span class="line">   b    reset_end</span><br><span class="line"></span><br><span class="line">	.align	11  //2^11=2048  整个异常向量表 2K对齐  -&gt; 通过对齐，实现向量表空间的预留</span><br><span class="line">	            //16个异常 ，每个异常32条指令    16*32*4=2048 </span><br><span class="line">                //16个异常，这里使用前8个</span><br><span class="line">vectors:</span><br><span class="line">    //===============sp0===============</span><br><span class="line">    //---同步异常</span><br><span class="line">    .align  7  //2^7     1000 0000 =0x80   字节对齐  </span><br><span class="line">    mov  x0,#1</span><br><span class="line">    b    do_bad_sync</span><br><span class="line">    //---irq异常</span><br><span class="line">    .align  7  //2^7     1000 0000 =0x80</span><br><span class="line">    mov  x0,#1</span><br><span class="line">    b    do_bad_irq</span><br><span class="line">    //---fiq异常</span><br><span class="line">    .align  7  </span><br><span class="line">    mov  x0,#1</span><br><span class="line">    b    reset_end</span><br><span class="line">    //---SError异常</span><br><span class="line">    .align  7  </span><br><span class="line">    mov  x0,#1</span><br><span class="line">    b    reset_end</span><br><span class="line">    //===============sp_elx===============</span><br><span class="line">    //---同步异常</span><br><span class="line">    .align  7  //2^7     1000 0000 =0x80   字节对齐</span><br><span class="line">    mov  x0,#1</span><br><span class="line">    b    do_bad_sync</span><br><span class="line">    //---irq异常</span><br><span class="line">    .align  7  //2^7     1000 0000 =0x80</span><br><span class="line">    mov  x0,#1</span><br><span class="line">    b    do_bad_irq</span><br><span class="line">    //---fiq异常</span><br><span class="line">    .align  7  </span><br><span class="line">    mov  x0,#1</span><br><span class="line">    b    reset_end</span><br><span class="line">    //---SError异常</span><br><span class="line">    .align  7  </span><br><span class="line">    mov  x0,#1</span><br><span class="line">    b    reset_end</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>祥瑞</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="https://lxiangrui.top/2022/03/20/ARMV8%E2%80%94-64bit-%E6%B1%87%E7%BC%96/">https://lxiangrui.top/2022/03/20/ARMV8%E2%80%94-64bit-%E6%B1%87%E7%BC%96/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>Do you believe in <strong>DESTINY</strong>?</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+            
+            <a class="next" rel="next" href="/2022/03/03/%E6%B1%87%E7%BC%96%E6%8C%87%E4%BB%A4%E5%88%9D%E7%BA%A7-arm/">汇编初级-arm</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+
+
+    <section id="comments" class="comments">
+      <style>
+        .comments{margin:30px;padding:10px;background:#fff}
+        @media screen and (max-width:800px){.comments{margin:auto;padding:10px;background:#fff}}
+      </style>
+      <div class="valine_comment"></div>
+<!--载入js，在</body>之前插入即可-->
+<!--Leancloud 操作库:-->
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<!--Valine 的核心代码库-->
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+  new Valine({
+      el: '.valine_comment',
+      app_id: 'WpWRvE9j5cDsxGwNkVvHbBis-gzGzoHsz',
+      app_key: '2UtG1qn9ScHNtcxbU22GyfbN',
+      placeholder: '这里留言。。',
+      notify: 'true',
+      verify: 'true',
+    });
+</script>
+    </section>
+
+
+
+            </div>
+            <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>
+            © 祥瑞 </a>
+            <!--© 祥瑞 | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a>-->
+
+            
+                <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<span class="site-uv">
+    🙂总访客量:
+    <i class="busuanzi-value" id="busuanzi_value_site_uv"></i>
+</span>&nbsp;
+
+
+<span class="site-pv">
+    👀总访问量:
+    <i class="busuanzi-value" id="busuanzi_value_site_pv"></i>
+</span>&nbsp;
+
+
+
+
+
+    <span >
+        🧧TIME:
+       
+    </span>&nbsp;
+    
+              
+
+              
+              2000 - 2022
+        </span>
+    </div>
+</footer>
+
+    </div>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/tororo.model.json"},"display":{"position":"right","width":300,"height":325},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+
+</html>
+<script>
+!
+function() {
+    function n(n, e, t) {
+        return n.getAttribute(e) || t
+    }
+    function e(n) {
+        return document.getElementsByTagName(n)
+    }
+    function t() {
+        var t = e("script"),
+        o = t.length,
+        i = t[o - 1];
+        return {
+					   l: o,
+			z: n(i, "zIndex", -1), //置于主页面背后
+			o: n(i, "opacity", 20), //线条透明度
+			c: n(i, "color", "245,201,31"), //线条颜色
+			n: n(i, "count", 100) //线条数量z
+
+        }
+    }
+    function o() {
+        a = m.width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth,
+        c = m.height = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight
+    }
+    function i() {
+        r.clearRect(0, 0, a, c);
+        var n, e, t, o, m, l;
+        s.forEach(function(i, x) {
+            for (i.x += i.xa, i.y += i.ya, i.xa *= i.x > a || i.x < 0 ? -1 : 1, i.ya *= i.y > c || i.y < 0 ? -1 : 1, r.fillRect(i.x - .5, i.y - .5, 1, 1), e = x + 1; e < u.length; e++) n = u[e],
+            null !== n.x && null !== n.y && (o = i.x - n.x, m = i.y - n.y, l = o * o + m * m, l < n.max && (n === y && l >= n.max / 2 && (i.x -= .03 * o, i.y -= .03 * m), t = (n.max - l) / n.max, r.beginPath(), r.lineWidth = t / 2, r.strokeStyle = "rgba(" + d.c + "," + (t + .2) + ")", r.moveTo(i.x, i.y), r.lineTo(n.x, n.y), r.stroke()))
+        }),
+        x(i)
+    }
+    var a, c, u, m = document.createElement("canvas"),
+    d = t(),
+    l = "c_n" + d.l,
+    r = m.getContext("2d"),
+    x = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame ||
+    function(n) {
+        window.setTimeout(n, 1e3 / 45)
+    },
+    w = Math.random,
+    y = {
+        x: null,
+        y: null,
+        max: 2e4
+    };
+    m.id = l,
+    m.style.cssText = "position:fixed;top:0;left:0;z-index:" + d.z + ";opacity:" + d.o,
+    e("body")[0].appendChild(m),
+    o(),
+    window.onresize = o,
+    window.onmousemove = function(n) {
+        n = n || window.event,
+        y.x = n.clientX,
+        y.y = n.clientY
+    },
+    window.onmouseout = function() {
+        y.x = null,
+        y.y = null
+    };
+    for (var s = [], f = 0; d.n > f; f++) {
+        var h = w() * a,
+        g = w() * c,
+        v = 2 * w() - 1,
+        p = 2 * w() - 1;
+        s.push({
+            x: h,
+            y: g,
+            xa: v,
+            ya: p,
+            max: 6e3
+        })
+    }
+    u = s.concat([y]),
+    setTimeout(function() {
+        i()
+    },
+    100)
+} ();
+</script>
+
+

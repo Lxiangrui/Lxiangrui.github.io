@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<!-- 
+    <meta name="author" content="祥瑞">
+ -->
+
+
+
+
+<title>十二届蓝桥杯嵌入式省赛 | 祥瑞&#39;s blog</title>
+
+
+
+    <link rel="icon" href="/bitbug_favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+    <script>
+        // this function is used to check current theme before page loaded.
+        (() => {
+            const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
+            const isDark = currentTheme === 'dark';
+            const pagebody = document.getElementsByTagName('body')[0]
+            if (isDark) {
+                pagebody.classList.add('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Dark"
+            } else {
+                pagebody.classList.remove('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Light"
+            }
+        })();
+    </script>
+
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">李祥瑞&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">李祥瑞&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+            <div class="main">
+                <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">十二届蓝桥杯嵌入式省赛</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">祥瑞</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">November 21, 2021&nbsp;&nbsp;16:05:29</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/%E6%AF%94%E8%B5%9B%E9%A1%B9%E7%9B%AE/">比赛项目</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h1 id="停车计费系统"><a href="#停车计费系统" class="headerlink" title="停车计费系统"></a>停车计费系统</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最近开始了22十二届蓝桥杯的培训，星期三的时候学弟陈给我说一起去试试一下去年的省题，但是我当时还是比较急的，前段时间的电赛，然后被隔离，回到正常的课程里面后，因为大三的课程还是比较多的，然后补了很多多作业，一直没有开始做，最后在星期五的下午，我看见学弟在做了，也就按耐不住做了起来哈哈😂🤣😅，然后我就从星期五下午6点到晚上2点实现了全部功能，抛去做其他事情的时间，一共花了我接近6个小时，正式比赛的时候应该是5个小时，虽然到时候是沉寂式5个小时，但因为比赛时封闭的，可能倒是，因为后面还有其他项目做，所以比较急的。平时其实不会这么肝哈就😁。</p>
+<h2 id="关于题目"><a href="#关于题目" class="headerlink" title="关于题目"></a>关于题目</h2><p>这个题目是对我来说，难度是那种能做出来，但是还是有点费力的，主要的难点在于如何将将接收到的串口返回数组拆分成几个参量，去进行做分析处理。</p>
+<table>
+<thead>
+<tr>
+<th><img src="https://img-blog.csdnimg.cn/20210506121738955.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNzE1MTcx,size_16,color_FFFFFF,t_70" style="zoom: 33%;" /></th>
+<th><img src="https://img-blog.csdnimg.cn/20210506121755650.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNzE1MTcx,size_16,color_FFFFFF,t_70" style="zoom: 33%;" /></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><img src="https://img-blog.csdnimg.cn/20210506121800805.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNzE1MTcx,size_16,color_FFFFFF,t_70" style="zoom: 33%;" /></td>
+<td><img src="https://img-blog.csdnimg.cn/20210506121805398.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNzE1MTcx,size_16,color_FFFFFF,t_70" style="zoom: 33%;" /></td>
+</tr>
+</tbody></table>
+<img src="https://img-blog.csdnimg.cn/20210506121810349.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNzE1MTcx,size_16,color_FFFFFF,t_70" style="zoom: 33%;" />
+
+<h2 id="主要功能展示"><a href="#主要功能展示" class="headerlink" title="主要功能展示"></a>主要功能展示</h2><table>
+<thead>
+<tr>
+<th align="center"><a target="_blank" rel="noopener" href="https://imgtu.com/i/Iz4GMn"><img src="https://z3.ax1x.com/2021/11/22/Iz4GMn.png" alt="Iz4GMn.png" style="zoom: 67%;" /></a></th>
+<th align="center"><a target="_blank" rel="noopener" href="https://imgtu.com/i/IzIJEV"><img src="https://z3.ax1x.com/2021/11/22/IzIJEV.md.jpg" alt="IzIJEV.md.jpg" style="zoom: 50%;" /></a></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><a target="_blank" rel="noopener" href="https://imgtu.com/i/Iz4Yq0"><img src="https://z3.ax1x.com/2021/11/22/Iz4Yq0.png" alt="Iz4Yq0.png" style="zoom:67%;" /></a></td>
+<td align="center"><a target="_blank" rel="noopener" href="https://imgtu.com/i/IzIu9g"><img src="https://z3.ax1x.com/2021/11/22/IzIu9g.md.jpg" alt="IzIu9g.md.jpg" style="zoom: 50%;" /></a></td>
+</tr>
+<tr>
+<td align="center"><a target="_blank" rel="noopener" href="https://imgtu.com/i/Iz4Jrq"><img src="https://z3.ax1x.com/2021/11/22/Iz4Jrq.png" alt="Iz4Jrq.png" style="zoom:67%;" /></a></td>
+<td align="center"><a target="_blank" rel="noopener" href="https://imgtu.com/i/IzIeN8"><img src="https://z3.ax1x.com/2021/11/22/IzIeN8.md.jpg" alt="IzIeN8.md.jpg" style="zoom: 50%;" /></a></td>
+</tr>
+<tr>
+<td align="center"><a target="_blank" rel="noopener" href="https://imgtu.com/i/Iz4NZV"><img src="https://z3.ax1x.com/2021/11/22/Iz4NZV.png" alt="Iz4NZV.png" style="zoom:67%;" /></a></td>
+<td align="center"><a target="_blank" rel="noopener" href="https://imgtu.com/i/IzIm4S"><img src="https://z3.ax1x.com/2021/11/22/IzIm4S.md.jpg" alt="IzIm4S.md.jpg" style="zoom:50%;" /></a></td>
+</tr>
+<tr>
+<td align="center">改价格界面</td>
+<td align="center"><img src="https://z3.ax1x.com/2021/11/22/IzIH58.md.jpg" alt="IzIH58.md.jpg" style="zoom:50%;" /></td>
+</tr>
+<tr>
+<td align="center">加钱</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://imgtu.com/i/IzTAFf"><img src="https://z3.ax1x.com/2021/11/22/IzTAFf.md.jpg" alt="IzTAFf.md.jpg" style="zoom:50%;" /></a></td>
+</tr>
+<tr>
+<td align="center">减钱</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://imgtu.com/i/IzTEY8"><img src="https://z3.ax1x.com/2021/11/22/IzTEY8.md.jpg" alt="IzTEY8.md.jpg" style="zoom:50%;" /></a></td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+</tbody></table>
+<h2 id="总体思路"><a href="#总体思路" class="headerlink" title="总体思路"></a>总体思路</h2><p>这道题是实际生活中，我们经常遇到的，假设一个停车场有10个车位，我是先给定义了一个结构体数组，每个数组即代表一个车位，车位的信息就包括，对应车位上车子的信息，有车牌号、车型，入库时间三个成员。同时设置了相同结构体“<strong>虚拟车</strong>”，也是具有这三个成员的。</p>
+<p>一旦串口发送信息过来，设置程序将串口接受数值，拆分为几个小数组，便于后边的计算，然后将这几个数组赋值给“<strong>虚拟车</strong>”的各个结构体变量。这样操作后，我们的当串口发送信息时，我们的“<strong>虚拟车</strong>”就会实时刷新得到便于处理的信息。然后时处理信息的部分，我们每次处理信息必须在接受串口数组完成后执行，而且只能进行一次。所以我们应该处理函数写道，串口接受完成后，触发的函数中。处理函数的话，主要的思想就是，先遍历着比较这10个车位中是否有何虚拟车一样的信息，（1）如果有那么就执行出库操作，计算时间价格，同时清空这个车位信息。（2）如果没有相同的车位信息，那么就执行入库操作，遍历这10个车位，如果遍历到这个车位时空的话，跳出遍历，同时将虚拟车的信息全部赋值给这个车位，完成入库操作。</p>
+<h2 id="关键代码"><a href="#关键代码" class="headerlink" title="关键代码"></a>关键代码</h2><h3 id="设计出入库的算法"><a href="#设计出入库的算法" class="headerlink" title="设计出入库的算法"></a>设计出入库的算法</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">panduanjinchu</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(RXOVER)&#123; <span class="comment">//这里做了一下限制，实现一点的报错功能</span></span><br><span class="line">	<span class="keyword">if</span>((USART_RXBUF[<span class="number">1</span>]==<span class="string">&#x27;N&#x27;</span>)&amp;&amp;(USART_RXBUF[<span class="number">2</span>]==<span class="string">&#x27;B&#x27;</span>)&amp;&amp;(USART_RXBUF[<span class="number">3</span>]==<span class="string">&#x27;R&#x27;</span>)&amp;&amp;(USART_RXBUF[<span class="number">4</span>]==<span class="string">&#x27;:&#x27;</span>)&amp;&amp;(USART_RXBUF[<span class="number">9</span>]==<span class="string">&#x27;:&#x27;</span>))&#123;</span><br><span class="line">		USART_SendString(<span class="string">&quot;\n&quot;</span>);</span><br><span class="line">		USART_SendString(USART_RXBUF);</span><br><span class="line">		USART_SendString(<span class="string">&quot;\n&quot;</span>);</span><br><span class="line">		RXOVER = <span class="number">0</span>;</span><br><span class="line">		iii++;<span class="comment">//接受串口的次数，这里的1s是防抖,完成一次后执行的程序，不过后面好像没用了。。😂</span></span><br><span class="line">		<span class="comment">//判断出库,顺便计算价钱</span></span><br><span class="line">        <span class="comment">//注意这里的panduan()函数就可以用来判断对应车位信息是否和虚拟车位相等。</span></span><br><span class="line">		<span class="keyword">if</span>((panduan(<span class="number">1</span>)==<span class="number">1</span>)||(panduan(<span class="number">2</span>)==<span class="number">1</span>)||(panduan(<span class="number">3</span>)==<span class="number">1</span>)||(panduan(<span class="number">4</span>)==<span class="number">1</span>)||(panduan(<span class="number">5</span>)==<span class="number">1</span>)||(panduan(<span class="number">6</span>)==<span class="number">1</span>)||(panduan(<span class="number">7</span>)==<span class="number">1</span>)||(panduan(<span class="number">8</span>)==<span class="number">1</span>))&#123;	<span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;<span class="number">9</span>;i++)&#123;</span><br><span class="line">            	<span class="keyword">if</span>((panduan(i)==<span class="number">1</span>))&#123;<span class="comment">//具体哪一位车出去</span></span><br><span class="line">				cccc[i]=<span class="number">0</span>;		  <span class="comment">//这个数组代表8个车位，对应车位空</span></span><br><span class="line">				<span class="keyword">for</span>(j=<span class="number">0</span>;j&lt;<span class="number">2</span>;j++)&#123;</span><br><span class="line">				tim_s1[j]=CHAR.cartime[j+<span class="number">8</span>];	</span><br><span class="line">				tim_s2[j]=char1[i].cartime[j+<span class="number">8</span>];<span class="comment">//分别得到秒钟部分</span></span><br><span class="line">				&#125;							</span><br><span class="line">				time1=atoi(tim_s1);</span><br><span class="line">				time2=atoi(tim_s2);<span class="comment">//将数组转化为数据，，便于计算</span></span><br><span class="line">				<span class="keyword">for</span>(j=<span class="number">0</span>;j&lt;<span class="number">2</span>;j++)&#123;</span><br><span class="line">                  tim_s1[j]=CHAR.cartime[j+<span class="number">6</span>];</span><br><span class="line">                  tim_s2[j]=char1[i].cartime[j+<span class="number">6</span>]；</span><br><span class="line">                            	&#125;</span><br><span class="line">				time1=time1+atoi(tim_s1)*<span class="number">60</span>;</span><br><span class="line">				time2=time2+atoi(tim_s2)*<span class="number">60</span>;<span class="comment">//算上分钟的秒</span></span><br><span class="line">							</span><br><span class="line">				<span class="keyword">for</span>(j=<span class="number">0</span>;j&lt;<span class="number">2</span>;j++)&#123;</span><br><span class="line">				tim_s1[j]=CHAR.cartime[j+<span class="number">4</span>];</span><br><span class="line">				tim_s2[j]=char1[i].cartime[j+<span class="number">4</span>];</span><br><span class="line">				&#125;</span><br><span class="line">				time1=time1+atoi(tim_s1)*<span class="number">3600</span>;</span><br><span class="line">				time2=time2+atoi(tim_s2)*<span class="number">3600</span>;<span class="comment">//算上时钟的秒</span></span><br><span class="line">				<span class="keyword">for</span>(j=<span class="number">0</span>;j&lt;<span class="number">2</span>;j++)&#123;</span><br><span class="line">				tim_s1[j]=CHAR.cartime[j+<span class="number">2</span>];	</span><br><span class="line">				tim_s2[j]=char1[i].cartime[j+<span class="number">2</span>];	</span><br><span class="line">				&#125;</span><br><span class="line">				time1=time1+atoi(tim_s1)*<span class="number">3600</span>*<span class="number">24</span>;</span><br><span class="line">				time2=time2+atoi(tim_s2)*<span class="number">3600</span>*<span class="number">24</span>;<span class="comment">//算上一天的秒</span></span><br><span class="line">				time=-time2+time1;			<span class="comment">//计算使用时间</span></span><br><span class="line">				time=time/<span class="number">3600</span>+<span class="number">1</span>;				<span class="comment">//这里的time代表小时，因为是按小时收费，所以未满1小时还是加了1</span></span><br><span class="line">				<span class="comment">//返回数据到串口</span></span><br><span class="line">				<span class="built_in">sprintf</span>(charge, <span class="string">&quot; %d&quot;</span> , time);</span><br><span class="line">				<span class="keyword">if</span>(char1[i].carx==<span class="string">&#x27;C&#x27;</span>)&#123;	</span><br><span class="line">									USART_SendString(<span class="string">&quot;C&quot;</span>);</span><br><span class="line">									&#125;</span><br><span class="line">									<span class="keyword">else</span></span><br><span class="line">									&#123;</span><br><span class="line">									USART_SendString(<span class="string">&quot;V&quot;</span>);		</span><br><span class="line">									&#125;</span><br><span class="line">				USART_SendString(<span class="string">&quot;NBR&quot;</span>);	</span><br><span class="line">								USART_SendString(<span class="string">&quot;:&quot;</span>);</span><br><span class="line">								USART_SendString(CHAR.car1);</span><br><span class="line">								USART_SendString(<span class="string">&quot;:&quot;</span>);			</span><br><span class="line">								USART_SendString(charge);</span><br><span class="line">                              <span class="keyword">if</span>(char1[i].carx==<span class="string">&#x27;C&#x27;</span>)&#123;</span><br><span class="line">							<span class="built_in">sprintf</span>(charge, <span class="string">&quot; %.2f&quot;</span> , (time)*FCNBR);</span><br><span class="line">							CNBR--;</span><br><span class="line">												&#125;</span><br><span class="line">							<span class="keyword">else</span> <span class="keyword">if</span>(char1[i].carx==<span class="string">&#x27;V&#x27;</span>)</span><br><span class="line">							&#123;</span><br><span class="line">							VNBR--;</span><br><span class="line">							<span class="built_in">sprintf</span>(charge, <span class="string">&quot; %.2f&quot;</span> , (time)*FVNBR);				</span><br><span class="line">												&#125;</span><br><span class="line">							USART_SendString(<span class="string">&quot;:&quot;</span>);</span><br><span class="line">							USART_SendString(charge);</span><br><span class="line">                            	qinglin(i);	</span><br><span class="line">				&#125;&#125;&#125;</span><br><span class="line">		<span class="keyword">else</span>&#123;<span class="comment">//这里是判断入库，要先判断不是出库	</span></span><br><span class="line">	<span class="keyword">for</span>(i = <span class="number">1</span>;i&lt;<span class="number">10</span>;i++)&#123;</span><br><span class="line">		<span class="keyword">if</span>(cccc[i]==<span class="number">0</span>)&#123;<span class="comment">//代表空车位</span></span><br><span class="line">					<span class="keyword">if</span>((CHAR.carx==<span class="string">&#x27;C&#x27;</span>))&#123;</span><br><span class="line">					CNBR++;</span><br><span class="line">					&#125;</span><br><span class="line">					<span class="keyword">else</span> <span class="keyword">if</span>((CHAR.carx==<span class="string">&#x27;V&#x27;</span>))</span><br><span class="line">					&#123;</span><br><span class="line">					VNBR++;</span><br><span class="line">					&#125;						</span><br><span class="line">					<span class="keyword">else</span>&#123;</span><br><span class="line">					USART_SendString(<span class="string">&quot;EER&quot;</span>);</span><br><span class="line">					&#125;</span><br><span class="line">		cccc[i]=<span class="number">1</span>;<span class="comment">//1代表有车占了车位</span></span><br><span class="line">		charu(i);	</span><br><span class="line">		i=<span class="number">9</span>;	</span><br><span class="line">		&#125;&#125;&#125;&#125;</span><br><span class="line">	<span class="keyword">else</span>&#123;</span><br><span class="line">			RXOVER = <span class="number">0</span>;</span><br><span class="line">			USART_SendString(<span class="string">&quot;\n&quot;</span>);</span><br><span class="line">			USART_SendString(<span class="string">&quot;err&quot;</span>);</span><br><span class="line">			USART_SendString(<span class="string">&quot;\n&quot;</span>);</span><br><span class="line">		&#125;&#125;</span><br><span class="line">    USART_ITConfig(USART2,USART_IT_RXNE,ENABLE);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="串口中断"><a href="#串口中断" class="headerlink" title="串口中断"></a>串口中断</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">USART2_IRQHandler</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">uint8_t</span> temp;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">if</span>(USART_GetITStatus(USART2,USART_IT_RXNE) != RESET)&#123;</span><br><span class="line">		USART_ClearITPendingBit(USART2,USART_IT_RXNE);		</span><br><span class="line">		temp = USART_ReceiveData(USART2);</span><br><span class="line">		USART_RXBUF[RXCUNT] = temp;</span><br><span class="line">		RXCUNT++;					<span class="comment">//这样会保证每次中断标志位都加一</span></span><br><span class="line">		<span class="keyword">if</span>((temp == <span class="string">&#x27;x&#x27;</span>)||(RXCUNT==<span class="number">22</span>) )&#123;					</span><br><span class="line">			RXCUNT = <span class="number">0</span>;</span><br><span class="line">			RXOVER = <span class="number">1</span>;  <span class="comment">//接收完成标志位置位</span></span><br><span class="line">			USART_ITConfig(USART2,USART_IT_RXNE,DISABLE);</span><br><span class="line">										&#125;&#125;&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="拆分串口接受数组"><a href="#拆分串口接受数组" class="headerlink" title="拆分串口接受数组"></a>拆分串口接受数组</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">date</span><span class="params">()</span></span>&#123;</span><br><span class="line">	CHAR.carx=USART_RXBUF[<span class="number">0</span>];</span><br><span class="line">		<span class="keyword">for</span>(i=<span class="number">5</span>;i&lt;<span class="number">9</span>;i++)&#123;</span><br><span class="line">		CHAR.car1[i<span class="number">-5</span>]=USART_RXBUF[i];</span><br><span class="line">						&#125;</span><br><span class="line">		<span class="keyword">for</span>(i=<span class="number">10</span>;i&lt;<span class="number">22</span>;i++)&#123;</span><br><span class="line">		CHAR.cartime[i<span class="number">-10</span>]=USART_RXBUF[i];</span><br><span class="line">						&#125;&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="归纳总结"><a href="#归纳总结" class="headerlink" title="归纳总结"></a>归纳总结</h2><p>这个训练项目，主要难度对于我，主要在设计出入库的算法上和对串口接受到的数据进行处理分析，对现在我的是一次不错的锻炼。</p>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>祥瑞</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="https://lxiangrui.top/2021/11/21/%E5%8D%81%E4%BA%8C%E5%B1%8A%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%9C%81%E8%B5%9B/">https://lxiangrui.top/2021/11/21/%E5%8D%81%E4%BA%8C%E5%B1%8A%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%9C%81%E8%B5%9B/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>Do you believe in <strong>DESTINY</strong>?</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/stm32/"># stm32</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2021/11/29/EDA%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0/">EDA课程学习</a>
+            
+            
+            <a class="next" rel="next" href="/2021/10/29/%E6%99%BA%E8%83%BD%E8%BD%A6%E6%AF%94%E8%B5%9B/">16届智能车比赛</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+
+
+    <section id="comments" class="comments">
+      <style>
+        .comments{margin:30px;padding:10px;background:#fff}
+        @media screen and (max-width:800px){.comments{margin:auto;padding:10px;background:#fff}}
+      </style>
+      <div class="valine_comment"></div>
+<!--载入js，在</body>之前插入即可-->
+<!--Leancloud 操作库:-->
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<!--Valine 的核心代码库-->
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+  new Valine({
+      el: '.valine_comment',
+      app_id: 'WpWRvE9j5cDsxGwNkVvHbBis-gzGzoHsz',
+      app_key: '2UtG1qn9ScHNtcxbU22GyfbN',
+      placeholder: '这里留言。。',
+      notify: 'true',
+      verify: 'true',
+    });
+</script>
+    </section>
+
+
+
+            </div>
+            <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>
+            © 祥瑞 </a>
+            <!--© 祥瑞 | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a>-->
+
+            
+                <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<span class="site-uv">
+    🙂总访客量:
+    <i class="busuanzi-value" id="busuanzi_value_site_uv"></i>
+</span>&nbsp;
+
+
+<span class="site-pv">
+    👀总访问量:
+    <i class="busuanzi-value" id="busuanzi_value_site_pv"></i>
+</span>&nbsp;
+
+
+
+
+
+    <span >
+        🧧TIME:
+       
+    </span>&nbsp;
+    
+              
+
+              
+              2000 - 2022
+        </span>
+    </div>
+</footer>
+
+    </div>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/tororo.model.json"},"display":{"position":"right","width":300,"height":325},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+
+</html>
+<script>
+!
+function() {
+    function n(n, e, t) {
+        return n.getAttribute(e) || t
+    }
+    function e(n) {
+        return document.getElementsByTagName(n)
+    }
+    function t() {
+        var t = e("script"),
+        o = t.length,
+        i = t[o - 1];
+        return {
+					   l: o,
+			z: n(i, "zIndex", -1), //置于主页面背后
+			o: n(i, "opacity", 20), //线条透明度
+			c: n(i, "color", "245,201,31"), //线条颜色
+			n: n(i, "count", 100) //线条数量z
+
+        }
+    }
+    function o() {
+        a = m.width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth,
+        c = m.height = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight
+    }
+    function i() {
+        r.clearRect(0, 0, a, c);
+        var n, e, t, o, m, l;
+        s.forEach(function(i, x) {
+            for (i.x += i.xa, i.y += i.ya, i.xa *= i.x > a || i.x < 0 ? -1 : 1, i.ya *= i.y > c || i.y < 0 ? -1 : 1, r.fillRect(i.x - .5, i.y - .5, 1, 1), e = x + 1; e < u.length; e++) n = u[e],
+            null !== n.x && null !== n.y && (o = i.x - n.x, m = i.y - n.y, l = o * o + m * m, l < n.max && (n === y && l >= n.max / 2 && (i.x -= .03 * o, i.y -= .03 * m), t = (n.max - l) / n.max, r.beginPath(), r.lineWidth = t / 2, r.strokeStyle = "rgba(" + d.c + "," + (t + .2) + ")", r.moveTo(i.x, i.y), r.lineTo(n.x, n.y), r.stroke()))
+        }),
+        x(i)
+    }
+    var a, c, u, m = document.createElement("canvas"),
+    d = t(),
+    l = "c_n" + d.l,
+    r = m.getContext("2d"),
+    x = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame ||
+    function(n) {
+        window.setTimeout(n, 1e3 / 45)
+    },
+    w = Math.random,
+    y = {
+        x: null,
+        y: null,
+        max: 2e4
+    };
+    m.id = l,
+    m.style.cssText = "position:fixed;top:0;left:0;z-index:" + d.z + ";opacity:" + d.o,
+    e("body")[0].appendChild(m),
+    o(),
+    window.onresize = o,
+    window.onmousemove = function(n) {
+        n = n || window.event,
+        y.x = n.clientX,
+        y.y = n.clientY
+    },
+    window.onmouseout = function() {
+        y.x = null,
+        y.y = null
+    };
+    for (var s = [], f = 0; d.n > f; f++) {
+        var h = w() * a,
+        g = w() * c,
+        v = 2 * w() - 1,
+        p = 2 * w() - 1;
+        s.push({
+            x: h,
+            y: g,
+            xa: v,
+            ya: p,
+            max: 6e3
+        })
+    }
+    u = s.concat([y]),
+    setTimeout(function() {
+        i()
+    },
+    100)
+} ();
+</script>
+
+

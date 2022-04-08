@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<!-- 
+    <meta name="author" content="祥瑞">
+ -->
+
+
+
+
+<title>自动打卡.py | 祥瑞&#39;s blog</title>
+
+
+
+    <link rel="icon" href="/bitbug_favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+    <script>
+        // this function is used to check current theme before page loaded.
+        (() => {
+            const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
+            const isDark = currentTheme === 'dark';
+            const pagebody = document.getElementsByTagName('body')[0]
+            if (isDark) {
+                pagebody.classList.add('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Dark"
+            } else {
+                pagebody.classList.remove('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Light"
+            }
+        })();
+    </script>
+
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">李祥瑞&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">李祥瑞&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+            <div class="main">
+                <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">自动打卡.py</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">祥瑞</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">February 9, 2022&nbsp;&nbsp;2:04:50</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/%E5%9B%BE%E4%B8%80%E4%B9%90/">图一乐</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h2 id="屁话："><a href="#屁话：" class="headerlink" title="屁话："></a>屁话：</h2><p>这是一个超级简单的脚本，是我第一次用python实现的一个小功能吧。</p>
+<p>一开始的目标就是做一个能自动打卡的脚本，但是在做的过程中，发现如果要做到很好，还是很困难的。</p>
+<p>现在脚本的功能就是：每天自动在7：00打卡（通过bat执行）</p>
+<p>采样python的webdriver来控制浏览器打开网页，用pyautogui来控制鼠标键盘</p>
+<h2 id="还是有很多可以完善的地方的："><a href="#还是有很多可以完善的地方的：" class="headerlink" title="还是有很多可以完善的地方的："></a>还是有很多可以完善的地方的：</h2><p>1、比如因为我在使用webdriver时，不能寻找到新的页面的元素，这导致我用了pyautogui来操纵鼠标控制，而使用这种方式后就以为着不能直接在其他电脑上执行，当然，解决办法，还是有的，pyautogui也是有查找元素的功能的，但是它是通过图片的方式，相较于webdriver，它只能查找显示到屏幕的内容，但也是一种选择。</p>
+<p>2、我们学校的打卡网页，必须在移动端打开才能打卡，所以使用webdriver的时候需要先把它模拟为移动端的浏览器，也是通过pyautogui控制键盘打开，就很拉。</p>
+<p>3、在打卡的时候，需要获取实时地址，实际测试下，chrom获取的位置根本不行，后来发现edge还行，这也导致了我不能将它部署在服务器上，需要一种将我的电脑打开，就很蠢。如果可以了解更深里面的，比如网页时如何获取实时地址的话，那应该可以解决，但是对于现在的我，这样就行了。</p>
+<h2 id="MORE"><a href="#MORE" class="headerlink" title="MORE:"></a>MORE:</h2><p>我听说我的一个学长，他直接也做了一个自动打卡的，他是全栈加硬件，我可以去问一些他是怎么实现的哈。我能想到的就是，大家经常说的抓包啥的了。</p>
+<h2 id="程序源码："><a href="#程序源码：" class="headerlink" title="程序源码："></a>程序源码：</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> ast <span class="keyword">import</span> Pass</span><br><span class="line"><span class="keyword">from</span> selenium.webdriver.common.by <span class="keyword">import</span> By</span><br><span class="line"><span class="comment">#from selenium.webdriver import edge</span></span><br><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line"><span class="comment">#from selenium.webdriver.edge.options import Options</span></span><br><span class="line"><span class="keyword">import</span> pyautogui</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"> </span><br><span class="line">width,height = pyautogui.size()</span><br><span class="line"><span class="built_in">print</span>(width,height)  <span class="comment"># 1920 1080</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(pyautogui.position())   <span class="comment"># 得到当前鼠标位置；输出：Point(x=200, y=800)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># pyautogui.moveTo(179,503,duration=1)   # 第一个参数是左右移动像素值，第二个是上下，</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> </span><br><span class="line">wd = webdriver.Edge(<span class="string">r&#x27;d:\MicroftWebDriver.exe&#x27;</span>)</span><br><span class="line"><span class="comment"># wd =   webdriver.Chrome(r&#x27;d:\chromedriver.exe&#x27;)</span></span><br><span class="line">time.sleep(<span class="number">0.5</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">wd.get(<span class="string">&#x27;https://wb.scujj.edu.cn/relax/mobile/index.html#/common/office/login&#x27;</span>)</span><br><span class="line"> </span><br><span class="line">time.sleep(<span class="number">0.5</span>)</span><br><span class="line">pyautogui.click(<span class="number">208</span>,<span class="number">520</span>,button=<span class="string">&#x27;left&#x27;</span>)  </span><br><span class="line"></span><br><span class="line">time.sleep(<span class="number">0.5</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#快捷键设置 模拟手机请求</span></span><br><span class="line">pyautogui.press(<span class="string">&#x27;f12&#x27;</span>)</span><br><span class="line">pyautogui.press(<span class="string">&#x27;left&#x27;</span>)</span><br><span class="line">pyautogui.press(<span class="string">&#x27;enter&#x27;</span>)</span><br><span class="line">time.sleep(<span class="number">0.5</span>)</span><br><span class="line">pyautogui.keyDown(<span class="string">&#x27;ctrl&#x27;</span>)</span><br><span class="line">pyautogui.keyDown(<span class="string">&#x27;shift&#x27;</span>)</span><br><span class="line">time.sleep(<span class="number">0.5</span>)</span><br><span class="line">pyautogui.press(<span class="string">&#x27;m&#x27;</span>)</span><br><span class="line">time.sleep(<span class="number">0.5</span>)</span><br><span class="line">pyautogui.keyUp(<span class="string">&#x27;ctrl&#x27;</span>)</span><br><span class="line">pyautogui.keyUp(<span class="string">&#x27;shift&#x27;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">time.sleep(<span class="number">5</span>)</span><br><span class="line"></span><br><span class="line">usar_num = wd.find_elements(By.CLASS_NAME, <span class="string">&quot;weui-input&quot;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#输入账号和密码</span></span><br><span class="line">usar_num[<span class="number">0</span>].send_keys(<span class="string">&quot;1906100147&quot;</span>)          </span><br><span class="line">usar_num[<span class="number">1</span>].send_keys(<span class="string">&quot;1906100147&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># wd.find_element(By.CLASS_NAME,&#x27;weui_btn_primary&#x27;).click()</span></span><br><span class="line">time.sleep(<span class="number">2</span>)</span><br><span class="line">pyautogui.click(<span class="number">208</span>,<span class="number">520</span>,button=<span class="string">&#x27;left&#x27;</span>)  </span><br><span class="line"></span><br><span class="line">time.sleep(<span class="number">2</span>)</span><br><span class="line"></span><br><span class="line">pyautogui.click(<span class="number">179</span>,<span class="number">503</span>,button=<span class="string">&#x27;left&#x27;</span>)  </span><br><span class="line">time.sleep(<span class="number">4</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">pyautogui.click(<span class="number">318</span>,<span class="number">597</span>,button=<span class="string">&#x27;left&#x27;</span>)  <span class="comment"># 健康</span></span><br><span class="line">time.sleep(<span class="number">0.5</span>)</span><br><span class="line">pyautogui.click(<span class="number">214</span>,<span class="number">602</span>,button=<span class="string">&#x27;left&#x27;</span>) </span><br><span class="line">time.sleep(<span class="number">0.5</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">pyautogui.click(<span class="number">190</span>,<span class="number">642</span>,button=<span class="string">&#x27;left&#x27;</span>)  <span class="comment"># 是否发热</span></span><br><span class="line">time.sleep(<span class="number">0.5</span>)</span><br><span class="line">pyautogui.click(<span class="number">202</span>,<span class="number">656</span>,button=<span class="string">&#x27;left&#x27;</span>)  </span><br><span class="line">time.sleep(<span class="number">0.5</span>)</span><br><span class="line"></span><br><span class="line">pyautogui.click(<span class="number">196</span>,<span class="number">699</span>,button=<span class="string">&#x27;left&#x27;</span>)  <span class="comment"># 其他症状</span></span><br><span class="line">time.sleep(<span class="number">0.5</span>)</span><br><span class="line">pyautogui.click(<span class="number">196</span>,<span class="number">418</span>,button=<span class="string">&#x27;left&#x27;</span>)  </span><br><span class="line">time.sleep(<span class="number">0.5</span>)</span><br><span class="line">pyautogui.click(<span class="number">337</span>,<span class="number">319</span>,button=<span class="string">&#x27;left&#x27;</span>) </span><br><span class="line">time.sleep(<span class="number">0.5</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">pyautogui.click(<span class="number">242</span>,<span class="number">900</span>,button=<span class="string">&#x27;left&#x27;</span>)  <span class="comment"># 地区风险等级</span></span><br><span class="line">time.sleep(<span class="number">0.5</span>)</span><br><span class="line">pyautogui.click(<span class="number">210</span>,<span class="number">704</span>,button=<span class="string">&#x27;left&#x27;</span>) </span><br><span class="line">time.sleep(<span class="number">0.5</span>)</span><br><span class="line">pyautogui.click(<span class="number">200</span>,<span class="number">984</span>,button=<span class="string">&#x27;left&#x27;</span>)  <span class="comment">#   提交</span></span><br><span class="line">time.sleep(<span class="number">5</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;打卡完成！！！当前鼠标位置:&quot;</span>,pyautogui.position())   <span class="comment"># 得到当前鼠标位置；输出：Point(x=200, y=800)</span></span><br></pre></td></tr></table></figure>
+
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>祥瑞</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="https://lxiangrui.top/2022/02/09/%E8%87%AA%E5%8A%A8%E6%89%93%E5%8D%A1-py/">https://lxiangrui.top/2022/02/09/%E8%87%AA%E5%8A%A8%E6%89%93%E5%8D%A1-py/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>Do you believe in <strong>DESTINY</strong>?</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/python/"># python</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2022/02/24/%E6%97%A5%E5%B8%B8%E8%B8%A9%E5%9D%91-pip3/">日常踩坑-pip3</a>
+            
+            
+            <a class="next" rel="next" href="/2022/01/20/python-%E5%85%A5%E9%97%A8/">python 入门</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+
+
+    <section id="comments" class="comments">
+      <style>
+        .comments{margin:30px;padding:10px;background:#fff}
+        @media screen and (max-width:800px){.comments{margin:auto;padding:10px;background:#fff}}
+      </style>
+      <div class="valine_comment"></div>
+<!--载入js，在</body>之前插入即可-->
+<!--Leancloud 操作库:-->
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<!--Valine 的核心代码库-->
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+  new Valine({
+      el: '.valine_comment',
+      app_id: 'WpWRvE9j5cDsxGwNkVvHbBis-gzGzoHsz',
+      app_key: '2UtG1qn9ScHNtcxbU22GyfbN',
+      placeholder: '这里留言。。',
+      notify: 'true',
+      verify: 'true',
+    });
+</script>
+    </section>
+
+
+
+            </div>
+            <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>
+            © 祥瑞 </a>
+            <!--© 祥瑞 | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a>-->
+
+            
+                <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<span class="site-uv">
+    🙂总访客量:
+    <i class="busuanzi-value" id="busuanzi_value_site_uv"></i>
+</span>&nbsp;
+
+
+<span class="site-pv">
+    👀总访问量:
+    <i class="busuanzi-value" id="busuanzi_value_site_pv"></i>
+</span>&nbsp;
+
+
+
+
+
+    <span >
+        🧧TIME:
+       
+    </span>&nbsp;
+    
+              
+
+              
+              2000 - 2022
+        </span>
+    </div>
+</footer>
+
+    </div>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/tororo.model.json"},"display":{"position":"right","width":300,"height":325},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+
+</html>
+<script>
+!
+function() {
+    function n(n, e, t) {
+        return n.getAttribute(e) || t
+    }
+    function e(n) {
+        return document.getElementsByTagName(n)
+    }
+    function t() {
+        var t = e("script"),
+        o = t.length,
+        i = t[o - 1];
+        return {
+					   l: o,
+			z: n(i, "zIndex", -1), //置于主页面背后
+			o: n(i, "opacity", 20), //线条透明度
+			c: n(i, "color", "245,201,31"), //线条颜色
+			n: n(i, "count", 100) //线条数量z
+
+        }
+    }
+    function o() {
+        a = m.width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth,
+        c = m.height = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight
+    }
+    function i() {
+        r.clearRect(0, 0, a, c);
+        var n, e, t, o, m, l;
+        s.forEach(function(i, x) {
+            for (i.x += i.xa, i.y += i.ya, i.xa *= i.x > a || i.x < 0 ? -1 : 1, i.ya *= i.y > c || i.y < 0 ? -1 : 1, r.fillRect(i.x - .5, i.y - .5, 1, 1), e = x + 1; e < u.length; e++) n = u[e],
+            null !== n.x && null !== n.y && (o = i.x - n.x, m = i.y - n.y, l = o * o + m * m, l < n.max && (n === y && l >= n.max / 2 && (i.x -= .03 * o, i.y -= .03 * m), t = (n.max - l) / n.max, r.beginPath(), r.lineWidth = t / 2, r.strokeStyle = "rgba(" + d.c + "," + (t + .2) + ")", r.moveTo(i.x, i.y), r.lineTo(n.x, n.y), r.stroke()))
+        }),
+        x(i)
+    }
+    var a, c, u, m = document.createElement("canvas"),
+    d = t(),
+    l = "c_n" + d.l,
+    r = m.getContext("2d"),
+    x = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame ||
+    function(n) {
+        window.setTimeout(n, 1e3 / 45)
+    },
+    w = Math.random,
+    y = {
+        x: null,
+        y: null,
+        max: 2e4
+    };
+    m.id = l,
+    m.style.cssText = "position:fixed;top:0;left:0;z-index:" + d.z + ";opacity:" + d.o,
+    e("body")[0].appendChild(m),
+    o(),
+    window.onresize = o,
+    window.onmousemove = function(n) {
+        n = n || window.event,
+        y.x = n.clientX,
+        y.y = n.clientY
+    },
+    window.onmouseout = function() {
+        y.x = null,
+        y.y = null
+    };
+    for (var s = [], f = 0; d.n > f; f++) {
+        var h = w() * a,
+        g = w() * c,
+        v = 2 * w() - 1,
+        p = 2 * w() - 1;
+        s.push({
+            x: h,
+            y: g,
+            xa: v,
+            ya: p,
+            max: 6e3
+        })
+    }
+    u = s.concat([y]),
+    setTimeout(function() {
+        i()
+    },
+    100)
+} ();
+</script>
+
+
